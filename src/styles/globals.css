@@ -3,13 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --background: #f1efed;
+  --background: #ffffff;
   --primary: #326df6;
   --foreground: #20232d;
+  --secondary: #f1efed;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-roboto-mono);
+  font-family: var(--font-geist-sans);
 }

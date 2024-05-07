@@ -11,7 +11,9 @@ import {
 } from "@remixicon/react";
 
 export const navItems = [
-  { id: "docs", label: "Docs", url: "https://arc-hpc-docs-v2.vercel.app/" },
+  { id: "products", label: "Products", slug: "products" },
+  { id: "resources", label: "Resources", slug: "resources" },
+  { id: "docs", label: "Docs", slug: "docs", url: "https://arc-hpc-docs-v2.vercel.app/" },
   { id: "contact", label: "Contact", slug: "contact" },
 ];
 

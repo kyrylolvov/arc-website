@@ -5,7 +5,13 @@ import { RiArrowDownSLine } from "@remixicon/react";
 import Link from "next/link";
 
 import { cn } from "~/utils/cn";
-import { navItems, PRODUCTS_LIST_UPPER, RESOURCES_LIST_LOWER, RESOURCES_LIST_UPPER } from "~/utils/tabs";
+import {
+  navItems,
+  PRODUCTS_LIST_LOWER,
+  PRODUCTS_LIST_UPPER,
+  RESOURCES_LIST_LOWER,
+  RESOURCES_LIST_UPPER,
+} from "~/utils/tabs";
 
 import { Icons } from "./icons";
 
@@ -22,8 +28,9 @@ export default function Header() {
             <NavigationMenuPrimitive.List className="flex flex-row">
               <NavigationMenuPrimitive.Item>
                 <NavigationMenuPrimitive.Trigger
+                  style={{ WebkitTapHighlightColor: "transparent" }}
                   className={cn(
-                    "group flex items-center space-x-2 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors ease-out",
+                    "group flex items-center space-x-2 rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors ease-out",
                     "hover:bg-muted hover:text-primary",
                     "data-[state=open]:bg-muted data-[state=open]:text-primary",
                   )}
@@ -37,7 +44,7 @@ export default function Header() {
                     <div className="grid">
                       <div className="grid grid-cols-2 border-b p-2">
                         <div className="col-span-2 flex h-10 items-center px-2 text-sm text-muted-foreground">
-                          Arc Compute
+                          Software
                         </div>
                         {PRODUCTS_LIST_UPPER.map(({ slug, icon: Icon, title, description }) => (
                           <Link
@@ -45,7 +52,7 @@ export default function Header() {
                             href={`/${slug}`}
                             className={cn(
                               "flex items-center gap-3 rounded-lg p-3 transition-colors",
-                              "hover:bg-muted/40",
+                              "hover:bg-muted/80",
                             )}
                           >
                             <Icon className="h-[18px] w-[18px] shrink-0 text-muted-foreground" />
@@ -57,9 +64,9 @@ export default function Header() {
                         ))}
                       </div>
 
-                      {/* <div className="grid grid-cols-2 p-2">
+                      <div className="grid grid-cols-2 p-2">
                         <div className="col-span-2 flex h-10 items-center px-2 text-sm text-muted-foreground">
-                          Open Source
+                          Hardware
                         </div>
                         {PRODUCTS_LIST_LOWER.map(({ slug, icon: Icon, title, description }) => (
                           <Link
@@ -67,7 +74,7 @@ export default function Header() {
                             href={`/${slug}`}
                             className={cn(
                               "flex items-center gap-3 rounded-lg p-3 transition-colors",
-                              "hover:bg-muted/40",
+                              "hover:bg-muted/80",
                             )}
                           >
                             <Icon className="h-[18px] w-[18px] shrink-0 text-muted-foreground" />
@@ -77,7 +84,7 @@ export default function Header() {
                             </div>
                           </Link>
                         ))}
-                      </div> */}
+                      </div>
                     </div>
                   </div>
                 </NavigationMenuPrimitive.Content>
@@ -85,8 +92,9 @@ export default function Header() {
 
               <NavigationMenuPrimitive.Item>
                 <NavigationMenuPrimitive.Trigger
+                  style={{ WebkitTapHighlightColor: "transparent" }}
                   className={cn(
-                    "group flex items-center space-x-2 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors ease-out",
+                    "group flex items-center space-x-2 rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors ease-out",
                     "hover:bg-muted hover:text-primary",
                     "data-[state=open]:bg-muted data-[state=open]:text-primary",
                   )}
@@ -107,7 +115,7 @@ export default function Header() {
                             href={`/${slug}`}
                             className={cn(
                               "flex items-center gap-3 rounded-lg p-3 transition-colors",
-                              "hover:bg-muted/40",
+                              "hover:bg-muted/80",
                             )}
                           >
                             <Icon className="h-[18px] w-[18px] shrink-0 text-muted-foreground" />
@@ -129,7 +137,7 @@ export default function Header() {
                             href={`/${slug}`}
                             className={cn(
                               "flex items-center gap-3 rounded-lg p-3 transition-colors",
-                              "hover:bg-muted/40",
+                              "hover:bg-muted/80",
                             )}
                           >
                             <Icon className="h-[18px] w-[18px] shrink-0 text-muted-foreground" />
@@ -151,7 +159,8 @@ export default function Header() {
                     target={url ? "_blank" : "_self"}
                     href={url || `/${slug}`}
                     className={cn(
-                      "rounded-md px-3 py-2 text-sm font-medium text-gray-500 transition-colors ease-out hover:text-black dark:text-white/70 dark:hover:text-white",
+                      "rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors ease-out",
+                      "hover:bg-muted hover:text-primary",
                     )}
                   >
                     {label}

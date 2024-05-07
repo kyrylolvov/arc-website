@@ -5,6 +5,7 @@ import {
   RiGroupLine,
   RiPenNibLine,
   RiPuzzle2Line,
+  RiServerLine,
   RiShapesLine,
   RiTerminalWindowLine,
 } from "@remixicon/react";
@@ -19,24 +20,24 @@ export const PRODUCTS_LIST_UPPER = [
     icon: RiCpuLine,
     title: "Nexus",
     description: "Optimize HPC and GPU performance",
-    slug: "products/archpc-nexus",
+    slug: "products/archpc",
   },
   {
     icon: RiFlowChart,
     title: "Oracle",
     description: "Automate HPC deployment and execution",
-    slug: "resources/archpc-oracle",
+    slug: "products/archpc",
   },
 ];
 
-// export const PRODUCTS_LIST_LOWER = [
-//   {
-//     icon: RiOpenSourceLine,
-//     title: "Nexus OSS",
-//     description: "Optimize HPC and GPU Performance",
-//     slug: "products/archpc-oss",
-//   },
-// ];
+export const PRODUCTS_LIST_LOWER = [
+  {
+    icon: RiServerLine,
+    title: "GPU Servers",
+    description: "High-performance Nvidia GPU servers",
+    slug: "products/servers",
+  },
+];
 
 export const RESOURCES_LIST_UPPER = [
   {

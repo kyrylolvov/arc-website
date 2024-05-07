@@ -5,7 +5,7 @@ import { GeistSans } from "geist/font/sans";
 import { Metadata } from "next/types";
 import { ReactNode } from "react";
 
-import Header from "~/components/header/header";
+import Header from "~/components/header";
 import { cn } from "~/utils/cn";
 
 export const metadata: Metadata = {

@@ -1,3 +1,3 @@
 export default function Home() {
-  return <main className="px-6 py-20">Hello World</main>;
+  return <main className="px-8 py-24">Home</main>;
 }

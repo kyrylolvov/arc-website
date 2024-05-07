@@ -3,7 +3,6 @@ import {
   RiCpuLine,
   RiFlowChart,
   RiGroupLine,
-  RiOpenSourceLine,
   RiPenNibLine,
   RiPuzzle2Line,
   RiShapesLine,
@@ -19,25 +18,25 @@ export const PRODUCTS_LIST_UPPER = [
   {
     icon: RiCpuLine,
     title: "Nexus",
-    description: "Optimize HPC and GPU Performance",
+    description: "Optimize HPC and GPU performance",
     slug: "products/archpc-nexus",
   },
   {
     icon: RiFlowChart,
     title: "Oracle",
-    description: "Automate HPC Deployment and Execution",
+    description: "Automate HPC deployment and execution",
     slug: "resources/archpc-oracle",
   },
 ];
 
-export const PRODUCTS_LIST_LOWER = [
-  {
-    icon: RiOpenSourceLine,
-    title: "Nexus OSS",
-    description: "Optimize HPC and GPU Performance",
-    slug: "products/archpc-oss",
-  },
-];
+// export const PRODUCTS_LIST_LOWER = [
+//   {
+//     icon: RiOpenSourceLine,
+//     title: "Nexus OSS",
+//     description: "Optimize HPC and GPU Performance",
+//     slug: "products/archpc-oss",
+//   },
+// ];
 
 export const RESOURCES_LIST_UPPER = [
   {

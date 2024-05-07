@@ -5,13 +5,7 @@ import { RiArrowDownSLine } from "@remixicon/react";
 import Link from "next/link";
 
 import { cn } from "~/utils/cn";
-import {
-  navItems,
-  PRODUCTS_LIST_LOWER,
-  PRODUCTS_LIST_UPPER,
-  RESOURCES_LIST_LOWER,
-  RESOURCES_LIST_UPPER,
-} from "~/utils/tabs";
+import { navItems, PRODUCTS_LIST_UPPER, RESOURCES_LIST_LOWER, RESOURCES_LIST_UPPER } from "~/utils/tabs";
 
 import { Icons } from "./icons";
 
@@ -27,15 +21,15 @@ export default function Header() {
           <NavigationMenuPrimitive.Root delayDuration={0} className="relative hidden lg:block">
             <NavigationMenuPrimitive.List className="flex flex-row">
               <NavigationMenuPrimitive.Item>
-                <NavigationMenuPrimitive.Trigger className="group flex items-center space-x-2 rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-100 focus:outline-none dark:hover:bg-white/10">
-                  <p
-                    className={cn(
-                      "text-sm font-medium text-gray-500 transition-colors ease-out group-hover:text-black dark:text-white/70 dark:group-hover:text-white",
-                    )}
-                  >
-                    Products
-                  </p>
-                  <RiArrowDownSLine className="h-4 w-4 text-black group-data-[state=open]:rotate-180 dark:text-white" />
+                <NavigationMenuPrimitive.Trigger
+                  className={cn(
+                    "group flex items-center space-x-2 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors ease-out",
+                    "hover:bg-muted hover:text-primary",
+                    "data-[state=open]:bg-muted data-[state=open]:text-primary",
+                  )}
+                >
+                  <p className="text-sm font-medium transition-colors ease-out">Products</p>
+                  <RiArrowDownSLine className="h-4 w-4 group-data-[state=open]:rotate-180" />
                 </NavigationMenuPrimitive.Trigger>
 
                 <NavigationMenuPrimitive.Content>
@@ -63,7 +57,7 @@ export default function Header() {
                         ))}
                       </div>
 
-                      <div className="grid grid-cols-2 p-2">
+                      {/* <div className="grid grid-cols-2 p-2">
                         <div className="col-span-2 flex h-10 items-center px-2 text-sm text-muted-foreground">
                           Open Source
                         </div>
@@ -83,24 +77,23 @@ export default function Header() {
                             </div>
                           </Link>
                         ))}
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </NavigationMenuPrimitive.Content>
               </NavigationMenuPrimitive.Item>
 
               <NavigationMenuPrimitive.Item>
-                <NavigationMenuPrimitive.Trigger className="group flex items-center space-x-2 rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-100 focus:outline-none dark:hover:bg-white/10">
-                  <p
-                    className={cn(
-                      "text-sm font-medium text-gray-500 transition-colors ease-out group-hover:text-black dark:text-white/70 dark:group-hover:text-white",
-                    )}
-                  >
-                    Resources
-                  </p>
-                  <RiArrowDownSLine className="h-4 w-4 text-black group-data-[state=open]:rotate-180 dark:text-white" />
+                <NavigationMenuPrimitive.Trigger
+                  className={cn(
+                    "group flex items-center space-x-2 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors ease-out",
+                    "hover:bg-muted hover:text-primary",
+                    "data-[state=open]:bg-muted data-[state=open]:text-primary",
+                  )}
+                >
+                  <p className="text-sm font-medium transition-colors ease-out">Resources</p>
+                  <RiArrowDownSLine className="h-4 w-4 group-data-[state=open]:rotate-180" />
                 </NavigationMenuPrimitive.Trigger>
-
                 <NavigationMenuPrimitive.Content>
                   <div className="w-[40rem]">
                     <div className="grid">

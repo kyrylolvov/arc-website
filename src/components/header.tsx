@@ -1,28 +1,31 @@
 "use client";
 
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
-import { ChevronDown } from "lucide-react";
+import { RiArrowDownSLine } from "@remixicon/react";
 import Link from "next/link";
-import { useParams } from "next/navigation";
 
 import { cn } from "~/utils/cn";
-import { navItems, PRODUCTS_LIST } from "~/utils/tabs";
+import {
+  navItems,
+  PRODUCTS_LIST_LOWER,
+  PRODUCTS_LIST_UPPER,
+  RESOURCES_LIST_LOWER,
+  RESOURCES_LIST_UPPER,
+} from "~/utils/tabs";
 
 import { Icons } from "./icons";
 
 export default function Header() {
-  const { domain = "dub.co" } = useParams() as { domain: string };
-
   return (
     <div className={cn("fixed inset-x-0 top-0 z-30 w-full max-w-screen-2xl")}>
       <div className={cn("-z-1 absolute inset-0", "border-b bg-background/60 backdrop-blur")} />
-      <div className="relative w-full py-4 px-6">
+      <div className="relative w-full px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link href={"/"}>
+          <Link href={"/"} className="">
             <Icons.Logo className="h-6" />
           </Link>
           <NavigationMenuPrimitive.Root delayDuration={0} className="relative hidden lg:block">
-            <NavigationMenuPrimitive.List className="flex flex-row space-x-2">
+            <NavigationMenuPrimitive.List className="flex flex-row">
               <NavigationMenuPrimitive.Item>
                 <NavigationMenuPrimitive.Trigger className="group flex items-center space-x-2 rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-100 focus:outline-none dark:hover:bg-white/10">
                   <p
@@ -32,24 +35,119 @@ export default function Header() {
                   >
                     Products
                   </p>
-                  <ChevronDown className="h-4 w-4 text-black group-data-[state=open]:rotate-180 dark:text-white" />
+                  <RiArrowDownSLine className="h-4 w-4 text-black group-data-[state=open]:rotate-180 dark:text-white" />
                 </NavigationMenuPrimitive.Trigger>
 
                 <NavigationMenuPrimitive.Content>
-                  <div className="grid w-[32rem] grid-cols-2 gap-1 p-3">
-                    {PRODUCTS_LIST.map(({ slug, icon: Icon, title, shortTitle }, i) => (
-                      <Link
-                        key={`products-list-${i}`}
-                        href={`/${slug}`}
-                        className="rounded-lg p-3 transition-colors hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-white/[0.15] dark:active:bg-white/20"
-                      >
-                        <div className="flex items-center space-x-2">
-                          <Icon className="h-4 w-4 text-gray-700 dark:text-white/80" />
-                          <p className="text-sm font-medium text-gray-700 dark:text-white">{shortTitle}</p>
+                  <div className="w-[40rem]">
+                    <div className="grid">
+                      <div className="grid grid-cols-2 border-b p-2">
+                        <div className="col-span-2 flex h-10 items-center px-2 text-sm text-muted-foreground">
+                          Arc Compute
                         </div>
-                        <p className="mt-1 line-clamp-1 text-sm text-gray-500 dark:text-white/60">{title}</p>
-                      </Link>
-                    ))}
+                        {PRODUCTS_LIST_UPPER.map(({ slug, icon: Icon, title, description }) => (
+                          <Link
+                            key={`products-list-${slug}`}
+                            href={`/${slug}`}
+                            className={cn(
+                              "flex items-center gap-3 rounded-lg p-3 transition-colors",
+                              "hover:bg-muted/40",
+                            )}
+                          >
+                            <Icon className="h-[18px] w-[18px] shrink-0 text-muted-foreground" />
+                            <div className="space-y-1">
+                              <p className="text-sm font-medium">{title}</p>
+                              <p className="text-xs text-muted-foreground">{description}</p>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+
+                      <div className="grid grid-cols-2 p-2">
+                        <div className="col-span-2 flex h-10 items-center px-2 text-sm text-muted-foreground">
+                          Open Source
+                        </div>
+                        {PRODUCTS_LIST_LOWER.map(({ slug, icon: Icon, title, description }) => (
+                          <Link
+                            key={`products-list-${slug}`}
+                            href={`/${slug}`}
+                            className={cn(
+                              "flex items-center gap-3 rounded-lg p-3 transition-colors",
+                              "hover:bg-muted/40",
+                            )}
+                          >
+                            <Icon className="h-[18px] w-[18px] shrink-0 text-muted-foreground" />
+                            <div className="space-y-1">
+                              <p className="text-sm font-medium">{title}</p>
+                              <p className="text-xs text-muted-foreground">{description}</p>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </NavigationMenuPrimitive.Content>
+              </NavigationMenuPrimitive.Item>
+
+              <NavigationMenuPrimitive.Item>
+                <NavigationMenuPrimitive.Trigger className="group flex items-center space-x-2 rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-100 focus:outline-none dark:hover:bg-white/10">
+                  <p
+                    className={cn(
+                      "text-sm font-medium text-gray-500 transition-colors ease-out group-hover:text-black dark:text-white/70 dark:group-hover:text-white",
+                    )}
+                  >
+                    Resources
+                  </p>
+                  <RiArrowDownSLine className="h-4 w-4 text-black group-data-[state=open]:rotate-180 dark:text-white" />
+                </NavigationMenuPrimitive.Trigger>
+
+                <NavigationMenuPrimitive.Content>
+                  <div className="w-[40rem]">
+                    <div className="grid">
+                      <div className="grid grid-cols-2 border-b p-2">
+                        <div className="col-span-2 flex h-10 items-center px-2 text-sm text-muted-foreground">
+                          Tools
+                        </div>
+                        {RESOURCES_LIST_UPPER.map(({ slug, icon: Icon, title, description }) => (
+                          <Link
+                            key={`products-list-${slug}`}
+                            href={`/${slug}`}
+                            className={cn(
+                              "flex items-center gap-3 rounded-lg p-3 transition-colors",
+                              "hover:bg-muted/40",
+                            )}
+                          >
+                            <Icon className="h-[18px] w-[18px] shrink-0 text-muted-foreground" />
+                            <div className="space-y-1">
+                              <p className="text-sm font-medium">{title}</p>
+                              <p className="text-xs text-muted-foreground">{description}</p>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+
+                      <div className="grid grid-cols-2 p-2">
+                        <div className="col-span-2 flex h-10 items-center px-2 text-sm text-muted-foreground">
+                          Company
+                        </div>
+                        {RESOURCES_LIST_LOWER.map(({ slug, icon: Icon, title, description }) => (
+                          <Link
+                            key={`products-list-${slug}`}
+                            href={`/${slug}`}
+                            className={cn(
+                              "flex items-center gap-3 rounded-lg p-3 transition-colors",
+                              "hover:bg-muted/40",
+                            )}
+                          >
+                            <Icon className="h-[18px] w-[18px] shrink-0 text-muted-foreground" />
+                            <div className="space-y-1">
+                              <p className="text-sm font-medium">{title}</p>
+                              <p className="text-xs text-muted-foreground">{description}</p>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </NavigationMenuPrimitive.Content>
               </NavigationMenuPrimitive.Item>
@@ -72,7 +170,7 @@ export default function Header() {
             <NavigationMenuPrimitive.Viewport
               className={cn(
                 "data-[state=closed]:animate-scale-out-content data-[state=open]:animate-scale-in-content",
-                "absolute z-50 right-0 top-12 w-[var(--radix-navigation-menu-viewport-width)] origin-[top_center]",
+                "absolute right-0 top-12 z-50 w-[var(--radix-navigation-menu-viewport-width)] origin-[top_center]",
                 "flex justify-start rounded-lg border bg-background/60 backdrop-blur",
                 "supports-[backdrop-filter]:bg-background/60",
               )}

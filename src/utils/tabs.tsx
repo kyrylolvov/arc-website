@@ -1,4 +1,5 @@
 import {
+  RemixiconComponentType,
   RiBookOpenLine,
   RiCpuLine,
   RiFlowChart,
@@ -10,14 +11,14 @@ import {
   RiTerminalWindowLine,
 } from "@remixicon/react";
 
-export const navItems = [
-  { id: "products", label: "Products", slug: "products" },
-  { id: "resources", label: "Resources", slug: "resources" },
-  { id: "docs", label: "Docs", slug: "docs", url: "https://arc-hpc-docs-v2.vercel.app/" },
-  { id: "contact", label: "Contact", slug: "contact" },
-];
+interface MenuNavItemLinks {
+  icon: RemixiconComponentType;
+  title: string;
+  description: string;
+  slug: string;
+}
 
-export const PRODUCTS_LIST_UPPER = [
+export const PRODUCTS_LIST_UPPER: MenuNavItemLinks[] = [
   {
     icon: RiCpuLine,
     title: "Nexus",
@@ -32,7 +33,7 @@ export const PRODUCTS_LIST_UPPER = [
   },
 ];
 
-export const PRODUCTS_LIST_LOWER = [
+export const PRODUCTS_LIST_LOWER: MenuNavItemLinks[] = [
   {
     icon: RiServerLine,
     title: "GPU Servers",
@@ -41,7 +42,7 @@ export const PRODUCTS_LIST_LOWER = [
   },
 ];
 
-export const RESOURCES_LIST_UPPER = [
+export const RESOURCES_LIST_UPPER: MenuNavItemLinks[] = [
   {
     icon: RiPuzzle2Line,
     title: "Integrations",
@@ -68,7 +69,7 @@ export const RESOURCES_LIST_UPPER = [
   },
 ];
 
-export const RESOURCES_LIST_LOWER = [
+export const RESOURCES_LIST_LOWER: MenuNavItemLinks[] = [
   {
     icon: RiPenNibLine,
     title: "Blog",
@@ -82,3 +83,78 @@ export const RESOURCES_LIST_LOWER = [
     slug: "customers",
   },
 ];
+
+interface BaseNavItem {
+  id: string;
+  label: string;
+  slug: string;
+  type: "menu" | "slug" | "link";
+}
+
+interface MenuNavItem extends BaseNavItem {
+  type: "menu";
+  upperLinks: {
+    label: string;
+    links: MenuNavItemLinks[];
+  };
+  lowerLinks?: {
+    label: string;
+    links: MenuNavItemLinks[];
+  };
+}
+
+interface SlugNavItem extends BaseNavItem {
+  type: "slug";
+}
+
+interface LinkNavItem extends BaseNavItem {
+  type: "link";
+  url: string;
+}
+
+type NavItem = MenuNavItem | LinkNavItem | SlugNavItem;
+
+export const navItems: NavItem[] = [
+  {
+    id: "products",
+    label: "Products",
+    type: "menu",
+    slug: "products",
+    upperLinks: {
+      label: "Products",
+      links: PRODUCTS_LIST_UPPER,
+    },
+    lowerLinks: {
+      label: "Hardware",
+      links: PRODUCTS_LIST_LOWER,
+    },
+  },
+  {
+    id: "resources",
+    label: "Resources",
+    type: "menu",
+    slug: "resources",
+    upperLinks: {
+      label: "Tools",
+      links: RESOURCES_LIST_UPPER,
+    },
+    lowerLinks: {
+      label: "Company",
+      links: RESOURCES_LIST_LOWER,
+    },
+  },
+  { id: "docs", label: "Docs", slug: "docs", type: "link", url: "https://arc-hpc-docs-v2.vercel.app/" },
+  { id: "contact", label: "Contact", type: "slug", slug: "contact" },
+];
+
+export function isMenuNavItem(item: NavItem): item is MenuNavItem {
+  return item.type === "menu";
+}
+
+export function isSlugNavItem(item: NavItem): item is SlugNavItem {
+  return item.type === "slug";
+}
+
+export function isLinkNavItem(item: NavItem): item is LinkNavItem {
+  return item.type === "link";
+}

@@ -4,6 +4,7 @@ import Link from "next/link";
 import * as React from "react";
 
 import { cn } from "~/utils/cn";
+import { isLinkNavItem, isMenuNavItem, navItems } from "~/utils/tabs";
 
 import { Icons } from "./icons";
 import {
@@ -59,79 +60,90 @@ export default function Header() {
       </Link>
       <NavigationMenu>
         <NavigationMenuList>
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                <li className="row-span-3">
-                  <NavigationMenuLink asChild>
-                    <a
-                      className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                      href="/"
-                    >
-                      {/* <Icons.logo className="h-6 w-6" /> */}
-                      <div className="mb-2 mt-4 text-lg font-medium">shadcn/ui</div>
-                      <p className="text-sm leading-tight text-muted-foreground">
-                        Beautifully designed components that you can copy and paste into your apps. Accessible.
-                        Customizable. Open Source.
-                      </p>
-                    </a>
-                  </NavigationMenuLink>
-                </li>
-                <ListItem href="/docs" title="Introduction">
-                  Re-usable components built using Radix UI and Tailwind CSS.
-                </ListItem>
-                <ListItem href="/docs/installation" title="Installation">
-                  How to install dependencies and structure your app.
-                </ListItem>
-                <ListItem href="/docs/primitives/typography" title="Typography">
-                  Styles for headings, paragraphs, lists...etc
-                </ListItem>
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>Components</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                {components.map((component) => (
-                  <ListItem key={component.title} title={component.title} href={component.href}>
-                    {component.description}
-                  </ListItem>
-                ))}
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <Link href="/docs" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>Docs</NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
+          {navItems.map((navItem) => {
+            const { id, label, slug } = navItem;
+
+            if (isMenuNavItem(navItem)) {
+              const { upperLinks, lowerLinks } = navItem;
+
+              return (
+                <NavigationMenuItem key={id}>
+                  <NavigationMenuTrigger>{label}</NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <div className="grid">
+                      <div className={cn("grid w-[40rem] p-2", lowerLinks && "border-b")}>
+                        <div className="flex h-10 items-center px-2 text-sm text-muted-foreground">
+                          {upperLinks.label}
+                        </div>
+                        <ul className="grid grid-cols-2">
+                          {upperLinks.links.map((link) => (
+                            <li key={`${label}-${upperLinks.label}-${link.title}`}>
+                              <NavigationMenuLink asChild>
+                                <Link
+                                  href={`/${link.slug}`}
+                                  className={cn(
+                                    "flex items-center gap-3 rounded-lg p-3 transition-colors",
+                                    "hover:bg-accent hover:text-accent-foreground",
+                                    "focus:bg-accent focus:text-accent-foreground",
+                                  )}
+                                >
+                                  <link.icon className="h-[18px] w-[18px] shrink-0 text-muted-foreground" />
+                                  <div className="space-y-1">
+                                    <p className="text-sm font-medium">{link.title}</p>
+                                    <p className="text-xs text-muted-foreground">{link.description}</p>
+                                  </div>
+                                </Link>
+                              </NavigationMenuLink>
+                            </li>
+                          ))}
+                        </ul>
+
+                        {lowerLinks && (
+                          <>
+                            <div className="flex h-10 items-center px-2 text-sm text-muted-foreground">
+                              {lowerLinks.label}
+                            </div>
+                            <ul className="grid grid-cols-2">
+                              {lowerLinks.links.map((link) => (
+                                <li key={`${label}-${lowerLinks.label}-${link.title}`}>
+                                  <NavigationMenuLink asChild>
+                                    <Link
+                                      href={`/${link.slug}`}
+                                      className={cn(
+                                        "flex items-center gap-3 rounded-lg p-3 transition-colors",
+                                        "hover:bg-accent hover:text-accent-foreground",
+                                        "focus:bg-accent focus:text-accent-foreground",
+                                      )}
+                                    >
+                                      <link.icon className="h-[18px] w-[18px] shrink-0 text-muted-foreground" />
+                                      <div className="space-y-1">
+                                        <p className="text-sm font-medium">{link.title}</p>
+                                        <p className="text-xs text-muted-foreground">{link.description}</p>
+                                      </div>
+                                    </Link>
+                                  </NavigationMenuLink>
+                                </li>
+                              ))}
+                            </ul>
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              );
+            }
+
+            return (
+              <NavigationMenuItem key={id}>
+                <Link href={isLinkNavItem(navItem) ? navItem.url : `/${slug}`} legacyBehavior passHref>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>{label}</NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+            );
+          })}
         </NavigationMenuList>
       </NavigationMenu>
     </div>
   );
 }
-
-const ListItem = React.forwardRef<React.ElementRef<"a">, React.ComponentPropsWithoutRef<"a">>(
-  ({ className, title, children, ...props }, ref) => {
-    return (
-      <li>
-        <NavigationMenuLink asChild>
-          <a
-            ref={ref}
-            className={cn(
-              "hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors",
-              className,
-            )}
-            {...props}
-          >
-            <div className="text-sm font-medium leading-none">{title}</div>
-            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">{children}</p>
-          </a>
-        </NavigationMenuLink>
-      </li>
-    );
-  },
-);
-ListItem.displayName = "ListItem";

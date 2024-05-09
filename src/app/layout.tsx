@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={cn(GeistSans.variable, GeistMono.variable)}>
-      <body className="relative mx-auto flex min-h-[150vh] max-w-screen-2xl flex-col">
+      <body className="mx-auto flex min-h-[150vh] max-w-screen-2xl flex-col">
         <Header />
         {children}
         <Footer />

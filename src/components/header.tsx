@@ -1,144 +1,137 @@
 "use client";
 
-import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
-import { RiArrowDownSLine } from "@remixicon/react";
 import Link from "next/link";
+import * as React from "react";
 
 import { cn } from "~/utils/cn";
-import { isLinkNavItem, isMenuNavItem, navItems } from "~/utils/tabs";
 
 import { Icons } from "./icons";
-import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from "./ui/navigation-menu";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "./ui/navigation-menu";
+
+const components: { title: string; href: string; description: string }[] = [
+  {
+    title: "Alert Dialog",
+    href: "/docs/primitives/alert-dialog",
+    description: "A modal dialog that interrupts the user with important content and expects a response.",
+  },
+  {
+    title: "Hover Card",
+    href: "/docs/primitives/hover-card",
+    description: "For sighted users to preview content available behind a link.",
+  },
+  {
+    title: "Progress",
+    href: "/docs/primitives/progress",
+    description:
+      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+  },
+  {
+    title: "Scroll-area",
+    href: "/docs/primitives/scroll-area",
+    description: "Visually or semantically separates content.",
+  },
+  {
+    title: "Tabs",
+    href: "/docs/primitives/tabs",
+    description: "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+  },
+  {
+    title: "Tooltip",
+    href: "/docs/primitives/tooltip",
+    description:
+      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+  },
+];
 
 export default function Header() {
   return (
-    <div className={cn("fixed inset-x-0 top-0 z-30 w-full max-w-screen-2xl")}>
-      <div className={cn("-z-1 absolute inset-0", "border-b bg-background/60 backdrop-blur")} />
-      <div className="relative h-[68px] w-full px-6">
-        <div className="flex h-full items-center justify-between">
-          <Link href={"/"} className="">
-            <Icons.Logo className="h-6" />
-          </Link>
-
-          <NavigationMenu>
-            <NavigationMenuList>
-              {navItems.map((navItem) => {
-                const { id, label, slug } = navItem;
-
-                if (isMenuNavItem(navItem)) {
-                  const { upperLinks, lowerLinks } = navItem;
-
-                  return (
-                    <NavigationMenuItem key={id}>
-                      <NavigationMenuPrimitive.Trigger
-                        className={cn(
-                          "group relative flex items-center rounded-md px-4 py-2 text-sm text-muted-foreground transition-colors ease-out",
-                          "hover:bg-muted-foreground/10 hover:text-primary",
-                          "data-[state=open]:bg-muted-foreground/10 data-[state=open]:text-primary",
-                        )}
-                      >
-                        <div className="flex items-center space-x-2">
-                          <p className="text-sm transition-colors ease-out">{label}</p>
-                          <RiArrowDownSLine className="h-3.5 w-3.5 group-data-[state=open]:rotate-180" />
-                        </div>
-                      </NavigationMenuPrimitive.Trigger>
-
-                      <NavigationMenuPrimitive.Content>
-                        <div className="w-[40rem]">
-                          <div className="grid">
-                            <div className={cn("grid grid-cols-2 p-2", lowerLinks && "border-b")}>
-                              <div className="col-span-2 flex h-10 items-center px-2 text-sm text-muted-foreground">
-                                {upperLinks.label}
-                              </div>
-                              {upperLinks.links.map(({ slug, icon: Icon, title, description }) => (
-                                <Link
-                                  key={`${label}-upper-${slug}`}
-                                  href={`/${slug}`}
-                                  className={cn(
-                                    "flex items-center gap-3 rounded-lg p-3 transition-colors",
-                                    "hover:bg-muted-foreground/10",
-                                  )}
-                                >
-                                  <Icon className="h-[18px] w-[18px] shrink-0 text-muted-foreground" />
-                                  <div className="space-y-1">
-                                    <p className="text-sm font-medium">{title}</p>
-                                    <p className="text-xs text-muted-foreground">{description}</p>
-                                  </div>
-                                </Link>
-                              ))}
-                            </div>
-
-                            {lowerLinks && (
-                              <div className="grid grid-cols-2 p-2">
-                                <div className="col-span-2 flex h-10 items-center px-2 text-sm text-muted-foreground">
-                                  {lowerLinks.label}
-                                </div>
-                                {lowerLinks.links.map(({ slug, icon: Icon, title, description }) => (
-                                  <Link
-                                    key={`${label}-lower-${slug}`}
-                                    href={`/${slug}`}
-                                    className={cn(
-                                      "flex items-center gap-3 rounded-lg p-3 transition-colors",
-                                      "hover:bg-muted-foreground/10",
-                                    )}
-                                  >
-                                    <Icon className="h-[18px] w-[18px] shrink-0 text-muted-foreground" />
-                                    <div className="space-y-1">
-                                      <p className="text-sm font-medium">{title}</p>
-                                      <p className="text-xs text-muted-foreground">{description}</p>
-                                    </div>
-                                  </Link>
-                                ))}
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      </NavigationMenuPrimitive.Content>
-                    </NavigationMenuItem>
-                  );
-                }
-
-                if (isLinkNavItem(navItem)) {
-                  const { url } = navItem;
-
-                  return (
-                    <NavigationMenuPrimitive.Item asChild key={`nav-item-${id}`}>
-                      <div className="flex items-center">
-                        <Link
-                          target="_blank"
-                          href={url}
-                          className={cn(
-                            "relative w-full rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors ease-out",
-                            "hover:bg-muted-foreground/10 hover:text-primary",
-                          )}
-                        >
-                          {label}
-                        </Link>
-                      </div>
-                    </NavigationMenuPrimitive.Item>
-                  );
-                }
-
-                return (
-                  <NavigationMenuPrimitive.Item asChild key={`nav-item-${id}`}>
-                    <div className="flex items-center">
-                      <Link
-                        href={`/${slug}`}
-                        className={cn(
-                          "relative w-full rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors ease-out",
-                          "hover:bg-muted-foreground/10 hover:text-primary",
-                        )}
-                      >
-                        {label}
-                      </Link>
-                    </div>
-                  </NavigationMenuPrimitive.Item>
-                );
-              })}
-            </NavigationMenuList>
-          </NavigationMenu>
-        </div>
-      </div>
+    <div className="flex h-[68px] w-full max-w-screen-2xl items-center justify-between border-b px-6">
+      <Link href={"/"}>
+        <Icons.Logo className="h-6" />
+      </Link>
+      <NavigationMenu>
+        <NavigationMenuList>
+          <NavigationMenuItem>
+            <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                <li className="row-span-3">
+                  <NavigationMenuLink asChild>
+                    <a
+                      className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                      href="/"
+                    >
+                      {/* <Icons.logo className="h-6 w-6" /> */}
+                      <div className="mb-2 mt-4 text-lg font-medium">shadcn/ui</div>
+                      <p className="text-sm leading-tight text-muted-foreground">
+                        Beautifully designed components that you can copy and paste into your apps. Accessible.
+                        Customizable. Open Source.
+                      </p>
+                    </a>
+                  </NavigationMenuLink>
+                </li>
+                <ListItem href="/docs" title="Introduction">
+                  Re-usable components built using Radix UI and Tailwind CSS.
+                </ListItem>
+                <ListItem href="/docs/installation" title="Installation">
+                  How to install dependencies and structure your app.
+                </ListItem>
+                <ListItem href="/docs/primitives/typography" title="Typography">
+                  Styles for headings, paragraphs, lists...etc
+                </ListItem>
+              </ul>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                {components.map((component) => (
+                  <ListItem key={component.title} title={component.title} href={component.href}>
+                    {component.description}
+                  </ListItem>
+                ))}
+              </ul>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link href="/docs" legacyBehavior passHref>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>Docs</NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
     </div>
   );
 }
+
+const ListItem = React.forwardRef<React.ElementRef<"a">, React.ComponentPropsWithoutRef<"a">>(
+  ({ className, title, children, ...props }, ref) => {
+    return (
+      <li>
+        <NavigationMenuLink asChild>
+          <a
+            ref={ref}
+            className={cn(
+              "hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors",
+              className,
+            )}
+            {...props}
+          >
+            <div className="text-sm font-medium leading-none">{title}</div>
+            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">{children}</p>
+          </a>
+        </NavigationMenuLink>
+      </li>
+    );
+  },
+);
+ListItem.displayName = "ListItem";

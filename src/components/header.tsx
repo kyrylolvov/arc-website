@@ -1,5 +1,6 @@
 "use client";
 
+import { RiArrowRightLine } from "@remixicon/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import * as React from "react";
@@ -9,6 +10,7 @@ import { cn } from "~/utils/cn";
 import { isLinkNavItem, isMenuNavItem, navItems } from "~/utils/tabs";
 
 import { Icons } from "./icons";
+import { Button } from "./ui/button";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -20,10 +22,10 @@ import {
 } from "./ui/navigation-menu";
 
 const hoverBubblePosition: { [key: string]: string } = {
-  products: "w-[98.09px] translate-x-0",
-  resources: "w-[107.63px] translate-x-[100.11px]",
-  docs: "w-[57.01px] translate-x-[213.76px]",
-  contact: "w-[75.28px] translate-x-[274.77px]",
+  products: "w-[106px] translate-x-0",
+  resources: "w-[115px] translate-x-[108px]",
+  docs: "w-[65px] translate-x-[229px]",
+  contact: "w-[84px] translate-x-[298px]",
 };
 
 export default function Header() {
@@ -59,7 +61,7 @@ export default function Header() {
       >
         <div
           className={cn(
-            "absolute left-0 top-0 h-[32px] rounded-md bg-accent",
+            "absolute left-0 top-0 h-9 rounded-full bg-accent",
             hoveredNavItem ? `${hoverBubblePosition[hoveredNavItem]} transition-all duration-300` : "opacity-0",
             prevNavItemRef.current === null && "duration-0",
           )}
@@ -75,7 +77,7 @@ export default function Header() {
                 <NavigationMenuItem key={id} onMouseOver={() => setHoveredNavItem(id)}>
                   <NavigationMenuTrigger
                     onClick={(e) => e.preventDefault()}
-                    className={cn(activeNavItem === id && "rounded-md bg-accent text-accent-foreground")}
+                    className={cn(activeNavItem === id && "rounded-full bg-accent text-accent-foreground")}
                   >
                     {label}
                   </NavigationMenuTrigger>
@@ -161,6 +163,11 @@ export default function Header() {
           })}
         </NavigationMenuList>
       </NavigationMenu>
+
+      <Button size="sm" className="flex gap-1">
+        Book a demo
+        <RiArrowRightLine className="mt-[1px] h-4 w-4" />
+      </Button>
     </div>
   );
 }

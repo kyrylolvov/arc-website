@@ -1,6 +1,6 @@
 "use client";
 
-import { RiArrowRightLine } from "@remixicon/react";
+import { RiArrowRightLine, RiQuestionMark } from "@remixicon/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import * as React from "react";
@@ -9,7 +9,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "~/utils/cn";
 import { isLinkNavItem, isMenuNavItem, navItems } from "~/utils/tabs";
 
-import { Icons } from "./icons";
 import { Button } from "./ui/button";
 import {
   NavigationMenu,
@@ -48,7 +47,8 @@ export default function Header() {
   return (
     <div className="fixed z-30 flex h-[68px] w-full max-w-screen-2xl items-center justify-between border-b bg-background px-6">
       <Link href={"/"}>
-        <Icons.Logo className="h-[22px]" />
+        {/* <Icons.Logo className="h-[22px]" /> */}
+        <RiQuestionMark className="h-5" />
       </Link>
       <NavigationMenu
         onMouseLeave={() => {
@@ -61,7 +61,7 @@ export default function Header() {
       >
         <div
           className={cn(
-            "absolute left-0 top-0 h-9 rounded-full bg-accent",
+            "absolute left-0 top-0 h-9 rounded-full bg-accent brightness-95",
             hoveredNavItem ? `${hoverBubblePosition[hoveredNavItem]} transition-all duration-300` : "opacity-0",
             prevNavItemRef.current === null && "duration-0",
           )}
@@ -77,7 +77,9 @@ export default function Header() {
                 <NavigationMenuItem key={id} onMouseOver={() => setHoveredNavItem(id)}>
                   <NavigationMenuTrigger
                     onClick={(e) => e.preventDefault()}
-                    className={cn(activeNavItem === id && "rounded-full bg-accent text-accent-foreground")}
+                    className={cn(
+                      activeNavItem === id && "rounded-full bg-accent text-accent-foreground brightness-95",
+                    )}
                   >
                     {label}
                   </NavigationMenuTrigger>
@@ -95,8 +97,8 @@ export default function Header() {
                                   href={`/${link.slug}`}
                                   className={cn(
                                     "flex items-center gap-3 rounded-lg p-3 transition-colors",
-                                    "hover:bg-accent hover:text-accent-foreground",
-                                    "focus:bg-accent focus:text-accent-foreground",
+                                    "hover:bg-accent/40 hover:text-accent-foreground",
+                                    "focus:bg-accent/40 focus:text-accent-foreground",
                                   )}
                                 >
                                   <link.icon className="h-[18px] w-[18px] shrink-0 text-muted-foreground" />
@@ -123,8 +125,8 @@ export default function Header() {
                                       href={`/${link.slug}`}
                                       className={cn(
                                         "flex items-center gap-3 rounded-lg p-3 transition-colors",
-                                        "hover:bg-accent hover:text-accent-foreground",
-                                        "focus:bg-accent focus:text-accent-foreground",
+                                        "hover:bg-accent/40 hover:text-accent-foreground",
+                                        "focus:bg-accent/40 focus:text-accent-foreground",
                                       )}
                                     >
                                       <link.icon className="h-[18px] w-[18px] shrink-0 text-muted-foreground" />
@@ -152,7 +154,7 @@ export default function Header() {
                   <NavigationMenuLink
                     className={cn(
                       navigationMenuTriggerStyle(),
-                      activeNavItem === id && "bg-accent text-accent-foreground",
+                      activeNavItem === id && "bg-accent text-accent-foreground brightness-95",
                     )}
                   >
                     {label}

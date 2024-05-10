@@ -1,9 +1,8 @@
-import { RiDiscordFill, RiGithubFill, RiLinkedinBoxFill } from "@remixicon/react";
+import { RiDiscordFill, RiGithubFill, RiLinkedinBoxFill, RiQuestionMark } from "@remixicon/react";
 import Link from "next/link";
 
 import { footerLinks } from "~/utils/footer";
 
-import { Icons } from "./icons";
 import { Button } from "./ui/button";
 import FooterThemeSwitch from "./ui/footer-theme-switch";
 
@@ -12,7 +11,7 @@ export default function Footer() {
     <footer className="grid-cols-footer grid gap-12 border-t px-6 py-12">
       <div className="flex flex-col justify-between">
         <div className="flex items-center gap-3">
-          <Icons.SmallLogo className="h-7 w-7" />
+          <RiQuestionMark className="h-7 " />
           <div className="flex items-center gap-1 text-sm font-light text-muted-foreground">
             <span className="text-base">©</span> 2024
           </div>

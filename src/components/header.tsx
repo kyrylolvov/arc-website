@@ -46,7 +46,7 @@ export default function Header() {
 
   return (
     <div className="fixed z-30 flex h-[68px] w-full max-w-screen-2xl items-center justify-between border-b bg-background px-6">
-      <Link href={"/"}>
+      <Link href={"/"} className="w-[138px]">
         {/* <Icons.Logo className="h-[22px]" /> */}
         <RiQuestionMark className="h-5" />
       </Link>
@@ -97,8 +97,9 @@ export default function Header() {
                                   href={`/${link.slug}`}
                                   className={cn(
                                     "flex items-center gap-3 rounded-lg p-3 transition-colors",
-                                    "hover:bg-accent/40 hover:text-accent-foreground",
-                                    "focus:bg-accent/40 focus:text-accent-foreground",
+                                    "hover:bg-muted-foreground/5 hover:text-accent-foreground",
+                                    "focus:bg-muted-foreground/5 focus:text-accent-foreground",
+                                    "dark:hover:bg-accent/40",
                                   )}
                                 >
                                   <link.icon className="h-[18px] w-[18px] shrink-0 text-muted-foreground" />
@@ -125,8 +126,9 @@ export default function Header() {
                                       href={`/${link.slug}`}
                                       className={cn(
                                         "flex items-center gap-3 rounded-lg p-3 transition-colors",
-                                        "hover:bg-accent/40 hover:text-accent-foreground",
-                                        "focus:bg-accent/40 focus:text-accent-foreground",
+                                        "hover:bg-muted-foreground/5 hover:text-accent-foreground",
+                                        "focus:bg-muted-foreground/5 focus:text-accent-foreground",
+                                        "dark:hover:bg-accent/40",
                                       )}
                                     >
                                       <link.icon className="h-[18px] w-[18px] shrink-0 text-muted-foreground" />
@@ -150,7 +152,12 @@ export default function Header() {
 
             return (
               <NavigationMenuItem key={id} onMouseOver={() => setHoveredNavItem(id)}>
-                <Link href={isLinkNavItem(navItem) ? navItem.url : `/${slug}`} legacyBehavior passHref>
+                <Link
+                  target={isLinkNavItem(navItem) ? "_blank" : "_self"}
+                  href={isLinkNavItem(navItem) ? navItem.url : `/${slug}`}
+                  legacyBehavior
+                  passHref
+                >
                   <NavigationMenuLink
                     className={cn(
                       navigationMenuTriggerStyle(),

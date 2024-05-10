@@ -67,6 +67,9 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      gridTemplateColumns: {
+        footer: "220px repeat(3, 1fr) 120px", // Custom name and value
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

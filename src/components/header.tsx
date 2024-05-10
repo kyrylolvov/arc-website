@@ -46,7 +46,7 @@ export default function Header() {
   return (
     <div className="fixed z-30 flex h-[68px] w-full max-w-screen-2xl items-center justify-between border-b bg-background px-6">
       <Link href={"/"}>
-        <Icons.Logo className="h-6" />
+        <Icons.Logo className="h-[22px]" />
       </Link>
       <NavigationMenu
         onMouseLeave={() => {
@@ -59,7 +59,7 @@ export default function Header() {
       >
         <div
           className={cn(
-            "absolute left-0 top-0 h-[32px] rounded-full bg-accent",
+            "absolute left-0 top-0 h-[32px] rounded-md bg-accent",
             hoveredNavItem ? `${hoverBubblePosition[hoveredNavItem]} transition-all duration-300` : "opacity-0",
             prevNavItemRef.current === null && "duration-0",
           )}
@@ -75,7 +75,7 @@ export default function Header() {
                 <NavigationMenuItem key={id} onMouseOver={() => setHoveredNavItem(id)}>
                   <NavigationMenuTrigger
                     onClick={(e) => e.preventDefault()}
-                    className={cn(activeNavItem === id && "rounded-full bg-accent text-accent-foreground")}
+                    className={cn(activeNavItem === id && "rounded-md bg-accent text-accent-foreground")}
                   >
                     {label}
                   </NavigationMenuTrigger>

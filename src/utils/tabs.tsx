@@ -121,7 +121,7 @@ export const navItems: NavItem[] = [
     type: "menu",
     slug: "products",
     upperLinks: {
-      label: "Products",
+      label: "Software",
       links: PRODUCTS_LIST_UPPER,
     },
     lowerLinks: {

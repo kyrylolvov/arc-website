@@ -7,6 +7,7 @@ import { ReactNode } from "react";
 
 import Footer from "~/components/footer";
 import Header from "~/components/header";
+import { ThemeProvider } from "~/providers/theme-provider";
 import { cn } from "~/utils/cn";
 
 export const metadata: Metadata = {
@@ -16,11 +17,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={cn(GeistSans.variable, GeistMono.variable)}>
-      <body className="relative mx-auto flex min-h-[150vh] max-w-screen-2xl flex-col">
-        <Header />
-        {children}
-        <Footer />
+    <html lang="en" className={cn(GeistSans.variable, GeistMono.variable)} suppressHydrationWarning>
+      <body className="relative mx-auto flex max-w-screen-2xl flex-col">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <Header />
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

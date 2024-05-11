@@ -1,5 +1,7 @@
 import { RiArrowRightLine } from "@remixicon/react";
 
+import AutomateLottie from "~/components/lotties/automate-lottie";
+import ManageLottie from "~/components/lotties/manage-lottie";
 import OptimizationLottie from "~/components/lotties/optimization-lottie";
 import PriceLottie from "~/components/lotties/price-lottie";
 import SpeedLottie from "~/components/lotties/speed-lottie";
@@ -125,34 +127,74 @@ export default function Home() {
           An advanced GPU management solution that maximizes user and task density, optimizing GPU utilization and
           performance across your data center.
         </p>
-        <div className="mt-8 grid grid-cols-2 gap-12">
-          <div className="flex aspect-square w-full flex-col justify-between rounded-lg border bg-white p-8 dark:bg-black">
-            <div className="grid gap-8">
-              <div className="-ml-0.5 w-fit rounded-full border px-4 py-2 font-mono text-sm">Manage</div>
-              <div className="grid gap-6">
-                <div className="grid gap-2">
-                  <h2 className="text-4xl font-semibold">Nexus</h2>
-                  <p className="text-lg font-medium">
-                    Creates and manages your environment while optimizing GPU utilization and performance, enables
-                    administrators to enhance user and task density.
-                  </p>
+        <div className="mt-8 grid gap-12">
+          <div className="flex aspect-[17/8] w-full justify-between rounded-lg border bg-white p-8 dark:bg-black">
+            <div className="flex aspect-square flex-col justify-between">
+              <div className="grid gap-8">
+                <div className="-ml-0.5 w-fit rounded-full border px-4 py-2 font-mono text-sm">Manage</div>
+                <div className="grid gap-6">
+                  <div className="grid gap-2">
+                    <h2 className="text-4xl font-semibold">Nexus</h2>
+                    <p className="text-lg font-medium">
+                      Creates and manages your environment while optimizing GPU utilization and performance, enables
+                      administrators to enhance user and task density.
+                    </p>
+                  </div>
+                  <ul className="grid gap-1 text-muted-foreground">
+                    <li>- Intercepts machine code at the load stage dedicated to the accelerated hardware</li>
+                    <li>
+                      - Aware of the instructions for execution and the data size, but not the data contents,
+                      maintaining data privacy.
+                    </li>
+                  </ul>
                 </div>
-                <ul className="grid gap-1 text-muted-foreground">
-                  <li>- Intercepts machine code at the load stage dedicated to the accelerated hardware</li>
-                  <li>
-                    - Aware of the instructions for execution and the data size, but not the data contents, maintaining
-                    data privacy.
-                  </li>
-                </ul>
+              </div>
+              <Button size="sm" className="group flex w-fit gap-1">
+                Learn more
+                <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
+              </Button>
+            </div>
+            <div className="grid aspect-square w-[40%] place-items-center">
+              <div className="manage-lottie h-full w-full [&>*]:cursor-default">
+                <ManageLottie />
               </div>
             </div>
-            <Button size="sm" className="group flex w-fit gap-1">
-              Learn more
-              <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
-            </Button>
           </div>
 
-          <div className="flex aspect-square w-full flex-col justify-between rounded-lg border bg-white p-8 dark:bg-black">
+          <div className="flex aspect-[17/8] w-full justify-between rounded-lg border bg-white p-8 dark:bg-black">
+            <div className="flex aspect-square flex-col justify-between">
+              <div className="grid gap-8">
+                <div className="-ml-0.5 w-fit rounded-full border px-4 py-2 font-mono text-sm">Automate</div>
+                <div className="grid gap-6">
+                  <div className="grid gap-2">
+                    <h2 className="text-4xl font-semibold">Oracle</h2>
+                    <p className="text-lg font-medium">
+                      Automates task matching and task deployment across your cluster, by managing low-level operational
+                      execution of instructions
+                    </p>
+                  </div>
+                  <ul className="grid gap-1 text-muted-foreground">
+                    <li>- The source code is saved to the host memory, independent of Nexus{"'"}s operation.</li>
+                    <li>
+                      - Pairs, matches tasks, and staggers kernel execution times using the information intercepted from
+                      machine codes.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <Button size="sm" className="group flex w-fit gap-1">
+                Learn more
+                <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
+              </Button>
+            </div>
+            <div className="grid aspect-square w-[40%] place-items-center">
+              <div className="automate-lottie h-[80%]  [&>*]:cursor-default">
+                <AutomateLottie />
+              </div>
+            </div>
+          </div>
+
+          {/* <div className="flex aspect-square w-full flex-col justify-between rounded-lg border bg-white p-8 dark:bg-black">
             <div className="grid gap-8">
               <div className="-ml-0.5 w-fit rounded-full border px-4 py-2 font-mono text-sm">Automate</div>
               <div className="grid gap-6">
@@ -176,7 +218,7 @@ export default function Home() {
               Learn more
               <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
             </Button>
-          </div>
+          </div> */}
         </div>
       </div>
 

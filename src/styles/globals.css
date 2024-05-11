@@ -97,4 +97,23 @@
   .optimization-lottie .circle path {
     fill: hsl(var(--border));
   }
+
+  .manage-lottie .circle path {
+    @apply fill-muted-foreground/40;
+  }
+
+  .manage-lottie .circle-accent path {
+    fill: hsl(var(--primary));
+    stroke: hsl(var(--primary));
+  }
+
+  .automate-lottie .circle path {
+    fill: hsl(var(--border));
+    stroke: hsl(var(--border));
+  }
+
+  .automate-lottie #circle-accent path {
+    fill: hsl(var(--primary));
+    stroke: hsl(var(--primary));
+  }
 }

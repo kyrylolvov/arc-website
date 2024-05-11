@@ -45,7 +45,7 @@ export default function Header() {
   }, [activeNavItem]);
 
   return (
-    <div className="fixed z-30 flex h-[68px] w-full max-w-screen-2xl items-center justify-between border-b bg-background px-6">
+    <div className="fixed z-30 flex h-[68px] w-full max-w-screen-2xl items-center justify-between border-b bg-white px-6 dark:bg-black">
       <Link href={"/"} className="w-[138px]">
         {/* <Icons.Logo className="h-[22px]" /> */}
         <RiQuestionMark className="h-5" />
@@ -173,9 +173,9 @@ export default function Header() {
         </NavigationMenuList>
       </NavigationMenu>
 
-      <Button size="sm" className="flex gap-1">
+      <Button size="sm" className="group flex gap-1">
         Book a demo
-        <RiArrowRightLine className="mt-[1px] h-4 w-4" />
+        <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
       </Button>
     </div>
   );

@@ -73,4 +73,28 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  .speed-lottie #circle-accent path {
+    fill: hsl(var(--primary));
+  }
+
+  .speed-lottie .circle path {
+    fill: hsl(var(--border));
+  }
+
+  .speed-lottie #tail-accent path {
+    fill: hsl(var(--border));
+  }
+
+  .speed-lottie .tail path {
+    fill: hsl(var(--border));
+  }
+
+  .optimization-lottie #circle-accent path {
+    fill: hsl(var(--primary));
+  }
+
+  .optimization-lottie .circle path {
+    fill: hsl(var(--border));
+  }
 }

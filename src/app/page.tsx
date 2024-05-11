@@ -63,7 +63,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mt-16 w-full">
+      <div className="mt-32 w-full">
         <h2 className="text-center text-3xl font-semibold">The Leader In GPU Optimization</h2>
         <p className="mx-auto mt-2 max-w-[90%] text-center font-light text-muted-foreground">
           Achieving peak GPU performance has eluded even the most advanced organizations due to the current limitations
@@ -73,36 +73,45 @@ export default function Home() {
           <div className="flex aspect-square w-full flex-col justify-between rounded-lg border bg-white p-4 dark:bg-black">
             <p className="font-mono text-xs">GPU Resources</p>
 
-            <div className="optimization-lottie px-16 [&>*]:cursor-default">
+            <div className="optimization-lottie px-[72px] [&>*]:cursor-default">
               <OptimizationLottie />
             </div>
 
             <p className="text-5xl font-semibold">
-              100<span className="text-4xl font-bold">%</span> <span className="text-xl">Utilization*</span>
+              100<span className="text-4xl font-bold">%</span>{" "}
+              <span className="text-xl">
+                Utilization<span className="text-muted-foreground">*</span>
+              </span>
             </p>
           </div>
 
           <div className="flex aspect-square w-full flex-col justify-between rounded-lg border bg-white p-4 dark:bg-black">
             <p className="font-mono text-xs">GPU Performance</p>
 
-            <div className="speed-lottie px-16 [&>*]:cursor-default">
+            <div className="speed-lottie px-[72px] [&>*]:cursor-default">
               <SpeedLottie />
             </div>
 
             <p className="text-5xl font-semibold">
-              5x <span className="text-xl">Faster*</span>
+              5x{" "}
+              <span className="text-xl">
+                Faster<span className="text-muted-foreground">*</span>
+              </span>
             </p>
           </div>
 
           <div className="flex aspect-square w-full flex-col justify-between rounded-lg border bg-white p-4 dark:bg-black">
             <p className="font-mono text-xs">Hardware Requirements</p>
 
-            <div className="price-lottie px-16 [&>*]:cursor-default">
+            <div className="price-lottie px-[72px] [&>*]:cursor-default">
               <PriceLottie />
             </div>
 
             <p className="text-5xl font-semibold">
-              83<span className="text-4xl font-bold">%</span> <span className="text-xl">Lower Cost*</span>
+              83<span className="text-4xl font-bold">%</span>{" "}
+              <span className="text-xl">
+                Lower Cost<span className="text-muted-foreground">*</span>
+              </span>
             </p>
           </div>
         </div>

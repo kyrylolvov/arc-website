@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={cn(GeistSans.variable, GeistMono.variable)} suppressHydrationWarning>
-      <body className="relative mx-auto flex max-w-screen-2xl flex-col">
+      <body className="relative mx-auto flex flex-col">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Header />
           {children}

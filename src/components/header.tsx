@@ -45,7 +45,7 @@ export default function Header() {
   }, [activeNavItem]);
 
   return (
-    <div className="fixed z-30 flex h-[68px] w-full max-w-screen-2xl items-center justify-between border-b bg-white px-6 dark:bg-black">
+    <header className="fixed z-30 flex h-[68px] w-full max-w-screen-2xl items-center justify-between border-b bg-white px-6 dark:bg-black">
       <Link href={"/"} className="w-[138px]">
         {/* <Icons.Logo className="h-[22px]" /> */}
         <RiQuestionMark className="h-5" />
@@ -61,7 +61,7 @@ export default function Header() {
       >
         <div
           className={cn(
-            "absolute left-0 top-0 h-9 rounded-full bg-accent brightness-95",
+            "absolute left-0 top-0 h-9 rounded-full bg-secondary",
             hoveredNavItem ? `${hoverBubblePosition[hoveredNavItem]} transition-all duration-300` : "opacity-0",
             prevNavItemRef.current === null && "duration-0",
           )}
@@ -77,9 +77,7 @@ export default function Header() {
                 <NavigationMenuItem key={id} onMouseOver={() => setHoveredNavItem(id)}>
                   <NavigationMenuTrigger
                     onClick={(e) => e.preventDefault()}
-                    className={cn(
-                      activeNavItem === id && "rounded-full bg-accent text-accent-foreground brightness-95",
-                    )}
+                    className={cn(activeNavItem === id && "rounded-full bg-secondary text-accent-foreground")}
                   >
                     {label}
                   </NavigationMenuTrigger>
@@ -99,7 +97,7 @@ export default function Header() {
                                     "flex items-center gap-3 rounded-lg p-3 transition-colors",
                                     "hover:bg-muted-foreground/5 hover:text-accent-foreground",
                                     "focus:bg-muted-foreground/5 focus:text-accent-foreground",
-                                    "dark:hover:bg-accent/40",
+                                    "dark:hover:bg-secondary/40",
                                   )}
                                 >
                                   <link.icon className="h-[18px] w-[18px] shrink-0 text-muted-foreground" />
@@ -128,7 +126,7 @@ export default function Header() {
                                         "flex items-center gap-3 rounded-lg p-3 transition-colors",
                                         "hover:bg-muted-foreground/5 hover:text-accent-foreground",
                                         "focus:bg-muted-foreground/5 focus:text-accent-foreground",
-                                        "dark:hover:bg-accent/40",
+                                        "dark:hover:bg-secondary/40",
                                       )}
                                     >
                                       <link.icon className="h-[18px] w-[18px] shrink-0 text-muted-foreground" />
@@ -161,7 +159,7 @@ export default function Header() {
                   <NavigationMenuLink
                     className={cn(
                       navigationMenuTriggerStyle(),
-                      activeNavItem === id && "bg-accent text-accent-foreground brightness-95",
+                      activeNavItem === id && "bg-secondary text-accent-foreground",
                     )}
                   >
                     {label}
@@ -177,6 +175,6 @@ export default function Header() {
         Book a demo
         <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
       </Button>
-    </div>
+    </header>
   );
 }

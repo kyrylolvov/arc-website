@@ -67,7 +67,7 @@ export default function Home() {
 
       <div className="mt-32 w-full">
         <h2 className="text-center text-3xl font-semibold">The Leader In GPU Optimization</h2>
-        <p className="mx-auto mt-2 max-w-[90%] text-center font-light text-muted-foreground">
+        <p className="mx-auto mt-2 max-w-[70%] text-center font-light text-muted-foreground">
           Achieving peak GPU performance has eluded even the most advanced organizations due to the current limitations
           in managing and manipulating how data flows and threads execute on GPUs.
         </p>
@@ -121,7 +121,7 @@ export default function Home() {
 
       <div className="mt-32 w-full">
         <h2 className="text-center text-3xl font-semibold">Unlock the True Potential of Your GPU Infrastructure</h2>
-        <p className="mx-auto mt-2 max-w-[90%] text-center font-light text-muted-foreground">
+        <p className="mx-auto mt-2 max-w-[70%] text-center font-light text-muted-foreground">
           An advanced GPU management solution that maximizes user and task density, optimizing GPU utilization and
           performance across your data center.
         </p>
@@ -170,6 +170,50 @@ export default function Home() {
                     machine codes.
                   </li>
                 </ul>
+              </div>
+            </div>
+            <Button size="sm" className="group flex w-fit gap-1">
+              Learn more
+              <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-32 w-full">
+        <h2 className="text-center text-3xl font-semibold">End-to-End GPU Infrastructure Solutions</h2>
+        <p className="mx-auto mt-2 max-w-[70%] text-center font-light text-muted-foreground">
+          Upgrade your infrastructure with the most in demand NVIDIA GPUs or Tap into unprecedented performance,
+          scalability, and security for every workload
+        </p>
+        <div className="mt-8 grid grid-cols-2 gap-12">
+          <div className="flex aspect-[4/3] w-full flex-col justify-between rounded-lg border bg-white p-8 dark:bg-black">
+            <div className="grid gap-8">
+              <div className="-ml-0.5 w-fit rounded-full border px-4 py-2 font-mono text-sm">Build</div>
+              <div className="grid gap-2">
+                <h2 className="text-4xl font-semibold">GPU Servers</h2>
+                <p className="text-muted-foreground">
+                  Leverage the power of the latest NVIDIA GPUs in your data center. Whether you need one server or
+                  thousands, we{"'"}ve got you covered with industry-best lead times on NVIDIA H100, A100, and L40S
+                  deployments.
+                </p>
+              </div>
+            </div>
+            <Button size="sm" className="group flex w-fit gap-1">
+              Learn more
+              <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
+            </Button>
+          </div>
+
+          <div className="flex aspect-[4/3] w-full flex-col justify-between rounded-lg border bg-white p-8 dark:bg-black">
+            <div className="grid gap-8">
+              <div className="-ml-0.5 w-fit rounded-full border px-4 py-2 font-mono text-sm">Deploy</div>
+              <div className="grid gap-2">
+                <h2 className="text-4xl font-semibold">Cloud Instances</h2>
+                <p className="text-muted-foreground">
+                  Enable large-scale model training with top-of-the-line NVIDIA H100 SXM5 GPUs. Arc Compute{"'"}s cloud
+                  clusters are available for a minimum 2-year commitment and start at just $2.20/hr per GPU.
+                </p>
               </div>
             </div>
             <Button size="sm" className="group flex w-fit gap-1">

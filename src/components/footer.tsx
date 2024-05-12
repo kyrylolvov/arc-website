@@ -10,7 +10,7 @@ export default function Footer() {
   return (
     <footer className="grid w-full gap-8 border-t bg-white px-6 pb-6 pt-12 dark:bg-black">
       <div className="mx-auto w-full max-w-screen-2xl">
-        <div className="grid-cols-footer grid gap-12">
+        <div className="grid grid-cols-footer gap-12">
           <div className="flex flex-col justify-between">
             <div className="flex items-center gap-3">
               <RiQuestionMark className="h-7 " />

@@ -38,8 +38,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mt-16 grid grid-cols-3 gap-6">
-        <div className="group flex cursor-pointer flex-col justify-between rounded-lg border bg-white p-4 transition-colors hover:border-primary dark:bg-black">
+      <div className="mt-16 grid gap-6 md:grid-cols-3">
+        <div className="group grid w-full cursor-pointer gap-2 rounded-lg border bg-white p-4 transition-colors hover:border-primary dark:bg-black">
           <div className="grid gap-2">
             <p className="text-sm text-muted-foreground">Event</p>
             <p className="font-semibold">Join us next week in Hamburg, Germany, for ISC24!</p>
@@ -49,7 +49,7 @@ export default function Home() {
             <RiArrowRightLine className="absolute left-[50%] h-4 w-4 shrink-0 translate-x-[-250%] transition-transform duration-300 ease-out group-hover:translate-x-[-50%]" />
           </div>
         </div>
-        <div className="group grid cursor-pointer gap-2 rounded-lg border bg-white p-4 transition-colors hover:border-primary dark:bg-black">
+        <div className="group grid w-full cursor-pointer gap-2 rounded-lg border bg-white p-4 transition-colors hover:border-primary dark:bg-black">
           <p className="text-sm text-muted-foreground">Learn</p>
           <p className="font-semibold">Using ArcHPC: The ultimate guide on Nexus.</p>
           <div className="relative mt-2 flex h-8 w-12 items-center overflow-hidden rounded-full bg-secondary text-xs text-primary">
@@ -128,13 +128,13 @@ export default function Home() {
           performance across your data center.
         </p>
         <div className="mt-8 grid gap-12">
-          <div className="flex aspect-[17/8] w-full justify-between rounded-lg border bg-white p-8 dark:bg-black">
-            <div className="flex aspect-square flex-col justify-between">
+          <div className="grid w-full grid-cols-10 justify-between gap-8 rounded-lg border bg-white p-8 dark:bg-black">
+            <div className="col-span-5 flex flex-col gap-12">
               <div className="grid gap-8">
                 <div className="-ml-0.5 w-fit rounded-full border px-4 py-2 font-mono text-sm">Manage</div>
                 <div className="grid gap-6">
                   <div className="grid gap-2">
-                    <h2 className="text-4xl font-semibold">Nexus</h2>
+                    <h2 className="text-4xl font-semibold">ArcHPC Nexus</h2>
                     <p className="text-lg font-medium">
                       Creates and manages your environment while optimizing GPU utilization and performance, enables
                       administrators to enhance user and task density.
@@ -154,20 +154,20 @@ export default function Home() {
                 <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
               </Button>
             </div>
-            <div className="grid aspect-square w-[40%] place-items-center">
-              <div className="manage-lottie h-full w-full [&>*]:cursor-default">
+            <div className="col-span-5 grid h-full w-full place-items-center">
+              <div className="manage-lottie h-fit w-[70%] [&>*]:cursor-default">
                 <ManageLottie />
               </div>
             </div>
           </div>
 
-          <div className="flex aspect-[17/8] w-full justify-between rounded-lg border bg-white p-8 dark:bg-black">
-            <div className="flex aspect-square flex-col justify-between">
+          <div className="grid w-full grid-cols-10 justify-between gap-8 rounded-lg border bg-white p-8 dark:bg-black">
+            <div className="col-span-5 flex flex-col gap-12">
               <div className="grid gap-8">
                 <div className="-ml-0.5 w-fit rounded-full border px-4 py-2 font-mono text-sm">Automate</div>
                 <div className="grid gap-6">
                   <div className="grid gap-2">
-                    <h2 className="text-4xl font-semibold">Oracle</h2>
+                    <h2 className="text-4xl font-semibold">ArcHPC Oracle</h2>
                     <p className="text-lg font-medium">
                       Automates task matching and task deployment across your cluster, by managing low-level operational
                       execution of instructions
@@ -187,38 +187,12 @@ export default function Home() {
                 <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
               </Button>
             </div>
-            <div className="grid aspect-square w-[40%] place-items-center">
-              <div className="automate-lottie h-[80%]  [&>*]:cursor-default">
+            <div className="col-span-5 grid h-full w-full place-items-center">
+              <div className="automate-lottie h-fit w-[70%] [&>*]:cursor-default">
                 <AutomateLottie />
               </div>
             </div>
           </div>
-
-          {/* <div className="flex aspect-square w-full flex-col justify-between rounded-lg border bg-white p-8 dark:bg-black">
-            <div className="grid gap-8">
-              <div className="-ml-0.5 w-fit rounded-full border px-4 py-2 font-mono text-sm">Automate</div>
-              <div className="grid gap-6">
-                <div className="grid gap-2">
-                  <h2 className="text-4xl font-semibold">Oracle</h2>
-                  <p className="text-lg font-medium">
-                    Automates task matching and task deployment across your cluster, by managing low-level operational
-                    execution of instructions
-                  </p>
-                </div>
-                <ul className="grid gap-1 text-muted-foreground">
-                  <li>- The source code is saved to the host memory, independent of Nexus{"'"}s operation.</li>
-                  <li>
-                    - Pairs, matches tasks, and staggers kernel execution times using the information intercepted from
-                    machine codes.
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <Button size="sm" className="group flex w-fit gap-1">
-              Learn more
-              <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
-            </Button>
-          </div> */}
         </div>
       </div>
 
@@ -264,6 +238,27 @@ export default function Home() {
             </Button>
           </div>
         </div>
+      </div>
+
+      <div className="mt-32 w-full">
+        <div className="rounded-lg border bg-white p-14 dark:bg-black">
+          <h2 className="text-center text-3xl font-semibold">Ready To Try Arc Compute?</h2>
+          <p className="mx-auto mt-6 max-w-[70%] text-center text-lg text-muted-foreground">
+            Access ArcHPC today to see how companies using Nexus and Oracle benefit from rapid time-to-market and faster
+            iterations across the entire AI lifecycle.
+          </p>
+          <div className="mt-10 flex justify-center">
+            <Button size="sm" className="group flex gap-1">
+              Book a demo
+              <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-32 w-full">
+        <h2 className="text-center text-3xl font-semibold">Featured Resources</h2>
+        <div className="mt-10 flex justify-center"></div>
       </div>
     </main>
   );

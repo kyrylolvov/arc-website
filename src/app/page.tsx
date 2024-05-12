@@ -258,7 +258,49 @@ export default function Home() {
 
       <div className="mt-32 w-full">
         <h2 className="text-center text-3xl font-semibold">Featured Resources</h2>
-        <div className="mt-10 flex justify-center"></div>
+        <div className="mt-6 grid gap-6 md:grid-cols-3">
+          <div className="w-full overflow-hidden rounded-lg border bg-white dark:bg-black">
+            <div className="aspect-video bg-muted"></div>
+            <div className="flex flex-col gap-8 p-3">
+              <div className="grid gap-3">
+                <p className="font-mono text-sm text-muted-foreground">Webinar</p>
+                <p className="font-semibold">AI in Healthcare: Enhanced Medical Practices for Improved Patient Care</p>
+              </div>
+              <Button size="sm" variant="outline" className="group flex gap-1">
+                Read more
+                <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
+              </Button>
+            </div>
+          </div>
+
+          <div className="w-full overflow-hidden rounded-lg border bg-white dark:bg-black">
+            <div className="aspect-video bg-muted"></div>
+            <div className="flex flex-col gap-8 p-3">
+              <div className="grid gap-3">
+                <p className="font-mono text-sm text-muted-foreground">Webinar</p>
+                <p className="font-semibold">AI in Healthcare: Enhanced Medical Practices for Improved Patient Care</p>
+              </div>
+              <Button size="sm" variant="outline" className="group flex gap-1">
+                Read more
+                <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
+              </Button>
+            </div>
+          </div>
+
+          <div className="w-full overflow-hidden rounded-lg border bg-white dark:bg-black">
+            <div className="aspect-video bg-muted"></div>
+            <div className="flex flex-col gap-8 p-3">
+              <div className="grid gap-3">
+                <p className="font-mono text-sm text-muted-foreground">Webinar</p>
+                <p className="font-semibold">AI in Healthcare: Enhanced Medical Practices for Improved Patient Care</p>
+              </div>
+              <Button size="sm" variant="outline" className="group flex gap-1">
+                Read more
+                <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
+              </Button>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   );

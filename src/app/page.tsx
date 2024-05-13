@@ -241,63 +241,63 @@ export default function Home() {
       </div>
 
       <div className="mt-32 w-full">
-        <div className="rounded-lg border bg-white p-14 dark:bg-black">
-          <h2 className="text-center text-3xl font-semibold">Ready To Try Arc Compute?</h2>
-          <p className="mx-auto mt-6 max-w-[70%] text-center text-lg text-muted-foreground">
-            Access ArcHPC today to see how companies using Nexus and Oracle benefit from rapid time-to-market and faster
-            iterations across the entire AI lifecycle.
-          </p>
-          <div className="mt-10 flex justify-center">
-            <Button size="sm" className="group flex gap-1">
-              Book a demo
-              <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
-            </Button>
+        <div className="group cursor-pointer rounded-lg border bg-white p-14 dark:bg-black">
+          <div className="flex max-w-[90%] flex-wrap gap-2">
+            <p className="flex h-[76px] w-fit items-center rounded-full bg-primary px-6 pr-7 text-6xl font-semibold uppercase text-primary-foreground">
+              Start
+            </p>
+            <div className="aspect-square h-[76px] rounded-full bg-primary"></div>
+            <div className="aspect-square h-[76px] rounded-full bg-border"></div>
+            <p className="flex h-[76px] w-fit items-center rounded-full border-2 border-primary px-6 pr-7 text-6xl font-semibold uppercase text-primary">
+              Optimizing
+            </p>
+            <div className="aspect-square h-[76px] rounded-full bg-border"></div>
+            <div className="aspect-square h-[76px] rounded-full bg-primary"></div>
+            <p className="flex h-[76px] w-fit items-center rounded-full border-2 border-primary px-6 pr-7 text-6xl font-semibold uppercase text-primary">
+              Now
+            </p>
+            <p className="flex h-[76px] w-fit items-center gap-4 rounded-full bg-primary px-6 text-6xl font-semibold uppercase text-primary-foreground">
+              Here
+              <RiArrowRightLine className="h-12 w-12 transition-transform duration-150 ease-out group-hover:-rotate-45" />
+            </p>
           </div>
         </div>
       </div>
 
       <div className="mt-32 w-full">
-        <h2 className="text-center text-3xl font-semibold">Featured Resources</h2>
-        <div className="mt-6 grid gap-6 md:grid-cols-3">
-          <div className="w-full overflow-hidden rounded-lg border bg-white dark:bg-black">
+        <h2 className="text-center text-3xl font-semibold">Latest Resources</h2>
+        <div className="mt-8 grid gap-6 md:grid-cols-3">
+          <div className="w-full cursor-pointer overflow-hidden rounded-lg border bg-white hover:border-primary dark:bg-black">
             <div className="aspect-video bg-muted"></div>
             <div className="flex flex-col gap-8 p-3">
               <div className="grid gap-3">
-                <p className="font-mono text-sm text-muted-foreground">Webinar</p>
+                <p className="font-mono text-sm text-muted-foreground">Blog</p>
                 <p className="font-semibold">AI in Healthcare: Enhanced Medical Practices for Improved Patient Care</p>
               </div>
-              <Button size="sm" variant="outline" className="group flex gap-1">
-                Read more
-                <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
-              </Button>
             </div>
           </div>
 
-          <div className="w-full overflow-hidden rounded-lg border bg-white dark:bg-black">
+          <div className="w-full cursor-pointer overflow-hidden rounded-lg border bg-white hover:border-primary dark:bg-black">
             <div className="aspect-video bg-muted"></div>
             <div className="flex flex-col gap-8 p-3">
               <div className="grid gap-3">
-                <p className="font-mono text-sm text-muted-foreground">Webinar</p>
-                <p className="font-semibold">AI in Healthcare: Enhanced Medical Practices for Improved Patient Care</p>
+                <p className="font-mono text-sm text-muted-foreground">Blog</p>
+                <p className="font-semibold">
+                  Inside NVIDIA{"'"}s Blackwell Architecture: The Next Step in AI and HPC Progress
+                </p>
               </div>
-              <Button size="sm" variant="outline" className="group flex gap-1">
-                Read more
-                <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
-              </Button>
             </div>
           </div>
 
-          <div className="w-full overflow-hidden rounded-lg border bg-white dark:bg-black">
+          <div className="w-full cursor-pointer overflow-hidden rounded-lg border bg-white hover:border-primary dark:bg-black">
             <div className="aspect-video bg-muted"></div>
             <div className="flex flex-col gap-8 p-3">
               <div className="grid gap-3">
-                <p className="font-mono text-sm text-muted-foreground">Webinar</p>
-                <p className="font-semibold">AI in Healthcare: Enhanced Medical Practices for Improved Patient Care</p>
+                <p className="font-mono text-sm text-muted-foreground">Blog</p>
+                <p className="font-semibold">
+                  Unveiling Considerations for GPU Maximization - What You Didn{"'"}t Know Was Possible
+                </p>
               </div>
-              <Button size="sm" variant="outline" className="group flex gap-1">
-                Read more
-                <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
-              </Button>
             </div>
           </div>
         </div>

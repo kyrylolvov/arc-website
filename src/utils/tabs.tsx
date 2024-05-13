@@ -1,11 +1,11 @@
 import {
   RemixiconComponentType,
   RiBookOpenLine,
-  RiCpuLine,
   RiFlowChart,
   RiGroupLine,
   RiPenNibLine,
   RiPuzzle2Line,
+  RiRamLine,
   RiServerLine,
   RiShapesLine,
   RiTerminalWindowLine,
@@ -20,7 +20,7 @@ interface MenuNavItemLinks {
 
 export const PRODUCTS_LIST_UPPER: MenuNavItemLinks[] = [
   {
-    icon: RiCpuLine,
+    icon: RiRamLine,
     title: "Nexus",
     description: "Optimize HPC and GPU performance",
     slug: "products/archpc",
@@ -91,7 +91,7 @@ interface BaseNavItem {
   type: "menu" | "slug" | "link";
 }
 
-interface MenuNavItem extends BaseNavItem {
+export interface MenuNavItem extends BaseNavItem {
   type: "menu";
   upperLinks: {
     label: string;

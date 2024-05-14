@@ -13,9 +13,9 @@ export default function FeatureCard({ title, lottie, value, unit, description }:
 
       {lottie}
 
-      <p className="text-5xl font-semibold">
+      <p className="text-4xl font-semibold sm:text-5xl">
         {value}
-        <span className="text-4xl font-bold">{unit}</span>{" "}
+        <span className="text-3xl font-bold sm:text-4xl">{unit}</span>{" "}
         <span className="text-xl">
           {description}
           <span className="text-muted-foreground">*</span>

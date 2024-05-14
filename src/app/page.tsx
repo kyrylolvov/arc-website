@@ -1,17 +1,25 @@
 import { RiArrowRightLine } from "@remixicon/react";
 
+import LatestNewsCard from "~/components/latest-news-card";
 import AutomateLottie from "~/components/lotties/automate-lottie";
 import ManageLottie from "~/components/lotties/manage-lottie";
 import OptimizationLottie from "~/components/lotties/optimization-lottie";
 import PriceLottie from "~/components/lotties/price-lottie";
 import SpeedLottie from "~/components/lotties/speed-lottie";
 import { Button } from "~/components/ui/button";
+import generateId from "~/utils/uuid";
+
+const latestNews = [
+  { type: "Event", title: "Join us next week in Hamburg, Germany, for ISC24!" },
+  { type: "Learn", title: "Using ArcHPC: The ultimate guide on Nexus." },
+  { type: "Case Study", title: "How ORNL optimized their GPU performance" },
+];
 
 export default function Home() {
   return (
     <main className="mx-auto flex max-w-6xl flex-col items-center px-8 py-24">
-      <div className="flex items-center gap-4">
-        <p className="font-light text-muted-foreground">
+      <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4">
+        <p className="text-center font-light text-muted-foreground">
           <span className="font-medium text-primary">NVIDIA H200</span> GPU servers are now available for{" "}
           <span className="font-medium text-primary">June</span> delivery.
         </p>
@@ -38,33 +46,31 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mt-16 grid gap-6 md:grid-cols-3">
-        <div className="group grid w-full cursor-pointer gap-2 rounded-lg border bg-white p-4 transition-colors hover:border-primary dark:bg-black">
-          <div className="grid gap-2">
-            <p className="text-sm text-muted-foreground">Event</p>
-            <p className="font-semibold">Join us next week in Hamburg, Germany, for ISC24!</p>
+      <div className="mt-16 hidden w-full grid-cols-3 gap-6 lg:grid">
+        {latestNews.map((news, i) => (
+          <div key={generateId()}>
+            <LatestNewsCard type={news.type} title={news.title} />
           </div>
-          <div className="relative mt-2 flex h-8 w-12 items-center overflow-hidden rounded-full bg-secondary text-xs text-primary">
-            <RiArrowRightLine className="absolute left-[50%] h-4 w-4 shrink-0 translate-x-[-50%] transition-transform duration-300 ease-out group-hover:translate-x-[150%]" />
-            <RiArrowRightLine className="absolute left-[50%] h-4 w-4 shrink-0 translate-x-[-250%] transition-transform duration-300 ease-out group-hover:translate-x-[-50%]" />
-          </div>
+        ))}
+      </div>
+
+      <div className="mt-16 w-full lg:hidden">
+        <div className="grid gap-6 sm:grid-cols-2">
+          {latestNews.slice(0, 2).map((news, i) => (
+            <div key={generateId()}>
+              <LatestNewsCard type={news.type} title={news.title} />
+            </div>
+          ))}
         </div>
-        <div className="group grid w-full cursor-pointer gap-2 rounded-lg border bg-white p-4 transition-colors hover:border-primary dark:bg-black">
-          <p className="text-sm text-muted-foreground">Learn</p>
-          <p className="font-semibold">Using ArcHPC: The ultimate guide on Nexus.</p>
-          <div className="relative mt-2 flex h-8 w-12 items-center overflow-hidden rounded-full bg-secondary text-xs text-primary">
-            <RiArrowRightLine className="absolute left-[50%] h-4 w-4 shrink-0 translate-x-[-50%] transition-transform duration-300 ease-out group-hover:translate-x-[150%]" />
-            <RiArrowRightLine className="absolute left-[50%] h-4 w-4 shrink-0 translate-x-[-250%] transition-transform duration-300 ease-out group-hover:translate-x-[-50%]" />
+        {latestNews.slice(2).length > 0 && (
+          <div className="mt-6 flex justify-center gap-6">
+            {latestNews.slice(2).map((news, i) => (
+              <div key={generateId()} className="w-full sm:w-[calc(50%-12px)]">
+                <LatestNewsCard type={news.type} title={news.title} />
+              </div>
+            ))}
           </div>
-        </div>
-        <div className="group grid cursor-pointer gap-2 rounded-lg border bg-white p-4 transition-colors hover:border-primary dark:bg-black">
-          <p className="text-sm text-muted-foreground">Case Study</p>
-          <p className="font-semibold">How ORNL optimized their GPU performance</p>
-          <div className="relative mt-2 flex h-8 w-12 items-center overflow-hidden rounded-full bg-secondary text-xs text-primary">
-            <RiArrowRightLine className="absolute left-[50%] h-4 w-4 shrink-0 translate-x-[-50%] transition-transform duration-300 ease-out group-hover:translate-x-[150%]" />
-            <RiArrowRightLine className="absolute left-[50%] h-4 w-4 shrink-0 translate-x-[-250%] transition-transform duration-300 ease-out group-hover:translate-x-[-50%]" />
-          </div>
-        </div>
+        )}
       </div>
 
       <div className="mt-32 w-full">
@@ -266,6 +272,9 @@ export default function Home() {
 
       <div className="mt-32 w-full">
         <h2 className="text-center text-3xl font-semibold">Latest Resources</h2>
+        <p className="mx-auto mt-2 max-w-[70%] text-center font-light text-muted-foreground">
+          Dive into our most recent blog posts where we share the latest insights and developments in the industry.
+        </p>
         <div className="mt-8 grid gap-6 md:grid-cols-3">
           <div className="w-full cursor-pointer overflow-hidden rounded-lg border bg-white hover:border-primary dark:bg-black">
             <div className="aspect-video bg-muted"></div>

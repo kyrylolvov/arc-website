@@ -2,14 +2,16 @@ import { RiDiscordFill, RiGithubFill, RiLinkedinBoxFill, RiQuestionMark } from "
 import Link from "next/link";
 
 import { footerLinks } from "~/utils/footer";
+import generateId from "~/utils/uuid";
 
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 import { Button } from "./ui/button";
 import FooterThemeSwitch from "./ui/footer-theme-switch";
 
 export default function Footer() {
   return (
-    <footer className="grid w-full gap-8 border-t bg-white px-6 pb-6 pt-12 dark:bg-black">
-      <div className="mx-auto w-full max-w-screen-2xl">
+    <footer className="grid w-full gap-8 border-t bg-white px-6 pb-6 pt-6 dark:bg-black lg:pt-12">
+      <div className="mx-auto hidden w-full max-w-screen-2xl lg:block">
         <div className="grid grid-cols-footer gap-12">
           <div className="flex flex-col justify-between">
             <div className="flex items-center gap-3">
@@ -33,7 +35,9 @@ export default function Footer() {
           ))}
           <div>
             <div className="mt-1 pl-2 text-sm font-medium">Preferences</div>
-            <FooterThemeSwitch />
+            <div className="mt-2">
+              <FooterThemeSwitch />
+            </div>
           </div>
         </div>
 
@@ -63,6 +67,59 @@ export default function Footer() {
             </Button>
           </div>
         </div>
+      </div>
+
+      <div className="mx-auto w-full lg:hidden">
+        <RiQuestionMark className="h-7 " />
+
+        <Accordion type="multiple" className="mt-4 w-full">
+          {footerLinks.map((link) => (
+            <AccordionItem value={link.label} key={generateId()}>
+              <AccordionTrigger className="text-sm" hideChevron>
+                {link.label}
+              </AccordionTrigger>
+              <AccordionContent className="grid grid-cols-2">
+                {link.links.map((link) => (
+                  <Link key={generateId()} href={`/${link.href}`} className="flex py-1.5 text-sm text-muted-foreground">
+                    {link.label}
+                  </Link>
+                ))}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+
+          <AccordionItem value="preferences">
+            <AccordionTrigger className="text-sm" hideChevron>
+              Preferences
+            </AccordionTrigger>
+            <AccordionContent className="flex items-center gap-6">
+              <div className="flex items-center gap-1">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-[34px] w-[34px] text-muted-foreground hover:bg-transparent"
+                >
+                  <RiGithubFill className="h-5 w-5" />
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-[34px] w-[34px] text-muted-foreground hover:bg-transparent"
+                >
+                  <RiLinkedinBoxFill className="h-5 w-5" />
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-[34px] w-[34px] text-muted-foreground hover:bg-transparent"
+                >
+                  <RiDiscordFill className="h-5 w-5" />
+                </Button>
+              </div>
+              <FooterThemeSwitch />
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </div>
     </footer>
   );

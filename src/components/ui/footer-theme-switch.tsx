@@ -20,7 +20,7 @@ export default function FooterThemeSwitch() {
   if (!mounted) return null;
 
   return (
-    <div className="mt-2 flex">
+    <div className="flex">
       {themeOptions.map((option) => (
         <Button
           key={option.value}

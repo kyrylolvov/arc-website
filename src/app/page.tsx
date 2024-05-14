@@ -65,7 +65,7 @@ export default function Home() {
       </div>
 
       <div className="mx-auto mt-16 max-w-4xl text-center">
-        <h1 className="text-5xl font-bold">Start Your GPU Infrastructure Deployment Journey</h1>
+        <h1 className="text-4xl font-bold sm:text-5xl">Start Your GPU Infrastructure Deployment Journey</h1>
         <p className="mt-6 font-light text-muted-foreground">
           Optimizing GPU infrastructure is complicated. Luckily, we{"'"}re here to help make the process easy.
         </p>
@@ -110,12 +110,12 @@ export default function Home() {
 
       <div className="mt-32 w-full">
         <h2 className="text-center text-3xl font-semibold">The Leader In GPU Optimization</h2>
-        <p className="mx-auto mt-2 max-w-[70%] text-center font-light text-muted-foreground">
+        <p className="mx-auto mt-2 text-center font-light text-muted-foreground sm:max-w-[70%]">
           Achieving peak GPU performance has eluded even the most advanced organizations due to the current limitations
           in managing and manipulating how data flows and threads execute on GPUs.
         </p>
-        <div className="mx-auto mt-8 w-full max-w-[70%] sm:max-w-[85%] lg:hidden">
-          <div className="grid gap-6 sm:grid-cols-2">
+        <div className="mx-auto mt-8 w-full sm:max-w-[85%] lg:hidden">
+          <div className="grid gap-6 md:grid-cols-2">
             {features.slice(0, 2).map((feature, i) => (
               <FeatureCard {...feature} key={generateId()} />
             ))}
@@ -123,7 +123,7 @@ export default function Home() {
 
           <div className="mt-6 flex justify-center gap-6">
             {features.slice(2).map((feature, i) => (
-              <div key={generateId()} className="w-full sm:w-[calc(50%-12px)]">
+              <div key={generateId()} className="w-full md:w-[calc(50%-12px)]">
                 <FeatureCard {...feature} key={generateId()} />
               </div>
             ))}

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 import { cn } from "~/utils/cn";
 import { themeOptions } from "~/utils/theme";
+import generateId from "~/utils/uuid";
 
 import { Button } from "./button";
 
@@ -23,7 +24,7 @@ export default function FooterThemeSwitch() {
     <div className="flex">
       {themeOptions.map((option) => (
         <Button
-          key={option.value}
+          key={generateId()}
           size="icon"
           variant="ghost"
           onClick={() => setTheme(option.value)}

@@ -11,7 +11,10 @@ import {
   RiTerminalWindowLine,
 } from "@remixicon/react";
 
+import generateId from "./uuid";
+
 interface MenuNavItemLinks {
+  id: string;
   icon: RemixiconComponentType;
   title: string;
   description: string;
@@ -20,12 +23,14 @@ interface MenuNavItemLinks {
 
 export const PRODUCTS_LIST_UPPER: MenuNavItemLinks[] = [
   {
+    id: generateId(),
     icon: RiRamLine,
     title: "Nexus",
     description: "Optimize HPC and GPU performance",
     slug: "products/archpc",
   },
   {
+    id: generateId(),
     icon: RiFlowChart,
     title: "Oracle",
     description: "Automate HPC deployment and execution",
@@ -35,6 +40,7 @@ export const PRODUCTS_LIST_UPPER: MenuNavItemLinks[] = [
 
 export const PRODUCTS_LIST_LOWER: MenuNavItemLinks[] = [
   {
+    id: generateId(),
     icon: RiServerLine,
     title: "GPU Servers",
     description: "High-performance Nvidia GPU servers",
@@ -44,24 +50,28 @@ export const PRODUCTS_LIST_LOWER: MenuNavItemLinks[] = [
 
 export const RESOURCES_LIST_UPPER: MenuNavItemLinks[] = [
   {
+    id: generateId(),
     icon: RiPuzzle2Line,
     title: "Integrations",
     description: "Extend and automate your workflows",
     slug: "resources/integrations",
   },
   {
+    id: generateId(),
     icon: RiTerminalWindowLine,
     title: "Templates",
     description: "Jumpstart with our pre-built templates",
     slug: "resources/templates",
   },
   {
+    id: generateId(),
     icon: RiShapesLine,
     title: "Resource Center",
     description: "Discover today's best practices",
     slug: "resources/practices",
   },
   {
+    id: generateId(),
     icon: RiBookOpenLine,
     title: "Guides",
     description: "Find the answers you need",
@@ -71,12 +81,14 @@ export const RESOURCES_LIST_UPPER: MenuNavItemLinks[] = [
 
 export const RESOURCES_LIST_LOWER: MenuNavItemLinks[] = [
   {
+    id: generateId(),
     icon: RiPenNibLine,
     title: "Blog",
     description: "Latest from Arc Compute",
     slug: "blog",
   },
   {
+    id: generateId(),
     icon: RiGroupLine,
     title: "Customers",
     description: "The companies we keep",
@@ -116,7 +128,7 @@ type NavItem = MenuNavItem | LinkNavItem | SlugNavItem;
 
 export const navItems: NavItem[] = [
   {
-    id: "products",
+    id: generateId(),
     label: "Products",
     type: "menu",
     slug: "products",
@@ -130,7 +142,7 @@ export const navItems: NavItem[] = [
     },
   },
   {
-    id: "resources",
+    id: generateId(),
     label: "Resources",
     type: "menu",
     slug: "resources",
@@ -143,8 +155,8 @@ export const navItems: NavItem[] = [
       links: RESOURCES_LIST_LOWER,
     },
   },
-  { id: "docs", label: "Docs", slug: "docs", type: "link", url: "https://arc-hpc-docs-v2.vercel.app/" },
-  { id: "contact", label: "Contact", type: "slug", slug: "contact" },
+  { id: generateId(), label: "Docs", slug: "docs", type: "link", url: "https://arc-hpc-docs-v2.vercel.app/" },
+  { id: generateId(), label: "Contact", type: "slug", slug: "contact" },
 ];
 
 export function isMenuNavItem(item: NavItem): item is MenuNavItem {

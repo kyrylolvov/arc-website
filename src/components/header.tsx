@@ -7,7 +7,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 import { cn } from "~/utils/cn";
 import { isLinkNavItem, isMenuNavItem, isSlugNavItem, navItems } from "~/utils/tabs";
-import generateId from "~/utils/uuid";
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 import { Button } from "./ui/button";
@@ -92,7 +91,7 @@ export default function Header() {
                 const { upperLinks, lowerLinks } = navItem;
 
                 return (
-                  <NavigationMenuItem key={generateId()} onMouseOver={() => setHoveredNavItem(id)}>
+                  <NavigationMenuItem key={id} onMouseOver={() => setHoveredNavItem(id)}>
                     <NavigationMenuTrigger
                       onClick={(e) => e.preventDefault()}
                       className={cn(activeNavItem === id && "rounded-full bg-secondary text-accent-foreground")}
@@ -107,7 +106,7 @@ export default function Header() {
                           </div>
                           <ul className="grid grid-cols-2">
                             {upperLinks.links.map((link) => (
-                              <li key={generateId()}>
+                              <li key={link.id}>
                                 <NavigationMenuLink asChild>
                                   <Link
                                     href={`/${link.slug}`}
@@ -136,7 +135,7 @@ export default function Header() {
                               </div>
                               <ul className="grid grid-cols-2">
                                 {lowerLinks.links.map((link) => (
-                                  <li key={generateId()}>
+                                  <li key={link.id}>
                                     <NavigationMenuLink asChild>
                                       <Link
                                         href={`/${link.slug}`}
@@ -167,7 +166,7 @@ export default function Header() {
               }
 
               return (
-                <NavigationMenuItem key={generateId()} onMouseOver={() => setHoveredNavItem(id)}>
+                <NavigationMenuItem key={id} onMouseOver={() => setHoveredNavItem(id)}>
                   <Link
                     target={isLinkNavItem(navItem) ? "_blank" : "_self"}
                     href={isLinkNavItem(navItem) ? navItem.url : `/${slug}`}
@@ -203,15 +202,15 @@ export default function Header() {
         </Button>
 
         {isOpen && (
-          <nav className="fixed left-0 top-[68px] h-[100dvh] w-full max-w-[100vw] bg-white px-6 pb-6 dark:bg-black">
+          <nav className="fixed left-0 top-[68px] h-[100dvh] w-full max-w-[100vw] overflow-y-scroll bg-white px-6 pb-6 dark:bg-black">
             <Accordion type="single" collapsible className="w-full">
               {navItems.filter(isMenuNavItem).map((navItem) => (
-                <AccordionItem value={navItem.id} key={generateId()}>
+                <AccordionItem value={navItem.id} key={navItem.id}>
                   <AccordionTrigger className="font-normal">{navItem.label}</AccordionTrigger>
                   <AccordionContent className="grid">
                     {navItem.upperLinks.links.map((link) => (
                       <Link
-                        key={generateId()}
+                        key={link.id}
                         href={`/${link.slug}`}
                         className="flex h-14 items-center gap-3 text-base text-muted-foreground"
                       >
@@ -223,7 +222,7 @@ export default function Header() {
                     {navItem.lowerLinks &&
                       navItem.lowerLinks.links.map((link) => (
                         <Link
-                          key={generateId()}
+                          key={link.id}
                           href={`/${link.slug}`}
                           className="flex h-14 items-center gap-3 text-base text-muted-foreground"
                         >
@@ -238,7 +237,7 @@ export default function Header() {
 
             {navItems.filter(isLinkNavItem).map((navItem) => (
               <Link
-                key={generateId()}
+                key={navItem.id}
                 href={navItem.url}
                 target="_blank"
                 className="flex h-14 w-full items-center border-b text-base"
@@ -249,7 +248,7 @@ export default function Header() {
 
             {navItems.filter(isSlugNavItem).map((navItem) => (
               <Link
-                key={generateId()}
+                key={navItem.id}
                 href={`/${navItem.slug}`}
                 className="flex h-14 w-full items-center border-b text-base"
               >

@@ -2,8 +2,6 @@ import { RiArrowRightLine } from "@remixicon/react";
 
 import FeatureCard from "~/components/feature-card";
 import LatestNewsCard from "~/components/latest-news-card";
-import AutomateLottie from "~/components/lotties/automate-lottie";
-import ManageLottie from "~/components/lotties/manage-lottie";
 import OptimizationLottie from "~/components/lotties/optimization-lottie";
 import PriceLottie from "~/components/lotties/price-lottie";
 import SpeedLottie from "~/components/lotties/speed-lottie";
@@ -139,7 +137,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mt-32 w-full">
+      {/* <div className="mt-32 w-full">
         <h2 className="text-center text-3xl font-semibold">Unlock the True Potential of Your GPU Infrastructure</h2>
         <p className="mx-auto mt-2 max-w-[70%] text-center font-light text-muted-foreground">
           An advanced GPU management solution that maximizes user and task density, optimizing GPU utilization and
@@ -322,7 +320,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </main>
   );
 }

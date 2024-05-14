@@ -202,7 +202,7 @@ export default function Header() {
         </Button>
 
         {isOpen && (
-          <nav className="fixed left-0 top-[68px] h-[100dvh] w-full max-w-[100vw] overflow-y-scroll bg-white px-6 pb-6 dark:bg-black">
+          <nav className="fixed left-0 top-[68px] h-[calc(100dvh-68px)] w-full max-w-[100vw] overflow-y-scroll bg-white px-6 pb-6 dark:bg-black">
             <Accordion type="single" collapsible className="w-full">
               {navItems.filter(isMenuNavItem).map((navItem) => (
                 <AccordionItem value={navItem.id} key={navItem.id}>

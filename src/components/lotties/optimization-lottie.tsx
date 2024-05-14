@@ -14,5 +14,5 @@ export default function OptimizationLottie() {
     },
   };
 
-  return <Lottie options={defaultOptions} speed={0.5} isClickToPauseDisabled />;
+  return <Lottie options={defaultOptions} isClickToPauseDisabled />;
 }

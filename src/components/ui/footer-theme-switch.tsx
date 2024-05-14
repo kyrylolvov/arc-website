@@ -24,6 +24,7 @@ export default function FooterThemeSwitch() {
     <div className="flex">
       {themeOptions.map((option) => (
         <Button
+          aria-label={`Switch to ${option.value} theme`}
           key={generateId()}
           size="icon"
           variant="ghost"

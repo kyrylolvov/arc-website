@@ -1,5 +1,6 @@
 import { RiArrowRightLine } from "@remixicon/react";
 
+import FeatureCard from "~/components/feature-card";
 import LatestNewsCard from "~/components/latest-news-card";
 import AutomateLottie from "~/components/lotties/automate-lottie";
 import ManageLottie from "~/components/lotties/manage-lottie";
@@ -13,6 +14,42 @@ const latestNews = [
   { type: "Event", title: "Join us next week in Hamburg, Germany, for ISC24!" },
   { type: "Learn", title: "Using ArcHPC: The ultimate guide on Nexus." },
   { type: "Case Study", title: "How ORNL optimized their GPU performance" },
+];
+
+const features = [
+  {
+    title: "GPU Resources",
+    value: "100",
+    unit: "%",
+    description: "Utilization",
+    lottie: (
+      <div className="optimization-lottie px-[72px] [&>*]:cursor-default">
+        <OptimizationLottie />
+      </div>
+    ),
+  },
+  {
+    title: "GPU Performance",
+    value: "5",
+    unit: "x",
+    description: "Faster",
+    lottie: (
+      <div className="speed-lottie px-[72px] [&>*]:cursor-default">
+        <SpeedLottie />
+      </div>
+    ),
+  },
+  {
+    title: "Hardware Requirements",
+    value: "83",
+    unit: "%",
+    description: "Lower Cost",
+    lottie: (
+      <div className="price-lottie px-[72px] [&>*]:cursor-default">
+        <PriceLottie />
+      </div>
+    ),
+  },
 ];
 
 export default function Home() {
@@ -66,7 +103,7 @@ export default function Home() {
           <div className="mt-6 flex justify-center gap-6">
             {latestNews.slice(2).map((news, i) => (
               <div key={generateId()} className="w-full sm:w-[calc(50%-12px)]">
-                <LatestNewsCard type={news.type} title={news.title} />
+                <LatestNewsCard {...news} />
               </div>
             ))}
           </div>
@@ -79,51 +116,26 @@ export default function Home() {
           Achieving peak GPU performance has eluded even the most advanced organizations due to the current limitations
           in managing and manipulating how data flows and threads execute on GPUs.
         </p>
-        <div className="mt-8 grid grid-cols-3 gap-6">
-          <div className="flex aspect-square w-full flex-col justify-between rounded-lg border bg-white p-4 dark:bg-black">
-            <p className="font-mono text-xs">GPU Resources</p>
-
-            <div className="optimization-lottie px-[72px] [&>*]:cursor-default">
-              <OptimizationLottie />
-            </div>
-
-            <p className="text-5xl font-semibold">
-              100<span className="text-4xl font-bold">%</span>{" "}
-              <span className="text-xl">
-                Utilization<span className="text-muted-foreground">*</span>
-              </span>
-            </p>
+        <div className="mx-auto mt-8 w-full max-w-[70%] sm:max-w-[85%] lg:hidden">
+          <div className="grid gap-6 sm:grid-cols-2">
+            {features.slice(0, 2).map((feature, i) => (
+              <FeatureCard {...feature} key={generateId()} />
+            ))}
           </div>
 
-          <div className="flex aspect-square w-full flex-col justify-between rounded-lg border bg-white p-4 dark:bg-black">
-            <p className="font-mono text-xs">GPU Performance</p>
-
-            <div className="speed-lottie px-[72px] [&>*]:cursor-default">
-              <SpeedLottie />
-            </div>
-
-            <p className="text-5xl font-semibold">
-              5x{" "}
-              <span className="text-xl">
-                Faster<span className="text-muted-foreground">*</span>
-              </span>
-            </p>
+          <div className="mt-6 flex justify-center gap-6">
+            {features.slice(2).map((feature, i) => (
+              <div key={generateId()} className="w-full sm:w-[calc(50%-12px)]">
+                <FeatureCard {...feature} key={generateId()} />
+              </div>
+            ))}
           </div>
+        </div>
 
-          <div className="flex aspect-square w-full flex-col justify-between rounded-lg border bg-white p-4 dark:bg-black">
-            <p className="font-mono text-xs">Hardware Requirements</p>
-
-            <div className="price-lottie px-[72px] [&>*]:cursor-default">
-              <PriceLottie />
-            </div>
-
-            <p className="text-5xl font-semibold">
-              83<span className="text-4xl font-bold">%</span>{" "}
-              <span className="text-xl">
-                Lower Cost<span className="text-muted-foreground">*</span>
-              </span>
-            </p>
-          </div>
+        <div className="mt-8 hidden grid-cols-3 gap-6 lg:grid">
+          {features.map((feature, i) => (
+            <FeatureCard {...feature} key={generateId()} />
+          ))}
         </div>
       </div>
 

@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { cn } from "~/utils/cn";
-import { isLinkNavItem, isMenuNavItem, isSlugNavItem, navItems } from "~/utils/tabs";
+import { isLinkNavItem, isMenuNavItem, navItems } from "~/utils/tabs";
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 import { Button } from "./ui/button";
@@ -59,13 +59,17 @@ export default function Header() {
     }
   }, [isOpen]);
 
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
   return (
     <header className="fixed z-30 w-full border-b bg-white dark:bg-black">
       <div className="mx-auto flex h-[68px] max-w-screen-2xl items-center justify-between px-6">
         <Link href={"/"} className="w-[138px]" aria-label="Go to homepage">
-          {/* <Icons.Logo className="h-[22px]" /> */}
           <RiQuestionMark className="h-5" />
         </Link>
+
         <NavigationMenu
           className="hidden lg:block"
           onMouseLeave={() => {
@@ -204,62 +208,60 @@ export default function Header() {
         {isOpen && (
           <nav className="fixed left-0 top-[68px] h-[calc(100dvh-68px)] w-full max-w-[100vw] overflow-y-scroll bg-white px-6 pb-6 dark:bg-black">
             <Accordion type="single" collapsible className="w-full">
-              {navItems.filter(isMenuNavItem).map((navItem) => (
-                <AccordionItem value={navItem.id} key={navItem.id}>
-                  <AccordionTrigger className="font-normal">{navItem.label}</AccordionTrigger>
-                  <AccordionContent className="grid">
-                    {navItem.upperLinks.links.map((link) => (
-                      <Link
-                        key={link.id}
-                        href={`/${link.slug}`}
-                        className="flex h-14 items-center gap-3 text-base text-muted-foreground"
-                      >
-                        <link.icon className="h-5 w-5" />
-                        {link.title}
-                      </Link>
-                    ))}
+              {navItems.map((navItem) => {
+                if (isMenuNavItem(navItem)) {
+                  return (
+                    <AccordionItem value={navItem.id} key={navItem.id}>
+                      <AccordionTrigger className="font-normal" hideChevron>
+                        {navItem.label}
+                      </AccordionTrigger>
+                      <AccordionContent className="grid">
+                        {navItem.upperLinks.links.map((link) => (
+                          <Link
+                            key={link.id}
+                            href={`/${link.slug}`}
+                            className="flex h-14 items-center gap-3 text-base text-muted-foreground"
+                          >
+                            <link.icon className="h-5 w-5" />
+                            {link.title}
+                          </Link>
+                        ))}
 
-                    {navItem.lowerLinks &&
-                      navItem.lowerLinks.links.map((link) => (
-                        <Link
-                          key={link.id}
-                          href={`/${link.slug}`}
-                          className="flex h-14 items-center gap-3 text-base text-muted-foreground"
-                        >
-                          <link.icon className="h-5 w-5" />
-                          {link.title}
-                        </Link>
-                      ))}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
+                        {navItem.lowerLinks && (
+                          <>
+                            {navItem.lowerLinks.links.map((link) => (
+                              <Link
+                                key={link.id}
+                                href={`/${link.slug}`}
+                                className="flex h-14 items-center gap-3 text-base text-muted-foreground"
+                              >
+                                <link.icon className="h-5 w-5" />
+                                {link.title}
+                              </Link>
+                            ))}
+                          </>
+                        )}
+                      </AccordionContent>
+                    </AccordionItem>
+                  );
+                }
+
+                return (
+                  <Link
+                    key={navItem.id}
+                    href={isLinkNavItem(navItem) ? navItem.url : `/${navItem.slug}`}
+                    className="flex h-14 w-full items-center border-b text-base"
+                  >
+                    {navItem.label}
+                  </Link>
+                );
+              })}
+
+              <Button className="mt-6 flex w-full gap-1 rounded-md">
+                Book a demo
+                <RiArrowRightLine className="mt-[1px] h-4 w-4" />
+              </Button>
             </Accordion>
-
-            {navItems.filter(isLinkNavItem).map((navItem) => (
-              <Link
-                key={navItem.id}
-                href={navItem.url}
-                target="_blank"
-                className="flex h-14 w-full items-center border-b text-base"
-              >
-                {navItem.label}
-              </Link>
-            ))}
-
-            {navItems.filter(isSlugNavItem).map((navItem) => (
-              <Link
-                key={navItem.id}
-                href={`/${navItem.slug}`}
-                className="flex h-14 w-full items-center border-b text-base"
-              >
-                {navItem.label}
-              </Link>
-            ))}
-
-            <Button className="mt-6 flex w-full gap-1 rounded-md">
-              Book a demo
-              <RiArrowRightLine className="mt-[1px] h-4 w-4" />
-            </Button>
           </nav>
         )}
       </div>

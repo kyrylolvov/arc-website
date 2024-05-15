@@ -19,12 +19,12 @@ export default function Footer() {
             </div>
           </div>
           {footerLinks.map((section) => (
-            <div key={generateId()}>
+            <div key={section.id}>
               <div className="mt-1 text-sm font-medium">{section.label}</div>
               <ul className="mt-2 grid list-none grid-cols-1">
                 {section.links.map((link) => (
                   <li
-                    key={generateId()}
+                    key={link.id}
                     className="w-fit py-1.5 text-sm font-light text-muted-foreground transition-colors hover:text-primary"
                   >
                     <Link href={link.href}>{link.label}</Link>

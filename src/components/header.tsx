@@ -212,9 +212,7 @@ export default function Header() {
                 if (isMenuNavItem(navItem)) {
                   return (
                     <AccordionItem value={navItem.id} key={navItem.id}>
-                      <AccordionTrigger className="font-normal" hideChevron>
-                        {navItem.label}
-                      </AccordionTrigger>
+                      <AccordionTrigger className="font-normal">{navItem.label}</AccordionTrigger>
                       <AccordionContent className="grid">
                         {navItem.upperLinks.links.map((link) => (
                           <Link

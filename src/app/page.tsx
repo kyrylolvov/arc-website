@@ -1,7 +1,8 @@
 import { RiArrowRightLine } from "@remixicon/react";
 
-import FeatureCard from "~/components/feature-card";
-import LatestNewsCard from "~/components/latest-news-card";
+import FeatureCard from "~/components/home/feature-card";
+import LatestNewsCard from "~/components/home/latest-news-card";
+import ProductCard from "~/components/home/product-card";
 import AutomateLottie from "~/components/lotties/automate-lottie";
 import ManageLottie from "~/components/lotties/manage-lottie";
 import OptimizationLottie from "~/components/lotties/optimization-lottie";
@@ -52,7 +53,42 @@ const features = [
   },
 ];
 
-export default function Home() {
+const products = [
+  {
+    id: generateId(),
+    label: "Manage",
+    title: "ArcHPC Nexus",
+    description:
+      "Creates and manages your environment while optimizing GPU utilization and performance, enables administrators to enhance user and task density.",
+    features: [
+      "Intercepts machine code at the load stage dedicated to the accelerated hardware",
+      "Aware of the instructions for execution and the data size, but not the data contents, maintaining data privacy.",
+    ],
+    lottie: (
+      <div className="manage-lottie h-fit w-[80%] sm:w-[70%] [&>*]:cursor-default">
+        <ManageLottie />
+      </div>
+    ),
+  },
+  {
+    id: generateId(),
+    label: "Automate",
+    title: "ArcHPC Oracle",
+    description:
+      "Automates task matching and task deployment across your cluster, by managing low-level operational execution of instructions",
+    features: [
+      "The source code is saved to the host memory, independent of Nexus's operation.",
+      "Pairs, matches tasks, and staggers kernel execution times using the information intercepted from machine codes.",
+    ],
+    lottie: (
+      <div className="automate-lottie h-fit w-[80%] sm:w-[70%] [&>*]:cursor-default">
+        <AutomateLottie />
+      </div>
+    ),
+  },
+];
+
+export default function HomePage() {
   return (
     <main className="mx-auto flex max-w-6xl flex-col items-center px-6 py-24 sm:px-8">
       <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4">
@@ -141,80 +177,18 @@ export default function Home() {
 
       <div className="mt-32 w-full">
         <h2 className="text-center text-3xl font-semibold">Unlock the True Potential of Your GPU Infrastructure</h2>
-        <p className="mx-auto mt-2 max-w-[70%] text-center font-light text-muted-foreground">
+        <p className="mx-auto mt-2 text-center font-light text-muted-foreground sm:max-w-[70%]">
           An advanced GPU management solution that maximizes user and task density, optimizing GPU utilization and
           performance across your data center.
         </p>
         <div className="mt-8 grid gap-12">
-          <div className="grid w-full grid-cols-10 justify-between gap-8 rounded-lg border bg-white p-8 dark:bg-black">
-            <div className="col-span-5 flex flex-col gap-12">
-              <div className="grid gap-8">
-                <div className="-ml-0.5 w-fit rounded-full border px-4 py-2 font-mono text-sm">Manage</div>
-                <div className="grid gap-6">
-                  <div className="grid gap-2">
-                    <h2 className="text-4xl font-semibold">ArcHPC Nexus</h2>
-                    <p className="text-lg font-medium">
-                      Creates and manages your environment while optimizing GPU utilization and performance, enables
-                      administrators to enhance user and task density.
-                    </p>
-                  </div>
-                  <ul className="grid gap-1 text-muted-foreground">
-                    <li>- Intercepts machine code at the load stage dedicated to the accelerated hardware</li>
-                    <li>
-                      - Aware of the instructions for execution and the data size, but not the data contents,
-                      maintaining data privacy.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <Button size="sm" className="group flex w-fit gap-1">
-                Learn more
-                <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
-              </Button>
-            </div>
-            <div className="col-span-5 grid h-full w-full place-items-center">
-              <div className="manage-lottie h-fit w-[70%] [&>*]:cursor-default">
-                <ManageLottie />
-              </div>
-            </div>
-          </div>
-
-          <div className="grid w-full grid-cols-10 justify-between gap-8 rounded-lg border bg-white p-8 dark:bg-black">
-            <div className="col-span-5 flex flex-col gap-12">
-              <div className="grid gap-8">
-                <div className="-ml-0.5 w-fit rounded-full border px-4 py-2 font-mono text-sm">Automate</div>
-                <div className="grid gap-6">
-                  <div className="grid gap-2">
-                    <h2 className="text-4xl font-semibold">ArcHPC Oracle</h2>
-                    <p className="text-lg font-medium">
-                      Automates task matching and task deployment across your cluster, by managing low-level operational
-                      execution of instructions
-                    </p>
-                  </div>
-                  <ul className="grid gap-1 text-muted-foreground">
-                    <li>- The source code is saved to the host memory, independent of Nexus{"'"}s operation.</li>
-                    <li>
-                      - Pairs, matches tasks, and staggers kernel execution times using the information intercepted from
-                      machine codes.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <Button size="sm" className="group flex w-fit gap-1">
-                Learn more
-                <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
-              </Button>
-            </div>
-            <div className="col-span-5 grid h-full w-full place-items-center">
-              <div className="automate-lottie h-fit w-[70%] [&>*]:cursor-default">
-                <AutomateLottie />
-              </div>
-            </div>
-          </div>
+          {products.map((product) => (
+            <ProductCard {...product} key={product.id} />
+          ))}
         </div>
       </div>
 
-      <div className="mt-32 w-full">
+      {/* <div className="mt-32 w-full">
         <h2 className="text-center text-3xl font-semibold">End-to-End GPU Infrastructure Solutions</h2>
         <p className="mx-auto mt-2 max-w-[70%] text-center font-light text-muted-foreground">
           Upgrade your infrastructure with the most in demand NVIDIA GPUs or Tap into unprecedented performance,
@@ -322,7 +296,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </main>
   );
 }

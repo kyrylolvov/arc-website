@@ -33,7 +33,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
 
-  const activeNavItem = useMemo(() => navItems.find((navItem) => pathname.includes(navItem.slug))?.id, [pathname]);
+  const activeNavItem = useMemo(() => navItems.find((navItem) => pathname.includes(navItem.slug))?.slug, [pathname]);
 
   const [hoveredNavItem, setHoveredNavItem] = useState<string | null>(null);
 
@@ -95,7 +95,7 @@ export default function Header() {
                 const { upperLinks, lowerLinks } = navItem;
 
                 return (
-                  <NavigationMenuItem key={id} onMouseOver={() => setHoveredNavItem(id)}>
+                  <NavigationMenuItem key={id} onMouseOver={() => setHoveredNavItem(label.toLowerCase())}>
                     <NavigationMenuTrigger
                       onClick={(e) => e.preventDefault()}
                       className={cn(activeNavItem === id && "rounded-full bg-secondary text-accent-foreground")}
@@ -170,7 +170,7 @@ export default function Header() {
               }
 
               return (
-                <NavigationMenuItem key={id} onMouseOver={() => setHoveredNavItem(id)}>
+                <NavigationMenuItem key={id} onMouseOver={() => setHoveredNavItem(label.toLowerCase())}>
                   <Link
                     target={isLinkNavItem(navItem) ? "_blank" : "_self"}
                     href={isLinkNavItem(navItem) ? navItem.url : `/${slug}`}

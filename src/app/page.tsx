@@ -90,7 +90,7 @@ const products = [
 
 export default function HomePage() {
   return (
-    <main className="mx-auto flex max-w-6xl flex-col items-center px-6 py-24 sm:px-8">
+    <main className="mx-auto flex max-w-6xl flex-col items-center px-4 py-24 sm:px-8">
       <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4">
         <p className="text-center font-light text-muted-foreground">
           <span className="font-medium text-primary">NVIDIA H200</span> GPU servers are now available for{" "}

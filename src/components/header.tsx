@@ -116,8 +116,8 @@ export default function Header() {
                                         href={`/${link.slug}`}
                                         className="group flex items-center gap-3 p-3 [&>*]:transition-colors"
                                       >
-                                        <div className="grid place-items-center rounded-md border p-1.5 group-hover:border-transparent group-hover:bg-primary">
-                                          <link.icon className="h-[18px] w-[18px] shrink-0 text-secondary-foreground group-hover:text-primary-foreground" />
+                                        <div className="flex aspect-square items-center justify-center rounded-md border p-1 group-hover:border-transparent group-hover:bg-primary">
+                                          <link.icon className="h-[18px] text-secondary-foreground group-hover:text-primary-foreground" />
                                         </div>
                                         <div className="space-y-1">
                                           <p className="text-sm font-medium">{link.title}</p>

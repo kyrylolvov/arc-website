@@ -23,7 +23,7 @@ const features = [
     unit: "%",
     description: "Utilization",
     lottie: (
-      <div className="optimization-lottie px-[72px] [&>*]:cursor-default">
+      <div className="optimization-lottie px-[48px] md:px-[72px] [&>*]:cursor-default">
         <OptimizationLottie />
       </div>
     ),
@@ -34,7 +34,7 @@ const features = [
     unit: "x",
     description: "Faster",
     lottie: (
-      <div className="speed-lottie px-[72px] [&>*]:cursor-default">
+      <div className="speed-lottie px-[48px] md:px-[72px] [&>*]:cursor-default">
         <SpeedLottie />
       </div>
     ),
@@ -45,7 +45,7 @@ const features = [
     unit: "%",
     description: "Lower Cost",
     lottie: (
-      <div className="price-lottie px-[72px] [&>*]:cursor-default">
+      <div className="price-lottie px-[48px] md:px-[72px] [&>*]:cursor-default">
         <PriceLottie />
       </div>
     ),
@@ -168,8 +168,8 @@ export default function HomePage() {
           Achieving peak GPU performance has eluded even the most advanced organizations due to the current limitations
           in managing and manipulating how data flows and threads execute on GPUs.
         </p>
-        <div className="mx-auto mt-8 w-full sm:max-w-[85%] lg:hidden">
-          <div className="grid gap-6 md:grid-cols-2">
+        <div className="mx-auto mt-8 w-full lg:hidden">
+          <div className="grid gap-6 sm:grid-cols-2">
             {features.slice(0, 2).map((feature, i) => (
               <FeatureCard {...feature} key={generateId()} />
             ))}
@@ -177,7 +177,7 @@ export default function HomePage() {
 
           <div className="mt-6 flex justify-center gap-6">
             {features.slice(2).map((feature, i) => (
-              <div key={generateId()} className="w-full md:w-[calc(50%-12px)]">
+              <div key={generateId()} className="w-full sm:w-[calc(50%-12px)]">
                 <FeatureCard {...feature} key={generateId()} />
               </div>
             ))}
@@ -240,6 +240,7 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+      
 
       <div className="mt-32 w-full">
         <h2 className="text-center text-3xl font-semibold">Latest Resources</h2>
@@ -249,9 +250,9 @@ export default function HomePage() {
         <div className="mt-8 grid gap-6 md:grid-cols-3">
           <div className="w-full cursor-pointer overflow-hidden rounded-lg border bg-white hover:border-primary dark:bg-black">
             <div className="aspect-video bg-secondary"></div>
-            <div className="flex flex-col gap-8 p-3">
+            <div className="flex flex-col gap-8 px-3 py-4">
               <div className="grid gap-3">
-                <p className="font-mono text-sm text-secondary-foreground">Blog</p>
+                <p className="font-mono text-xs text-secondary-foreground">Blog</p>
                 <p className="font-semibold">AI in Healthcare: Enhanced Medical Practices for Improved Patient Care</p>
               </div>
             </div>
@@ -259,9 +260,9 @@ export default function HomePage() {
 
           <div className="w-full cursor-pointer overflow-hidden rounded-lg border bg-white hover:border-primary dark:bg-black">
             <div className="aspect-video bg-secondary"></div>
-            <div className="flex flex-col gap-8 p-3">
+            <div className="flex flex-col gap-8 px-3 py-4">
               <div className="grid gap-3">
-                <p className="font-mono text-sm text-secondary-foreground">Blog</p>
+                <p className="font-mono text-xs text-secondary-foreground">Blog</p>
                 <p className="font-semibold">
                   Inside NVIDIA{"'"}s Blackwell Architecture: The Next Step in AI and HPC Progress
                 </p>
@@ -271,18 +272,16 @@ export default function HomePage() {
 
           <div className="w-full cursor-pointer overflow-hidden rounded-lg border bg-white hover:border-primary dark:bg-black">
             <div className="aspect-video bg-secondary"></div>
-            <div className="flex flex-col gap-8 p-3">
+            <div className="flex flex-col gap-8 px-3 py-4">
               <div className="grid gap-3">
-                <p className="font-mono text-sm text-secondary-foreground">Blog</p>
-                <p className="font-semibold">
-                  Unveiling Considerations for GPU Maximization - What You Didn{"'"}t Know Was Possible
-                </p>
+                <p className="font-mono text-xs text-secondary-foreground">Blog</p>
+                <p className="font-semibold">Unveiling Considerations for GPU Maximization</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-       */}
+      */}
     </main>
   );
 }

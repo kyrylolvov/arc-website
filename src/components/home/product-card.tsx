@@ -12,7 +12,7 @@ type ProductCardProps = {
 
 export default function ProductCard({ label, title, description, features, lottie }: ProductCardProps) {
   return (
-    <div className="bg-background-accent w-full rounded-lg border p-4 sm:p-8">
+    <div className="w-full rounded-lg border bg-background-accent p-4 sm:p-8">
       <div className="-ml-0.5 w-fit rounded-full border px-2 py-1 font-mono text-xs md:px-4 md:py-2 md:text-sm">
         {label}
       </div>

@@ -114,7 +114,7 @@ export default function Header() {
                                     <NavigationMenuLink asChild>
                                       <Link
                                         href={`/${link.slug}`}
-                                        className={cn("group flex items-center gap-3 p-3 transition-colors")}
+                                        className="group flex items-center gap-3 p-3 [&>*]:transition-colors"
                                       >
                                         <div className="grid place-items-center rounded-md border p-1.5 group-hover:border-transparent group-hover:bg-primary">
                                           <link.icon className="h-[18px] w-[18px] shrink-0 text-secondary-foreground group-hover:text-primary-foreground" />
@@ -169,6 +169,7 @@ export default function Header() {
 
         <Button
           variant="outline"
+          aria-label="Mobile menu"
           className="flex aspect-square h-8 p-0 hover:border-border lg:hidden"
           onClick={() => setIsOpen((prev) => !prev)}
         >

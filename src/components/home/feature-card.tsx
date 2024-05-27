@@ -8,7 +8,7 @@ type FeatureCardProps = {
 
 export default function FeatureCard({ title, lottie, value, unit, description }: FeatureCardProps) {
   return (
-    <div className="flex aspect-square w-full flex-col justify-between rounded-lg border bg-white p-4 dark:bg-black">
+    <div className="bg-background-accent flex aspect-square w-full flex-col justify-between rounded-lg border p-4">
       <p className="font-mono text-xs">{title}</p>
 
       {lottie}
@@ -18,7 +18,7 @@ export default function FeatureCard({ title, lottie, value, unit, description }:
         <span className="text-3xl font-bold sm:text-4xl">{unit}</span>{" "}
         <span className="text-xl">
           {description}
-          <span className="text-muted-foreground">*</span>
+          <span className="text-secondary-foreground">*</span>
         </span>
       </p>
     </div>

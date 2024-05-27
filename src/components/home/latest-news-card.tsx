@@ -7,9 +7,9 @@ type LatestNewsCardProps = {
 
 export default function LatestNewsCard({ type, title }: LatestNewsCardProps) {
   return (
-    <div className="group flex h-full w-full cursor-pointer flex-col justify-between gap-2 rounded-lg border bg-white p-4 transition-colors hover:border-primary dark:bg-black">
+    <div className="bg-background-accent group flex h-full w-full cursor-pointer flex-col justify-between gap-2 rounded-lg border p-4 transition-colors hover:border-primary">
       <div className="grid gap-2">
-        <p className="text-sm text-muted-foreground">{type}</p>
+        <p className="text-sm text-secondary-foreground">{type}</p>
         <p className="font-semibold">{title}</p>
       </div>
       <div className="relative mt-2 flex h-8 w-12 items-center overflow-hidden rounded-full bg-secondary text-xs text-primary">

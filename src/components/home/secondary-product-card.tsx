@@ -10,14 +10,14 @@ type SecondaryProductCardProps = {
 
 export default function SecondaryProductCard({ label, title, description }: SecondaryProductCardProps) {
   return (
-    <div className="flex w-full flex-col justify-between gap-12 rounded-lg border bg-white p-4 dark:bg-black sm:p-8">
+    <div className="bg-background-accent flex w-full flex-col justify-between gap-12 rounded-lg border p-4 sm:p-8">
       <div className="grid gap-8">
         <div className="-ml-0.5 w-fit rounded-full border px-2 py-1 font-mono text-xs md:px-4 md:py-2 md:text-sm">
           {label}
         </div>
         <div className="grid gap-2">
           <h2 className="text-3xl font-semibold md:text-4xl">{title}</h2>
-          <p className="text-muted-foreground">{description}</p>
+          <p className="text-secondary-foreground">{description}</p>
         </div>
       </div>
       <Button size="sm" className="group flex w-fit gap-1">

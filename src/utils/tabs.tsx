@@ -1,13 +1,14 @@
 import {
   RemixiconComponentType,
   RiBookOpenLine,
+  RiCloudLine,
   RiFlowChart,
   RiGroupLine,
   RiPenNibLine,
   RiPuzzle2Line,
-  RiRamLine,
   RiServerLine,
   RiShapesLine,
+  RiSpeedUpLine,
   RiTerminalWindowLine,
 } from "@remixicon/react";
 
@@ -24,7 +25,7 @@ interface MenuNavItemLinks {
 export const PRODUCTS_LIST_UPPER: MenuNavItemLinks[] = [
   {
     id: generateId(),
-    icon: RiRamLine,
+    icon: RiSpeedUpLine,
     title: "Nexus",
     description: "Optimize HPC and GPU performance",
     slug: "products/archpc",
@@ -44,6 +45,13 @@ export const PRODUCTS_LIST_LOWER: MenuNavItemLinks[] = [
     icon: RiServerLine,
     title: "GPU Servers",
     description: "High-performance Nvidia GPU servers",
+    slug: "products/servers",
+  },
+  {
+    id: generateId(),
+    icon: RiCloudLine,
+    title: "Cloud Instances",
+    description: "Flexible cloud clusters for any workload",
     slug: "products/servers",
   },
 ];
@@ -105,14 +113,11 @@ interface BaseNavItem {
 
 export interface MenuNavItem extends BaseNavItem {
   type: "menu";
-  upperLinks: {
+  sections: {
+    id: string;
     label: string;
     links: MenuNavItemLinks[];
-  };
-  lowerLinks?: {
-    label: string;
-    links: MenuNavItemLinks[];
-  };
+  }[];
 }
 
 interface SlugNavItem extends BaseNavItem {
@@ -129,33 +134,41 @@ type NavItem = MenuNavItem | LinkNavItem | SlugNavItem;
 export const navItems: NavItem[] = [
   {
     id: generateId(),
-    label: "Products",
+    label: "Solutions",
     type: "menu",
-    slug: "products",
-    upperLinks: {
-      label: "Software",
-      links: PRODUCTS_LIST_UPPER,
-    },
-    lowerLinks: {
-      label: "Hardware",
-      links: PRODUCTS_LIST_LOWER,
-    },
+    slug: "solutions",
+    sections: [
+      {
+        id: generateId(),
+        label: "Software",
+        links: PRODUCTS_LIST_UPPER,
+      },
+      {
+        id: generateId(),
+        label: "Infrastructure",
+        links: PRODUCTS_LIST_LOWER,
+      },
+    ],
   },
   {
     id: generateId(),
     label: "Resources",
     type: "menu",
     slug: "resources",
-    upperLinks: {
-      label: "Tools",
-      links: RESOURCES_LIST_UPPER,
-    },
-    lowerLinks: {
-      label: "Company",
-      links: RESOURCES_LIST_LOWER,
-    },
+    sections: [
+      {
+        id: generateId(),
+        label: "Tools",
+        links: RESOURCES_LIST_UPPER,
+      },
+      {
+        id: generateId(),
+        label: "Company",
+        links: RESOURCES_LIST_LOWER,
+      },
+    ],
   },
-  { id: generateId(), label: "Docs", slug: "docs", type: "link", url: "https://arc-hpc-docs-v2.vercel.app/" },
+  { id: generateId(), label: "Docs", type: "link", slug: "docs", url: "https://arc-hpc-docs-v2.vercel.app/" },
   { id: generateId(), label: "Contact", type: "slug", slug: "contact" },
 ];
 

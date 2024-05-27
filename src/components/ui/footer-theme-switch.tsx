@@ -30,8 +30,8 @@ export default function FooterThemeSwitch() {
           variant="ghost"
           onClick={() => setTheme(option.value)}
           className={cn(
-            "h-fit w-fit rounded-full p-2 text-muted-foreground hover:bg-transparent hover:text-primary",
-            !!theme && theme === option.value && "bg-muted text-primary hover:bg-muted",
+            "h-fit w-fit rounded-full p-2 text-secondary-foreground hover:bg-transparent hover:text-primary",
+            !!theme && theme === option.value && "bg-secondary text-primary hover:bg-secondary",
           )}
         >
           <option.icon className="h-[18px] w-[18px]" />

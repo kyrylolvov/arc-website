@@ -36,9 +36,9 @@ const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
 const navigationMenuTriggerStyle = cva(
   cn(
-    "group inline-flex h-9 items-center w-max items-center justify-center rounded-full px-4 text-sm text-muted-foreground transition-colors",
-    "hover:text-accent-foreground",
-    "data-[active]:text-accent-foreground data-[state=open]:text-accent-foreground",
+    "group inline-flex h-9 items-center w-max items-center justify-center rounded-full px-4 text-sm text-secondary-foreground transition-colors",
+    "hover:text-primary",
+    "data-[active]:text-primary data-[state=open]:text-primary",
     "disabled:opacity-50 disabled:pointer-events-none",
   ),
 );
@@ -54,7 +54,7 @@ const NavigationMenuTrigger = React.forwardRef<
   >
     {children}{" "}
     <ChevronDown
-      className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180"
+      className="relative top-[1px] ml-1 h-3 w-3 transition duration-0 group-data-[state=open]:rotate-180"
       aria-hidden="true"
     />
   </NavigationMenuPrimitive.Trigger>
@@ -86,9 +86,9 @@ const NavigationMenuViewport = React.forwardRef<
   <div className={cn("absolute right-0 top-full flex justify-center")}>
     <NavigationMenuPrimitive.Viewport
       className={cn(
-        "origin-top-center relative mt-1.5 w-full overflow-hidden rounded-md border bg-white text-popover-foreground backdrop-blur-lg dark:bg-black",
+        "origin-top-center bg-background-accent relative mt-1.5 w-full overflow-hidden rounded-md border text-foreground backdrop-blur-lg",
         "h-[var(--radix-navigation-menu-viewport-height)] w-[var(--radix-navigation-menu-viewport-width)] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90",
-        "supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-black/70",
+        "supports-[backdrop-filter]:bg-background-accent/70",
         className,
       )}
       ref={ref}

@@ -2,8 +2,6 @@ import { RiArrowRightLine } from "@remixicon/react";
 
 import FeatureCard from "~/components/home/feature-card";
 import LatestNewsCard from "~/components/home/latest-news-card";
-import ProductCard from "~/components/home/product-card";
-import SecondaryProductCard from "~/components/home/secondary-product-card";
 import AutomateLottie from "~/components/lotties/automate-lottie";
 import ManageLottie from "~/components/lotties/manage-lottie";
 import OptimizationLottie from "~/components/lotties/optimization-lottie";
@@ -110,7 +108,7 @@ export default function HomePage() {
   return (
     <main className="mx-auto flex max-w-6xl flex-col items-center px-4 py-24 sm:px-8">
       <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4">
-        <p className="text-center font-light text-muted-foreground">
+        <p className="text-center font-light text-secondary-foreground">
           <span className="font-medium text-primary">NVIDIA H200</span> GPU servers are now available for{" "}
           <span className="font-medium text-primary">June</span> delivery.
         </p>
@@ -122,7 +120,7 @@ export default function HomePage() {
 
       <div className="mx-auto mt-16 max-w-4xl text-center">
         <h1 className="text-4xl font-bold sm:text-5xl">Start Your GPU Infrastructure Deployment Journey</h1>
-        <p className="mt-6 font-light text-muted-foreground">
+        <p className="mt-6 font-light text-secondary-foreground">
           Optimizing GPU infrastructure is complicated. Luckily, we{"'"}re here to help make the process easy.
         </p>
 
@@ -166,7 +164,7 @@ export default function HomePage() {
 
       <div className="mt-32 w-full">
         <h2 className="text-center text-3xl font-semibold">The Leader In GPU Optimization</h2>
-        <p className="mx-auto mt-2 text-center font-light text-muted-foreground md:max-w-[70%]">
+        <p className="mx-auto mt-2 text-center font-light text-secondary-foreground md:max-w-[70%]">
           Achieving peak GPU performance has eluded even the most advanced organizations due to the current limitations
           in managing and manipulating how data flows and threads execute on GPUs.
         </p>
@@ -193,9 +191,9 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="mt-32 w-full">
+      {/* <div className="mt-32 w-full">
         <h2 className="text-center text-3xl font-semibold">Unlock the True Potential of Your GPU Infrastructure</h2>
-        <p className="mx-auto mt-2 text-center font-light text-muted-foreground md:max-w-[70%]">
+        <p className="mx-auto mt-2 text-center font-light text-secondary-foreground md:max-w-[70%]">
           An advanced GPU management solution that maximizes user and task density, optimizing GPU utilization and
           performance across your data center.
         </p>
@@ -208,7 +206,7 @@ export default function HomePage() {
 
       <div className="mt-32 w-full">
         <h2 className="text-center text-3xl font-semibold">End-to-End GPU Infrastructure Solutions</h2>
-        <p className="mx-auto mt-2 text-center font-light text-muted-foreground md:max-w-[70%]">
+        <p className="mx-auto mt-2 text-center font-light text-secondary-foreground md:max-w-[70%]">
           Upgrade your infrastructure with the most in demand NVIDIA GPUs or Tap into unprecedented performance,
           scalability, and security for every workload
         </p>
@@ -219,7 +217,6 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/*
       <div className="mt-32 w-full">
         <div className="group cursor-pointer rounded-lg border bg-white p-14 dark:bg-black">
           <div className="flex max-w-[90%] flex-wrap gap-2">
@@ -243,29 +240,28 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-      
 
       <div className="mt-32 w-full">
         <h2 className="text-center text-3xl font-semibold">Latest Resources</h2>
-        <p className="mx-auto mt-2 max-w-[70%] text-center font-light text-muted-foreground">
+        <p className="mx-auto mt-2 max-w-[70%] text-center font-light text-secondary-foreground">
           Dive into our most recent blog posts where we share the latest insights and developments in the industry.
         </p>
         <div className="mt-8 grid gap-6 md:grid-cols-3">
           <div className="w-full cursor-pointer overflow-hidden rounded-lg border bg-white hover:border-primary dark:bg-black">
-            <div className="aspect-video bg-muted"></div>
+            <div className="aspect-video bg-secondary"></div>
             <div className="flex flex-col gap-8 p-3">
               <div className="grid gap-3">
-                <p className="font-mono text-sm text-muted-foreground">Blog</p>
+                <p className="font-mono text-sm text-secondary-foreground">Blog</p>
                 <p className="font-semibold">AI in Healthcare: Enhanced Medical Practices for Improved Patient Care</p>
               </div>
             </div>
           </div>
 
           <div className="w-full cursor-pointer overflow-hidden rounded-lg border bg-white hover:border-primary dark:bg-black">
-            <div className="aspect-video bg-muted"></div>
+            <div className="aspect-video bg-secondary"></div>
             <div className="flex flex-col gap-8 p-3">
               <div className="grid gap-3">
-                <p className="font-mono text-sm text-muted-foreground">Blog</p>
+                <p className="font-mono text-sm text-secondary-foreground">Blog</p>
                 <p className="font-semibold">
                   Inside NVIDIA{"'"}s Blackwell Architecture: The Next Step in AI and HPC Progress
                 </p>
@@ -274,10 +270,10 @@ export default function HomePage() {
           </div>
 
           <div className="w-full cursor-pointer overflow-hidden rounded-lg border bg-white hover:border-primary dark:bg-black">
-            <div className="aspect-video bg-muted"></div>
+            <div className="aspect-video bg-secondary"></div>
             <div className="flex flex-col gap-8 p-3">
               <div className="grid gap-3">
-                <p className="font-mono text-sm text-muted-foreground">Blog</p>
+                <p className="font-mono text-sm text-secondary-foreground">Blog</p>
                 <p className="font-semibold">
                   Unveiling Considerations for GPU Maximization - What You Didn{"'"}t Know Was Possible
                 </p>
@@ -286,7 +282,7 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-      */}
+       */}
     </main>
   );
 }

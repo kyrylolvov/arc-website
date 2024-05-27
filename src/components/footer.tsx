@@ -10,8 +10,8 @@ import FooterThemeSwitch from "./ui/footer-theme-switch";
 
 export default function Footer() {
   return (
-    <footer className="grid w-full gap-8 border-t bg-white px-4 pb-6 pt-6 dark:bg-black sm:px-6 lg:pt-12">
-      <div className="mx-auto hidden w-full max-w-screen-2xl lg:block">
+    <footer className="bg-background-accent grid w-full gap-8 border-t px-4 pb-6 pt-6 sm:px-6 lg:pt-12">
+      <div className="mx-auto hidden w-full max-w-screen-2xl gap-8 lg:grid">
         <div className="grid grid-cols-footer gap-12">
           <div className="flex flex-col justify-between">
             <div className="flex items-center gap-3">
@@ -25,7 +25,7 @@ export default function Footer() {
                 {section.links.map((link) => (
                   <li
                     key={link.id}
-                    className="w-fit py-1.5 text-sm font-light text-muted-foreground transition-colors hover:text-primary"
+                    className="w-fit py-1.5 text-sm font-light text-secondary-foreground transition-colors hover:text-primary"
                   >
                     <Link href={link.href}>{link.label}</Link>
                   </li>
@@ -42,26 +42,26 @@ export default function Footer() {
         </div>
 
         <div className="flex items-center justify-between pr-3.5">
-          <p className="text-xs text-muted-foreground">© 2024 Arc Compute Ltd. All Rights Reserved.</p>
+          <p className="text-xs text-secondary-foreground">© 2024 Arc Compute Ltd. All Rights Reserved.</p>
           <div className="flex gap-1">
             <Button
               variant="ghost"
               size="icon"
-              className="text-muted-foreground hover:bg-transparent hover:text-primary"
+              className="text-secondary-foreground hover:bg-transparent hover:text-primary"
             >
               <RiGithubFill className="h-5 w-5" />
             </Button>
             <Button
               variant="ghost"
               size="icon"
-              className="text-muted-foreground hover:bg-transparent hover:text-primary"
+              className="text-secondary-foreground hover:bg-transparent hover:text-primary"
             >
               <RiLinkedinBoxFill className="h-5 w-5" />
             </Button>
             <Button
               variant="ghost"
               size="icon"
-              className="text-muted-foreground hover:bg-transparent hover:text-primary"
+              className="text-secondary-foreground hover:bg-transparent hover:text-primary"
             >
               <RiDiscordFill className="h-5 w-5" />
             </Button>
@@ -80,7 +80,11 @@ export default function Footer() {
               </AccordionTrigger>
               <AccordionContent className="grid grid-cols-2">
                 {link.links.map((link) => (
-                  <Link key={generateId()} href={`/${link.href}`} className="flex py-1.5 text-sm text-muted-foreground">
+                  <Link
+                    key={generateId()}
+                    href={`/${link.href}`}
+                    className="flex py-1.5 text-sm text-secondary-foreground"
+                  >
                     {link.label}
                   </Link>
                 ))}
@@ -97,21 +101,21 @@ export default function Footer() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="h-[34px] w-[34px] text-muted-foreground hover:bg-transparent"
+                  className="h-[34px] w-[34px] text-secondary-foreground hover:bg-transparent"
                 >
                   <RiGithubFill className="h-5 w-5" />
                 </Button>
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="h-[34px] w-[34px] text-muted-foreground hover:bg-transparent"
+                  className="h-[34px] w-[34px] text-secondary-foreground hover:bg-transparent"
                 >
                   <RiLinkedinBoxFill className="h-5 w-5" />
                 </Button>
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="h-[34px] w-[34px] text-muted-foreground hover:bg-transparent"
+                  className="h-[34px] w-[34px] text-secondary-foreground hover:bg-transparent"
                 >
                   <RiDiscordFill className="h-5 w-5" />
                 </Button>

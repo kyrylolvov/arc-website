@@ -1,5 +1,5 @@
 {
-  "extends": "next/core-web-vitals",
+  "extends": ["next/core-web-vitals", "plugin:react-hooks/recommended"],
   "plugins": ["unused-imports", "simple-import-sort", "prettier"],
   "rules": {
     "unused-imports/no-unused-imports": "error",

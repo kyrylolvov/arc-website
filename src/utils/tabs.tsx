@@ -1,7 +1,7 @@
 import {
   RemixiconComponentType,
   RiBookOpenLine,
-  RiCloudLine,
+  RiBox3Line,
   RiFlowChart,
   RiGroupLine,
   RiPenNibLine,
@@ -49,7 +49,7 @@ export const PRODUCTS_LIST_LOWER: MenuNavItemLinks[] = [
   },
   {
     id: generateId(),
-    icon: RiCloudLine,
+    icon: RiBox3Line,
     title: "Cloud Instances",
     description: "Flexible cloud clusters for any workload",
     slug: "products/servers",

@@ -64,7 +64,7 @@ export default function Header() {
   }, [pathname]);
 
   return (
-    <header className="bg-background-accent fixed z-30 w-full border-b">
+    <header className="fixed z-30 w-full border-b bg-background-accent">
       <div className="mx-auto flex h-[68px] max-w-screen-2xl items-center justify-between px-4 sm:px-6">
         <Link href={"/"} className="w-[138px]" aria-label="Go to homepage">
           <RiQuestionMark className="h-5" />
@@ -116,7 +116,7 @@ export default function Header() {
                                         href={`/${link.slug}`}
                                         className={cn("group flex items-center gap-3 p-3 transition-colors")}
                                       >
-                                        <div className="rounded-md border p-1.5 group-hover:border-transparent group-hover:bg-primary">
+                                        <div className="grid place-items-center rounded-md border p-1.5 group-hover:border-transparent group-hover:bg-primary">
                                           <link.icon className="h-[18px] w-[18px] shrink-0 text-secondary-foreground group-hover:text-primary-foreground" />
                                         </div>
                                         <div className="space-y-1">
@@ -176,7 +176,7 @@ export default function Header() {
         </Button>
 
         {isOpen && (
-          <nav className="bg-background-accent fixed left-0 top-[68px] h-[calc(100dvh-68px)] w-full max-w-[100vw] overflow-y-scroll px-6 pb-6">
+          <nav className="fixed left-0 top-[68px] h-[calc(100dvh-68px)] w-full max-w-[100vw] overflow-y-scroll bg-background-accent px-6 pb-6">
             <Accordion type="single" collapsible className="w-full">
               {navItems.map((navItem) => {
                 if (isMenuNavItem(navItem)) {

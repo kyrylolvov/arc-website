@@ -2,6 +2,9 @@ import { RiArrowRightLine } from "@remixicon/react";
 
 import FeatureCard from "~/components/home/feature-card";
 import LatestNewsCard from "~/components/home/latest-news-card";
+import ProductCard from "~/components/home/product-card";
+import SecondaryProductCard from "~/components/home/secondary-product-card";
+import { Images } from "~/components/images";
 import OptimizationLottie from "~/components/lotties/optimization-lottie";
 import PriceLottie from "~/components/lotties/price-lottie";
 import SpeedLottie from "~/components/lotties/speed-lottie";
@@ -47,6 +50,42 @@ const features = [
         <PriceLottie />
       </div>
     ),
+  },
+];
+
+const products = [
+  {
+    id: generateId(),
+    label: "Manage",
+    title: "Nexus",
+    preview: <Images.PreviewNexus />,
+    description:
+      "Creates and manages your environment while optimizing GPU utilization and performance, enables administrators to enhance user and task density.",
+  },
+  {
+    id: generateId(),
+    label: "Automate",
+    title: "Oracle",
+    preview: <Images.PreviewOracle />,
+    description:
+      "Automates task matching and task deployment across your cluster, by managing low-level operational execution of instructions",
+  },
+];
+
+const secondaryProducts = [
+  {
+    id: generateId(),
+    label: "Build",
+    title: "GPU Servers",
+    description:
+      "Leverage the power of the latest NVIDIA GPUs in your data center. Whether you need one server or thousands, we've got you covered with industry-best lead times on NVIDIA H100, A100, and L40S deployments.",
+  },
+  {
+    id: generateId(),
+    label: "Deploy",
+    title: "Cloud Instances",
+    description:
+      "Enable large-scale model training with top-of-the-line NVIDIA H100 SXM5 GPUs. Arc Compute's cloud clusters are available for a minimum 2-year commitment and start at just $2.20/hr per GPU.",
   },
 ];
 
@@ -137,13 +176,13 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* <div className="mt-32 w-full">
+      <div className="mt-32 w-full">
         <h2 className="text-center text-3xl font-semibold">Unlock the True Potential of Your GPU Infrastructure</h2>
         <p className="mx-auto mt-2 text-center font-light text-secondary-foreground md:max-w-[70%]">
           An advanced GPU management solution that maximizes user and task density, optimizing GPU utilization and
           performance across your data center.
         </p>
-        <div className="mt-8 grid gap-12">
+        <div className="mt-8 grid gap-6 lg:grid-cols-2">
           {products.map((product) => (
             <ProductCard {...product} key={product.id} />
           ))}
@@ -156,13 +195,14 @@ export default function HomePage() {
           Upgrade your infrastructure with the most in demand NVIDIA GPUs or Tap into unprecedented performance,
           scalability, and security for every workload
         </p>
-        <div className="mt-8 grid gap-6 lg:grid-cols-2 lg:gap-12">
+        <div className="mt-8 grid gap-6 lg:grid-cols-2">
           {secondaryProducts.map((product) => (
             <SecondaryProductCard {...product} key={product.id} />
           ))}
         </div>
       </div>
 
+      {/*
       <div className="mt-32 w-full">
         <div className="group cursor-pointer rounded-lg border bg-white p-14 dark:bg-black">
           <div className="flex max-w-[90%] flex-wrap gap-2">

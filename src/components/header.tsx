@@ -102,9 +102,7 @@ export default function Header() {
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
                       <div className="grid">
-                        <div
-                          className={`grid w-[${navItem.sections.length * 20}rem] grid-cols-${navItem.sections.length} p-2`}
-                        >
+                        <div className={`grid w-[40rem] grid-cols-${navItem.sections.length} p-2`}>
                           {navItem.sections.map((section) => (
                             <div key={section.id}>
                               <div className="flex h-10 items-center px-2 text-sm font-light text-secondary-foreground">

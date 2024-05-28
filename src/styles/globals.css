@@ -87,4 +87,8 @@
     background-color: white;
     color: black;
   }
+
+  iframe {
+    @apply h-full w-full;
+  }
 }

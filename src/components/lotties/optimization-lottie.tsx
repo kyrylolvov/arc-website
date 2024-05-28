@@ -1,18 +1,9 @@
 "use client";
 
-import Lottie from "react-lottie";
+import { Player } from "@lottiefiles/react-lottie-player";
 
 import * as optimizationLottieJson from "~/lotties/optimization.json";
 
 export default function OptimizationLottie() {
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: optimizationLottieJson,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
-
-  return <Lottie options={defaultOptions} speed={0.5} isClickToPauseDisabled />;
+  return <Player src={optimizationLottieJson} loop autoplay speed={0.5} />;
 }

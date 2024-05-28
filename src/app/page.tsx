@@ -2,8 +2,6 @@ import { RiArrowRightLine } from "@remixicon/react";
 
 import FeatureCard from "~/components/home/feature-card";
 import LatestNewsCard from "~/components/home/latest-news-card";
-import AutomateLottie from "~/components/lotties/automate-lottie";
-import ManageLottie from "~/components/lotties/manage-lottie";
 import OptimizationLottie from "~/components/lotties/optimization-lottie";
 import PriceLottie from "~/components/lotties/price-lottie";
 import SpeedLottie from "~/components/lotties/speed-lottie";
@@ -49,58 +47,6 @@ const features = [
         <PriceLottie />
       </div>
     ),
-  },
-];
-
-const products = [
-  {
-    id: generateId(),
-    label: "Manage",
-    title: "ArcHPC Nexus",
-    description:
-      "Creates and manages your environment while optimizing GPU utilization and performance, enables administrators to enhance user and task density.",
-    features: [
-      "Intercepts machine code at the load stage dedicated to the accelerated hardware",
-      "Aware of the instructions for execution and the data size, but not the data contents, maintaining data privacy.",
-    ],
-    lottie: (
-      <div className="manage-lottie h-fit w-[80%] sm:w-[70%] [&>*]:cursor-default">
-        <ManageLottie />
-      </div>
-    ),
-  },
-  {
-    id: generateId(),
-    label: "Automate",
-    title: "ArcHPC Oracle",
-    description:
-      "Automates task matching and task deployment across your cluster, by managing low-level operational execution of instructions",
-    features: [
-      "The source code is saved to the host memory, independent of Nexus's operation.",
-      "Pairs, matches tasks, and staggers kernel execution times using the information intercepted from machine codes.",
-    ],
-    lottie: (
-      <div className="automate-lottie h-fit w-[80%] sm:w-[70%] [&>*]:cursor-default">
-        <AutomateLottie />
-      </div>
-    ),
-  },
-];
-
-const secondaryProducts = [
-  {
-    id: generateId(),
-    label: "Build",
-    title: "GPU Servers",
-    description:
-      "Leverage the power of the latest NVIDIA GPUs in your data center. Whether you need one server or thousands, we've got you covered with industry-best lead times on NVIDIA H100, A100, and L40S deployments.",
-  },
-  {
-    id: generateId(),
-    label: "Deploy",
-    title: "Cloud Instances",
-    description:
-      "Enable large-scale model training with top-of-the-line NVIDIA H100 SXM5 GPUs. Arc Compute's cloud clusters are available for a minimum 2-year commitment and start at just $2.20/hr per GPU.",
   },
 ];
 

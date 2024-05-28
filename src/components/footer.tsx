@@ -10,7 +10,7 @@ import FooterThemeSwitch from "./ui/footer-theme-switch";
 
 export default function Footer() {
   return (
-    <footer className="grid w-full gap-8 border-t bg-background-accent px-4 pb-6 pt-6 sm:px-6 lg:pt-12">
+    <footer className="grid w-full gap-8 border-t bg-background-accent px-4 pb-12 pt-6 lg:px-6 lg:pt-12">
       <div className="mx-auto hidden w-full max-w-screen-2xl gap-8 lg:grid">
         <div className="grid grid-cols-footer gap-12">
           <div className="flex flex-col justify-between">

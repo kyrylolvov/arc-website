@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config = {
+  experimental: { optimizeUniversalDefaults: true },
   darkMode: ["class"],
   content: ["./src/**/*.{ts,tsx}"],
   prefix: "",

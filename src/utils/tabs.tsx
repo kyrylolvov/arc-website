@@ -6,6 +6,7 @@ import {
   RiGroupLine,
   RiPenNibLine,
   RiPuzzle2Line,
+  RiRuler2Line,
   RiServerLine,
   RiShapesLine,
   RiSpeedUpLine,
@@ -22,7 +23,7 @@ interface MenuNavItemLinks {
   slug: string;
 }
 
-export const PRODUCTS_LIST_UPPER: MenuNavItemLinks[] = [
+export const PRODUCTS_SOFTWARE: MenuNavItemLinks[] = [
   {
     id: generateId(),
     icon: RiSpeedUpLine,
@@ -37,9 +38,16 @@ export const PRODUCTS_LIST_UPPER: MenuNavItemLinks[] = [
     description: "Automate HPC deployment and execution",
     slug: "products/archpc",
   },
+  {
+    id: generateId(),
+    icon: RiRuler2Line,
+    title: "Mercury",
+    description: "Tailor system architecture to your needs",
+    slug: "products/archpc",
+  },
 ];
 
-export const PRODUCTS_LIST_LOWER: MenuNavItemLinks[] = [
+export const PRODUCTS_INFRASTRUCTURE: MenuNavItemLinks[] = [
   {
     id: generateId(),
     icon: RiServerLine,
@@ -56,7 +64,7 @@ export const PRODUCTS_LIST_LOWER: MenuNavItemLinks[] = [
   },
 ];
 
-export const RESOURCES_LIST_UPPER: MenuNavItemLinks[] = [
+export const RESOURCES_TOOLS: MenuNavItemLinks[] = [
   {
     id: generateId(),
     icon: RiPuzzle2Line,
@@ -87,7 +95,7 @@ export const RESOURCES_LIST_UPPER: MenuNavItemLinks[] = [
   },
 ];
 
-export const RESOURCES_LIST_LOWER: MenuNavItemLinks[] = [
+export const RESOURCES_COMPANY: MenuNavItemLinks[] = [
   {
     id: generateId(),
     icon: RiPenNibLine,
@@ -141,12 +149,12 @@ export const navItems: NavItem[] = [
       {
         id: generateId(),
         label: "Software",
-        links: PRODUCTS_LIST_UPPER,
+        links: PRODUCTS_SOFTWARE,
       },
       {
         id: generateId(),
         label: "Infrastructure",
-        links: PRODUCTS_LIST_LOWER,
+        links: PRODUCTS_INFRASTRUCTURE,
       },
     ],
   },
@@ -159,12 +167,12 @@ export const navItems: NavItem[] = [
       {
         id: generateId(),
         label: "Tools",
-        links: RESOURCES_LIST_UPPER,
+        links: RESOURCES_TOOLS,
       },
       {
         id: generateId(),
         label: "Company",
-        links: RESOURCES_LIST_LOWER,
+        links: RESOURCES_COMPANY,
       },
     ],
   },

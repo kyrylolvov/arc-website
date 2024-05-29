@@ -22,7 +22,7 @@ const features = [
     unit: "%",
     description: "Utilization",
     lottie: (
-      <div className="optimization-lottie px-[48px] md:px-[72px] [&>*]:cursor-default">
+      <div className="optimization-lottie px-[64px] sm:px-[48px] md:px-[72px] [&>*]:cursor-default">
         <OptimizationLottie />
       </div>
     ),
@@ -33,7 +33,7 @@ const features = [
     unit: "x",
     description: "Faster",
     lottie: (
-      <div className="speed-lottie px-[48px] md:px-[72px] [&>*]:cursor-default">
+      <div className="speed-lottie px-[64px] sm:px-[48px] md:px-[72px] [&>*]:cursor-default">
         <SpeedLottie />
       </div>
     ),
@@ -44,7 +44,7 @@ const features = [
     unit: "%",
     description: "Lower Cost",
     lottie: (
-      <div className="price-lottie px-[48px] md:px-[72px] [&>*]:cursor-default">
+      <div className="price-lottie px-[64px] sm:px-[48px] md:px-[72px] [&>*]:cursor-default">
         <PriceLottie />
       </div>
     ),
@@ -120,7 +120,9 @@ export default function HomePage() {
       </div>
 
       <div className="mx-auto mt-16 max-w-4xl text-center">
-        <h1 className="text-4xl font-bold sm:text-5xl">Start Your GPU Infrastructure Deployment Journey</h1>
+        <h1 className="bg-gradient-to-b from-foreground/70 to-foreground bg-clip-text py-1 text-4xl font-extrabold text-transparent dark:bg-gradient-to-t sm:text-5xl">
+          Start Your GPU Infrastructure Deployment Journey
+        </h1>
         <p className="mt-6 font-light text-secondary-foreground">
           Optimizing GPU infrastructure is complicated. Luckily, we{"'"}re here to help make the process easy.
         </p>
@@ -164,7 +166,9 @@ export default function HomePage() {
       </div>
 
       <div className="mt-32 w-full">
-        <h2 className="text-center text-3xl font-semibold">The Leader In GPU Optimization</h2>
+        <h2 className="bg-gradient-to-b from-foreground/70 to-foreground bg-clip-text py-1 text-center text-3xl font-bold text-transparent dark:bg-gradient-to-t sm:text-4xl">
+          The Leader In GPU Optimization
+        </h2>
         <p className="mx-auto mt-2 text-center font-light text-secondary-foreground md:max-w-[70%]">
           Achieving peak GPU performance has eluded even the most advanced organizations due to the current limitations
           in managing and manipulating how data flows and threads execute on GPUs.
@@ -192,19 +196,16 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* <div className="mt-32 w-full">
-        <h2 className="text-center text-3xl font-semibold">Unlock the True Potential of Your GPU Infrastructure</h2>
+      <div className="mt-32 w-full">
+        <h2 className="bg-gradient-to-b from-foreground/70 to-foreground bg-clip-text py-1 text-center text-3xl font-bold text-transparent dark:bg-gradient-to-t sm:text-4xl">
+          Unlock the True Potential of Your GPU Infrastructure
+        </h2>
         <p className="mx-auto mt-2 text-center font-light text-secondary-foreground md:max-w-[70%]">
           An advanced GPU management solution that maximizes user and task density, optimizing GPU utilization and
           performance across your data center.
         </p>
-        <div className="mt-8 grid gap-6 lg:grid-cols-2">
-          {products.map((product) => (
-            <ProductCard {...product} key={product.id} />
-          ))}
-        </div>
       </div>
-
+      {/* 
       <div className="mt-32 w-full">
         <h2 className="text-center text-3xl font-semibold">End-to-End GPU Infrastructure Solutions</h2>
         <p className="mx-auto mt-2 text-center font-light text-secondary-foreground md:max-w-[70%]">

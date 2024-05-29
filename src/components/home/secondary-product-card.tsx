@@ -15,7 +15,7 @@ export default function SecondaryProductCard({ label, title, description }: Seco
         <div className="-ml-0.5 w-fit rounded-full border px-2 py-1 font-mono text-xs">{label}</div>
         <div className="grid gap-2">
           <h2 className="text-3xl font-semibold md:text-4xl">{title}</h2>
-          <p className="text-secondary-foreground">{description}</p>
+          <p className="font-light text-secondary-foreground">{description}</p>
         </div>
       </div>
       <Button size="sm" className="group flex w-fit gap-1">

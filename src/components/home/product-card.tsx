@@ -18,7 +18,7 @@ export default function ProductCard({ label, title, description, preview }: Prod
       <div className="grid gap-4">
         <h2 className="text-2xl font-semibold md:text-3xl">{title}</h2>
         <VideoDialog preview={preview} />
-        <p className="text-secondary-foreground">{description}</p>
+        <p className="font-light text-secondary-foreground">{description}</p>
       </div>
 
       <Button size="sm" className="group mt-auto flex w-fit gap-1">

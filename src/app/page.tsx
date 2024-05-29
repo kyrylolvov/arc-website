@@ -202,8 +202,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/*
-      <div className="mt-32 w-full">
+      {/* <div className="mt-32 w-full">
         <div className="group cursor-pointer rounded-lg border bg-white p-14 dark:bg-black">
           <div className="flex max-w-[90%] flex-wrap gap-2">
             <p className="flex h-[76px] w-fit items-center rounded-full bg-primary px-6 pr-7 text-6xl font-semibold uppercase text-primary-foreground">
@@ -225,8 +224,7 @@ export default function HomePage() {
             </p>
           </div>
         </div>
-      </div>
-      
+      </div> */}
 
       <div className="mt-32 w-full">
         <h2 className="text-center text-3xl font-semibold">Latest Resources</h2>
@@ -267,7 +265,6 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-      */}
     </main>
   );
 }

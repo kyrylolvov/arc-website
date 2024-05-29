@@ -11,6 +11,7 @@ import {
   RiShapesLine,
   RiSpeedUpLine,
   RiTerminalWindowLine,
+  RiUserSmileLine,
 } from "@remixicon/react";
 
 import generateId from "./uuid";
@@ -98,6 +99,13 @@ export const RESOURCES_TOOLS: MenuNavItemLinks[] = [
 export const RESOURCES_COMPANY: MenuNavItemLinks[] = [
   {
     id: generateId(),
+    icon: RiGroupLine,
+    title: "About",
+    description: "Learn more about Arc Compute",
+    slug: "about",
+  },
+  {
+    id: generateId(),
     icon: RiPenNibLine,
     title: "Blog",
     description: "Latest from Arc Compute",
@@ -105,7 +113,7 @@ export const RESOURCES_COMPANY: MenuNavItemLinks[] = [
   },
   {
     id: generateId(),
-    icon: RiGroupLine,
+    icon: RiUserSmileLine,
     title: "Customers",
     description: "The companies we keep",
     slug: "customers",

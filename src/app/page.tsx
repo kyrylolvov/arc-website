@@ -2,8 +2,6 @@ import { RiArrowRightLine } from "@remixicon/react";
 
 import FeatureCard from "~/components/home/feature-card";
 import LatestNewsCard from "~/components/home/latest-news-card";
-import ProductCard from "~/components/home/product-card";
-import SecondaryProductCard from "~/components/home/secondary-product-card";
 import { Images } from "~/components/images";
 import OptimizationLottie from "~/components/lotties/optimization-lottie";
 import PriceLottie from "~/components/lotties/price-lottie";
@@ -58,7 +56,7 @@ const products = [
     id: generateId(),
     label: "Manage",
     title: "Nexus",
-    preview: <Images.PreviewNexus />,
+    preview: <Images.PreviewNexus className="h-full w-full" />,
     description:
       "Creates and manages your environment while optimizing GPU utilization and performance, enables administrators to enhance user and task density.",
   },
@@ -66,7 +64,7 @@ const products = [
     id: generateId(),
     label: "Automate",
     title: "Oracle",
-    preview: <Images.PreviewOracle />,
+    preview: <Images.PreviewOracle className="h-full w-full" />,
     description:
       "Automates task matching and task deployment across your cluster, by managing low-level operational execution of instructions",
   },
@@ -86,6 +84,24 @@ const secondaryProducts = [
     title: "Cloud Instances",
     description:
       "Enable large-scale model training with top-of-the-line NVIDIA H100 SXM5 GPUs. Arc Compute's cloud clusters are available for a minimum 2-year commitment and start at just $2.20/hr per GPU.",
+  },
+];
+
+const latestResources = [
+  {
+    id: generateId(),
+    type: "Blog",
+    title: "AI in Healthcare: Enhanced Medical Practices for Improved Patient Care",
+  },
+  {
+    id: generateId(),
+    type: "Blog",
+    title: "Inside NVIDIA's Blackwell Architecture: The Next Step in AI and HPC Progress",
+  },
+  {
+    id: generateId(),
+    type: "Blog",
+    title: "Unveiling Considerations for GPU Maximization",
   },
 ];
 
@@ -176,7 +192,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="mt-32 w-full">
+      {/* <div className="mt-32 w-full">
         <h2 className="text-center text-3xl font-semibold">Unlock the True Potential of Your GPU Infrastructure</h2>
         <p className="mx-auto mt-2 text-center font-light text-secondary-foreground md:max-w-[70%]">
           An advanced GPU management solution that maximizes user and task density, optimizing GPU utilization and
@@ -202,7 +218,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* <div className="mt-32 w-full">
+      <div className="mt-32 w-full">
         <div className="group cursor-pointer rounded-lg border bg-white p-14 dark:bg-black">
           <div className="flex max-w-[90%] flex-wrap gap-2">
             <p className="flex h-[76px] w-fit items-center rounded-full bg-primary px-6 pr-7 text-6xl font-semibold uppercase text-primary-foreground">
@@ -224,47 +240,35 @@ export default function HomePage() {
             </p>
           </div>
         </div>
-      </div> */}
+      </div>
 
       <div className="mt-32 w-full">
         <h2 className="text-center text-3xl font-semibold">Latest Resources</h2>
         <p className="mx-auto mt-2 max-w-[70%] text-center font-light text-secondary-foreground">
           Dive into our most recent blog posts where we share the latest insights and developments in the industry.
         </p>
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
-          <div className="w-full cursor-pointer overflow-hidden rounded-lg border bg-white hover:border-primary dark:bg-black">
-            <div className="aspect-video bg-secondary"></div>
-            <div className="flex flex-col gap-8 px-3 py-4">
-              <div className="grid gap-3">
-                <p className="font-mono text-xs text-secondary-foreground">Blog</p>
-                <p className="font-semibold">AI in Healthcare: Enhanced Medical Practices for Improved Patient Care</p>
-              </div>
-            </div>
+        <div className="mx-auto mt-8 w-full lg:hidden">
+          <div className="grid gap-6 sm:grid-cols-2">
+            {latestResources.slice(0, 2).map((resource, i) => (
+              <LatestResourceCard {...resource} key={generateId()} />
+            ))}
           </div>
 
-          <div className="w-full cursor-pointer overflow-hidden rounded-lg border bg-white hover:border-primary dark:bg-black">
-            <div className="aspect-video bg-secondary"></div>
-            <div className="flex flex-col gap-8 px-3 py-4">
-              <div className="grid gap-3">
-                <p className="font-mono text-xs text-secondary-foreground">Blog</p>
-                <p className="font-semibold">
-                  Inside NVIDIA{"'"}s Blackwell Architecture: The Next Step in AI and HPC Progress
-                </p>
+          <div className="mt-6 flex justify-center gap-6">
+            {latestResources.slice(2).map((resource, i) => (
+              <div key={generateId()} className="w-full sm:w-[calc(50%-12px)]">
+                <LatestResourceCard {...resource} key={generateId()} />
               </div>
-            </div>
-          </div>
-
-          <div className="w-full cursor-pointer overflow-hidden rounded-lg border bg-white hover:border-primary dark:bg-black">
-            <div className="aspect-video bg-secondary"></div>
-            <div className="flex flex-col gap-8 px-3 py-4">
-              <div className="grid gap-3">
-                <p className="font-mono text-xs text-secondary-foreground">Blog</p>
-                <p className="font-semibold">Unveiling Considerations for GPU Maximization</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
-      </div>
+
+        <div className="mt-8 hidden grid-cols-3 gap-6 lg:grid">
+          {latestResources.map((resource, i) => (
+            <LatestResourceCard {...resource} key={generateId()} />
+          ))}
+        </div>
+      </div> */}
     </main>
   );
 }

@@ -17,7 +17,7 @@ export default function VideoDialog({ preview }: VideoDialogProps) {
           <Button className="absolute left-[50%] top-[50%] aspect-square h-auto w-auto shrink-0 translate-x-[-50%] translate-y-[-50%] p-3 transition-transform duration-200 hover:bg-primary group-hover:scale-105">
             <RiPlayFill className="h-10 w-10" />
           </Button>
-          <div className="">{preview}</div>
+          <div className="h-full w-full">{preview}</div>
         </div>
       </DialogTrigger>
       <DialogContent className="aspect-video max-w-[784px] overflow-hidden border-0 bg-black p-0">

@@ -31,7 +31,6 @@ export default function Header() {
   const pathname = usePathname();
 
   const [isOpen, setIsOpen] = useState(false);
-  const [scrollPosition, setScrollPosition] = useState(0);
 
   const activeNavItem = useMemo(() => navItems.find((navItem) => pathname.includes(navItem.slug))?.slug, [pathname]);
 
@@ -46,18 +45,6 @@ export default function Header() {
   useEffect(() => {
     setHoveredNavItem(activeNavItem ?? null);
   }, [activeNavItem]);
-
-  useEffect(() => {
-    if (isOpen) {
-      const { scrollY } = window;
-
-      setScrollPosition(scrollY);
-      document.body.style.position = "fixed";
-    } else {
-      document.body.style.position = "";
-      window.scrollTo({ top: scrollPosition });
-    }
-  }, [isOpen]);
 
   useEffect(() => {
     setIsOpen(false);

@@ -58,7 +58,7 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       gridTemplateColumns: {
-        footer: "120px repeat(3, 1fr) 120px", // Custom name and value
+        footer: "3fr repeat(3, 1fr)", // Custom name and value
       },
     },
   },

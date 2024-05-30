@@ -10,8 +10,8 @@ import FooterThemeSwitch from "./ui/footer-theme-switch";
 
 export default function Footer() {
   return (
-    <footer className="grid w-full gap-8 border-t bg-background-accent px-4 pb-12 pt-6 lg:px-6 lg:pb-2 lg:pt-12">
-      <div className="mx-auto hidden w-full max-w-screen-2xl gap-8 lg:grid">
+    <footer className="grid w-full gap-8 border-t bg-background-accent px-4 pb-12 pt-6 lg:px-6 lg:pb-6 lg:pt-12">
+      <div className="mx-auto hidden w-full max-w-screen-2xl gap-12 lg:grid">
         <div className="grid grid-cols-footer gap-12">
           <div className="flex flex-col justify-between">
             <div className="flex items-center gap-3">
@@ -33,38 +33,42 @@ export default function Footer() {
               </ul>
             </div>
           ))}
-          <div>
-            <div className="mt-1 pl-2 text-sm font-medium">Preferences</div>
-            <div className="mt-2">
-              <FooterThemeSwitch />
-            </div>
-          </div>
         </div>
 
-        <div className="flex items-center justify-between pr-3.5">
-          <p className="text-xs text-secondary-foreground">© 2024 Arc Compute Ltd. All Rights Reserved.</p>
-          <div className="flex gap-1">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="text-secondary-foreground hover:bg-transparent hover:text-primary"
-            >
-              <RiGithubFill className="h-5 w-5" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="text-secondary-foreground hover:bg-transparent hover:text-primary"
-            >
-              <RiLinkedinBoxFill className="h-5 w-5" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="text-secondary-foreground hover:bg-transparent hover:text-primary"
-            >
-              <RiDiscordFill className="h-5 w-5" />
-            </Button>
+        <div className="grid gap-4">
+          <p className="text-sm text-secondary-foreground">© 2024 Arc Compute Ltd.</p>
+          <div className="flex items-center justify-between">
+            <div className="flex h-full items-center gap-3">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-fit w-fit p-0 text-secondary-foreground hover:bg-transparent hover:text-primary"
+              >
+                <RiGithubFill className="h-5 w-5" />
+              </Button>
+
+              <hr className="h-[80%] w-[1px] bg-secondary-foreground/40" />
+
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-fit w-fit p-0 text-secondary-foreground hover:bg-transparent hover:text-primary"
+              >
+                <RiLinkedinBoxFill className="h-5 w-5" />
+              </Button>
+
+              <hr className="h-[80%] w-[1px] bg-secondary-foreground/40" />
+
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-fit w-fit p-0 text-secondary-foreground hover:bg-transparent hover:text-primary"
+              >
+                <RiDiscordFill className="h-5 w-5" />
+              </Button>
+            </div>
+
+            <FooterThemeSwitch />
           </div>
         </div>
       </div>

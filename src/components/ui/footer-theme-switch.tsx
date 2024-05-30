@@ -34,7 +34,7 @@ export default function FooterThemeSwitch() {
             !!theme && theme === option.value && "bg-secondary text-primary hover:bg-secondary",
           )}
         >
-          <option.icon className="h-[18px] w-[18px]" />
+          <option.icon className="h-4 w-4" />
         </Button>
       ))}
     </div>

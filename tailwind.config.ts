@@ -57,8 +57,9 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
-      gridTemplateColumns: {
-        footer: "repeat(4, 1fr)", // Custom name and value
+
+      letterSpacing: {
+        tight: "-0.01em", // Change this value to your desired letter spacing
       },
     },
   },

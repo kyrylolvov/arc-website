@@ -12,7 +12,7 @@ export default function Footer() {
   return (
     <footer className="grid w-full gap-8 border-t bg-background-accent px-4 pb-12 pt-6 lg:px-6 lg:pb-6 lg:pt-12">
       <div className="mx-auto hidden w-full max-w-screen-2xl gap-12 lg:grid">
-        <div className="grid grid-cols-footer gap-12">
+        <div className="grid grid-cols-4 gap-12">
           <div className="flex flex-col justify-between">
             <div className="flex items-center gap-3">
               <RiQuestionMark className="h-7 " />
@@ -38,7 +38,7 @@ export default function Footer() {
         <div className="grid gap-4">
           <p className="text-sm text-secondary-foreground">© 2024 Arc Compute Ltd.</p>
           <div className="flex items-center justify-between">
-            <div className="flex h-full items-center gap-3">
+            <div className="flex h-full items-center gap-4">
               <Button
                 variant="ghost"
                 size="icon"
@@ -47,8 +47,6 @@ export default function Footer() {
                 <RiGithubFill className="h-5 w-5" />
               </Button>
 
-              <hr className="h-[80%] w-[1px] bg-secondary-foreground/40" />
-
               <Button
                 variant="ghost"
                 size="icon"
@@ -56,8 +54,6 @@ export default function Footer() {
               >
                 <RiLinkedinBoxFill className="h-5 w-5" />
               </Button>
-
-              <hr className="h-[80%] w-[1px] bg-secondary-foreground/40" />
 
               <Button
                 variant="ghost"

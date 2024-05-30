@@ -142,16 +142,14 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="mt-32 grid w-[100vw] border bg-background-accent py-12">
+      <div className="mt-32 grid w-full rounded-lg border bg-background-accent px-4 py-12">
         <div className="flex flex-col items-center gap-6">
           <div>
             <h2 className="bg-gradient-to-b from-foreground/70 to-foreground bg-clip-text py-1 text-center text-3xl font-bold text-transparent dark:bg-gradient-to-t sm:text-4xl">
               Ready To Get Started?
             </h2>
-            <p className="mx-auto mt-2 text-center text-secondary-foreground md:max-w-[70%]">
-              {
-                "We're here to help you get started with your GPU infrastructure deployment. Contact us today to learn more about our solutions and how we can help you achieve peak performance."
-              }
+            <p className="mx-auto mt-2 text-center text-secondary-foreground lg:max-w-[70%]">
+              Contact us today to learn more about our solutions and how we can help you achieve peak performance.
             </p>
           </div>
           <Button size="sm" className="group flex gap-1">

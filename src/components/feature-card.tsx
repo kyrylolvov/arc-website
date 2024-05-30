@@ -1,4 +1,4 @@
-type FeatureCardProps = {
+export type FeatureCardProps = {
   title: string;
   value: string;
   unit: string;

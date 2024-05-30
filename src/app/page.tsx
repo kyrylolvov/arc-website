@@ -1,6 +1,6 @@
 import { RiArrowRightLine } from "@remixicon/react";
 
-import FeatureCard from "~/components/home/feature-card";
+import FeaturesCards from "~/components/home/features-cards";
 import LatestNewsCard from "~/components/home/latest-news-card";
 import OptimizationLottie from "~/components/lotties/optimization-lottie";
 import PriceLottie from "~/components/lotties/price-lottie";
@@ -118,27 +118,7 @@ export default function HomePage() {
           Achieving peak GPU performance has eluded even the most advanced organizations due to the current limitations
           in managing and manipulating how data flows and threads execute on GPUs.
         </p>
-        <div className="mx-auto mt-8 w-full lg:hidden">
-          <div className="grid gap-6 sm:grid-cols-2">
-            {features.slice(0, 2).map((feature, i) => (
-              <FeatureCard {...feature} key={generateId()} />
-            ))}
-          </div>
-
-          <div className="mt-6 flex justify-center gap-6">
-            {features.slice(2).map((feature, i) => (
-              <div key={generateId()} className="w-full sm:w-[calc(50%-12px)]">
-                <FeatureCard {...feature} key={generateId()} />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-8 hidden grid-cols-3 gap-6 lg:grid">
-          {features.map((feature, i) => (
-            <FeatureCard {...feature} key={generateId()} />
-          ))}
-        </div>
+        <FeaturesCards features={features} />
       </div>
 
       <div className="mt-32 w-full">

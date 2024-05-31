@@ -6,7 +6,7 @@ export const latestNews = [
   {
     id: generateId(),
     type: "Event",
-    title: "Join us next week in Hamburg, Germany, for ISC24!",
+    title: "Join us next week in Hamburg for ISC24!",
   },
   {
     id: generateId(),

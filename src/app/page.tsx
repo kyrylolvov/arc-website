@@ -117,10 +117,19 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {secondaryFeatures.map((feature) => (
-            <SecondaryFeatureCard {...feature} key={feature.id} />
-          ))}
+        <div className="grid gap-6">
+          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {secondaryFeatures.map((feature) => (
+              <SecondaryFeatureCard {...feature} key={feature.id} />
+            ))}
+          </div>
+
+          <div className="flex justify-center">
+            <Button size="sm" className="group flex gap-1">
+              Learn More
+              <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
+            </Button>
+          </div>
         </div>
       </div>
 
@@ -135,10 +144,19 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-2 lg:mx-auto lg:max-w-[85%]">
-          {infrastructure.map((item) => (
-            <FeatureCard {...item} key={item.id} />
-          ))}
+        <div className="grid gap-6">
+          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:mx-auto lg:max-w-[85%]">
+            {infrastructure.map((item) => (
+              <FeatureCard {...item} key={item.id} />
+            ))}
+          </div>
+
+          <div className="flex justify-center">
+            <Button size="sm" className="group flex gap-1">
+              Learn More
+              <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
+            </Button>
+          </div>
         </div>
       </div>
 

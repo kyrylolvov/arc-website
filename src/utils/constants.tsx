@@ -1,4 +1,11 @@
-import { RiCalendarLine, RiScales3Line, RiShuffleLine, RiTaskLine, RiTimelineView } from "@remixicon/react";
+import {
+  RiCalendarLine,
+  RiPuzzle2Line,
+  RiScales3Line,
+  RiShuffleLine,
+  RiSpeedUpLine,
+  RiTaskLine,
+} from "@remixicon/react";
 
 import generateId from "./uuid";
 
@@ -50,7 +57,7 @@ export const secondaryFeatures = [
   },
   {
     id: generateId(),
-    icon: RiTimelineView,
+    icon: RiSpeedUpLine,
     title: "Maximized Processor Uptime",
     description: 'Maintain processor uptime by keeping SMs "hot" by utilizing memory-level parallelism.',
   },
@@ -68,7 +75,7 @@ export const secondaryFeatures = [
   },
   {
     id: generateId(),
-    icon: RiTaskLine,
+    icon: RiPuzzle2Line,
     title: "Automated Task Matching",
     description: "Match and deploy tasks automatically, maximizing task density and increasing GPU throughput.",
   },

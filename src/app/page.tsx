@@ -117,19 +117,16 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="grid gap-6">
-          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {secondaryFeatures.map((feature) => (
-              <SecondaryFeatureCard {...feature} key={feature.id} />
-            ))}
-          </div>
+        <div className="mt-4 flex justify-center">
+          <Button size="sm" className="group flex gap-1">
+            Learn About ArcHPC
+          </Button>
+        </div>
 
-          <div className="flex justify-center">
-            <Button size="sm" className="group flex gap-1">
-              Learn More
-              <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
-            </Button>
-          </div>
+        <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {secondaryFeatures.map((feature) => (
+            <SecondaryFeatureCard {...feature} key={feature.id} />
+          ))}
         </div>
       </div>
 
@@ -140,23 +137,23 @@ export default function HomePage() {
           </h2>
           <p className="mx-auto mt-2 text-center text-secondary-foreground md:max-w-[70%]">
             Upgrade your infrastructure with the most in demand NVIDIA GPUs or Tap into unprecedented performance,
-            scalability, and security for every workload
+            scalability, and security for every workload.
           </p>
         </div>
 
-        <div className="grid gap-6">
-          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:mx-auto lg:max-w-[85%]">
-            {infrastructure.map((item) => (
-              <FeatureCard {...item} key={item.id} />
-            ))}
-          </div>
+        <div className="mt-4 flex justify-center gap-2">
+          <Button size="sm" variant="outline" className="">
+            Contact Sales
+          </Button>
+          <Button size="sm" className="group flex gap-1">
+            More About Infrastructure
+          </Button>
+        </div>
 
-          <div className="flex justify-center">
-            <Button size="sm" className="group flex gap-1">
-              Learn More
-              <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
-            </Button>
-          </div>
+        <div className="mx-auto mt-8 grid max-w-[500px] place-items-center gap-4 md:max-w-[1016px] md:grid-cols-2">
+          {infrastructure.map((item) => (
+            <FeatureCard {...item} key={item.id} />
+          ))}
         </div>
       </div>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { RiArrowRightLine, RiCloseLargeLine, RiMenuLine, RiQuestionMark } from "@remixicon/react";
+import { RiCloseLargeLine, RiMenuLine, RiQuestionMark } from "@remixicon/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -8,6 +8,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "~/utils/cn";
 import { isLinkNavItem, isMenuNavItem, navItems } from "~/utils/tabs";
 
+import DemoDialog from "./demo-dialog";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 import { Button } from "./ui/button";
 import {
@@ -149,10 +150,7 @@ export default function Header() {
           </NavigationMenuList>
         </NavigationMenu>
 
-        <Button size="sm" className="group hidden gap-1 lg:flex">
-          Book a demo
-          <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
-        </Button>
+        <DemoDialog />
 
         <Button
           variant="outline"
@@ -200,10 +198,7 @@ export default function Header() {
                 );
               })}
 
-              <Button className="mt-6 flex w-full gap-1 rounded-md">
-                Book a demo
-                <RiArrowRightLine className="mt-[1px] h-4 w-4" />
-              </Button>
+              <DemoDialog />
             </Accordion>
           </nav>
         )}

@@ -1,5 +1,4 @@
-import { RiArrowRightLine } from "@remixicon/react";
-
+import DemoDialog from "~/components/demo-dialog";
 import FeatureCard from "~/components/home/feature-card";
 import LatestNewsCard from "~/components/home/latest-news-card";
 import SecondaryFeatureCard from "~/components/home/secondary-feature-card";
@@ -33,10 +32,7 @@ export default function HomePage() {
           <Button size="sm" variant="outline" className="">
             Contact Sales
           </Button>
-          <Button size="sm" className="group flex gap-1">
-            Book a demo
-            <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
-          </Button>
+          <DemoDialog />
         </div>
       </div>
 
@@ -167,10 +163,7 @@ export default function HomePage() {
               Contact us today to learn more about our solutions and how we can help you achieve peak performance.
             </p>
           </div>
-          <Button size="sm" className="group flex gap-1">
-            Book a demo
-            <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
-          </Button>
+          <DemoDialog />
         </div>
       </div>
     </main>

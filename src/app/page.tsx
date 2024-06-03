@@ -119,7 +119,7 @@ export default function HomePage() {
 
         <div className="mt-4 flex justify-center">
           <Button size="sm" className="group flex gap-1">
-            Learn About ArcHPC
+            Learn about ArcHPC
           </Button>
         </div>
 
@@ -146,7 +146,7 @@ export default function HomePage() {
             Contact Sales
           </Button>
           <Button size="sm" className="group flex gap-1">
-            More About Infrastructure
+            More about Infrastructure
           </Button>
         </div>
 

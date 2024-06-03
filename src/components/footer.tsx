@@ -15,7 +15,7 @@ export default function Footer() {
         <div className="grid grid-cols-4 gap-12">
           <div className="flex flex-col justify-between">
             <div className="flex items-center gap-3">
-              <RiQuestionMark className="h-7 " />
+              <RiQuestionMark className="h-7" />
             </div>
           </div>
           {footerLinks.map((section) => (
@@ -70,7 +70,7 @@ export default function Footer() {
       </div>
 
       <div className="mx-auto w-full lg:hidden">
-        <RiQuestionMark className="h-7 " />
+        <RiQuestionMark className="h-7" />
 
         <Accordion type="multiple" className="mt-4 w-full">
           {footerLinks.map((link) => (

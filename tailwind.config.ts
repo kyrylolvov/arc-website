@@ -37,6 +37,10 @@ const config = {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
         },
+
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

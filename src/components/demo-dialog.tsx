@@ -1,14 +1,20 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
 import { RiArrowRightLine, RiCalendarLine, RiGroupLine, RiTimeLine } from "@remixicon/react";
 import { addMonths, formatDate, startOfMonth, startOfToday, startOfTomorrow } from "date-fns";
 import { toZonedTime } from "date-fns-tz";
 import { useMemo, useState } from "react";
 import { DateFormatter } from "react-day-picker";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 import { Button } from "./ui/button";
 import { Calendar } from "./ui/calendar";
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "./ui/form";
+import { Input } from "./ui/input";
+import { Textarea } from "./ui/textarea";
 
 const formatWeekdayName: DateFormatter = (date, options) => {
   const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
@@ -16,6 +22,16 @@ const formatWeekdayName: DateFormatter = (date, options) => {
 };
 
 const estTimezone = "America/New_York";
+
+const formSchema = z.object({
+  name: z.string().min(1, {
+    message: "Name is required.",
+  }),
+  email: z.string().email({
+    message: "Invalid email address.",
+  }),
+  notes: z.string().optional(),
+});
 
 type DemoDialogProps = {};
 
@@ -34,13 +50,30 @@ export default function DemoDialog({}: DemoDialogProps) {
     [nowInEST],
   );
 
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      notes: "",
+    },
+  });
+
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log(values);
+  }
+
   return (
     <Dialog
       open={open}
       onOpenChange={(open) => {
         setOpen(open);
 
-        if (!open) setTimeout(() => setDate(undefined), 150);
+        if (!open)
+          setTimeout(() => {
+            setDate(undefined);
+            form.reset();
+          }, 150);
       }}
     >
       <DialogTrigger asChild>
@@ -81,14 +114,63 @@ export default function DemoDialog({}: DemoDialogProps) {
 
           <div className="w-full p-4">
             {date ? (
-              <div className="flex h-full flex-col justify-between">
-                <div></div>
-                <div className="flex items-center justify-end gap-2">
-                  <Button size="sm" variant="ghost" onClick={() => setDate(undefined)}>
-                    Back
-                  </Button>
-                  <Button size="sm">Confirm</Button>
-                </div>
+              <div className="h-full">
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="flex h-full flex-col justify-between">
+                    <div className="space-y-2">
+                      <FormField
+                        control={form.control}
+                        name="name"
+                        render={({ field }) => (
+                          <FormItem className="space-y-1.5">
+                            <FormLabel>Name *</FormLabel>
+                            <FormControl>
+                              <Input placeholder="Enter your name..." className="h-9" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem className="space-y-1.5">
+                            <FormLabel>Email Address *</FormLabel>
+                            <FormControl>
+                              <Input placeholder="Enter your email address..." className="h-9" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="notes"
+                        render={({ field }) => (
+                          <FormItem className="space-y-1.5">
+                            <FormLabel>Notes</FormLabel>
+                            <FormControl>
+                              <Textarea
+                                placeholder="Enter any additional information that will help us to better understand your needs..."
+                                className="h-[108px] resize-none"
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                    <div className="flex items-center justify-end gap-2">
+                      <Button size="sm" variant="ghost" onClick={() => setDate(undefined)}>
+                        Back
+                      </Button>
+                      <Button size="sm">Confirm</Button>
+                    </div>
+                  </form>
+                </Form>
               </div>
             ) : (
               <Calendar

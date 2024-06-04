@@ -1,7 +1,7 @@
 "use client";
 
-import { RiArrowRightLine, RiGroupLine, RiTimeLine } from "@remixicon/react";
-import { addMonths, startOfMonth, startOfToday } from "date-fns";
+import { RiArrowRightLine, RiCalendarLine, RiGroupLine, RiTimeLine } from "@remixicon/react";
+import { addMonths, formatDate, startOfMonth, startOfTomorrow } from "date-fns";
 import { useMemo, useState } from "react";
 import { DateFormatter } from "react-day-picker";
 
@@ -17,14 +17,22 @@ const formatWeekdayName: DateFormatter = (date, options) => {
 type DemoDialogProps = {};
 
 export default function DemoDialog({}: DemoDialogProps) {
+  const [open, setOpen] = useState(false);
   const [date, setDate] = useState<Date | undefined>(undefined);
 
   const currentMonth = useMemo(() => startOfMonth(new Date()), []);
-  const today = useMemo(() => startOfToday(), []);
-  const threeMonthsLater = useMemo(() => addMonths(currentMonth, 3),[]); 
+  const tomorrow = useMemo(() => startOfTomorrow(), []);
+  const threeMonthsLater = useMemo(() => addMonths(currentMonth, 3), [currentMonth]);
 
   return (
-    <Dialog>
+    <Dialog
+      open={open}
+      onOpenChange={(open) => {
+        setOpen(open);
+
+        if (!open) setTimeout(() => setDate(undefined), 150);
+      }}
+    >
       <DialogTrigger asChild>
         <Button size="sm" className="group flex gap-1">
           Book a demo
@@ -47,6 +55,10 @@ export default function DemoDialog({}: DemoDialogProps) {
 
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-1.5 text-sm">
+                <RiCalendarLine className="h-[18px] w-[18px] text-secondary-foreground" />
+                <span className="text-sm">{date ? formatDate(date, "MMMM d, yyyy") : "Select a date"}</span>
+              </div>
+              <div className="flex items-center gap-1.5 text-sm">
                 <RiTimeLine className="h-[18px] w-[18px] text-secondary-foreground" />
                 30 mins
               </div>
@@ -58,16 +70,28 @@ export default function DemoDialog({}: DemoDialogProps) {
           </div>
 
           <div className="w-full p-4">
-            <Calendar
-              mode="single"
-              selected={date}
-              onSelect={setDate}
-              fromMonth={currentMonth}
-              toMonth={threeMonthsLater}
-              disabled={{ before: today }}
-              formatters={{ formatWeekdayName }}
-              showOutsideDays={false}
-            />
+            {date ? (
+              <div className="flex h-full flex-col justify-between">
+                <div></div>
+                <div className="flex items-center justify-end gap-2">
+                  <Button size="sm" variant="ghost" onClick={() => setDate(undefined)}>
+                    Back
+                  </Button>
+                  <Button size="sm">Confirm</Button>
+                </div>
+              </div>
+            ) : (
+              <Calendar
+                mode="single"
+                selected={date}
+                onSelect={setDate}
+                fromMonth={currentMonth}
+                toMonth={threeMonthsLater}
+                formatters={{ formatWeekdayName }}
+                showOutsideDays={false}
+                disabled={{ dayOfWeek: [0, 6], before: tomorrow, after: threeMonthsLater }}
+              />
+            )}
           </div>
         </div>
       </DialogContent>

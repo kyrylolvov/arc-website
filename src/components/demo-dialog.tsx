@@ -1,13 +1,23 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { RiArrowRightLine, RiCalendarLine, RiCheckLine, RiGroupLine, RiTimeLine } from "@remixicon/react";
+import {
+  RiArrowRightLine,
+  RiCalendarLine,
+  RiCheckLine,
+  RiGroupLine,
+  RiLoader2Line,
+  RiTimeLine,
+} from "@remixicon/react";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
 import { addMonths, endOfTomorrow, formatDate, startOfMonth } from "date-fns";
 import { useMemo, useState } from "react";
 import { DateFormatter } from "react-day-picker";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
+import { demoRequestSchema } from "~/schemas/demo";
 import { cn } from "~/utils/cn";
 
 import { Badge } from "./ui/badge";
@@ -23,18 +33,6 @@ const formatWeekdayName: DateFormatter = (date, options) => {
   return daysOfWeek[date.getDay()];
 };
 
-const estTimezone = "America/New_York";
-
-const formSchema = z.object({
-  name: z.string().min(1, {
-    message: "Name is required.",
-  }),
-  email: z.string().email({
-    message: "Invalid email address.",
-  }),
-  notes: z.string().optional(),
-});
-
 type DemoDialogProps = {};
 
 export default function DemoDialog({}: DemoDialogProps) {
@@ -45,8 +43,8 @@ export default function DemoDialog({}: DemoDialogProps) {
   const tomorrow = useMemo(() => endOfTomorrow(), []);
   const threeMonthsLater = useMemo(() => addMonths(currentMonth, 3), [currentMonth]);
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof demoRequestSchema>>({
+    resolver: zodResolver(demoRequestSchema),
     defaultValues: {
       name: "",
       email: "",
@@ -54,8 +52,14 @@ export default function DemoDialog({}: DemoDialogProps) {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  const mutation = useMutation({
+    mutationFn: (demoRequest: z.infer<typeof demoRequestSchema>) => {
+      return axios.post("/api/demo", demoRequest);
+    },
+  });
+
+  function onSubmit(values: z.infer<typeof demoRequestSchema>) {
+    mutation.mutate(values);
   }
 
   return (
@@ -69,6 +73,7 @@ export default function DemoDialog({}: DemoDialogProps) {
         setTimeout(() => {
           setDate(undefined);
           form.reset();
+          mutation.reset();
         }, 150);
       }}
     >
@@ -79,12 +84,9 @@ export default function DemoDialog({}: DemoDialogProps) {
         </Button>
       </DialogTrigger>
       <DialogContent
-        className={cn(
-          "min-h-[424px] max-w-[700px] p-0",
-          form.formState.isSubmitSuccessful && "max-h-[100%] max-w-[500px]",
-        )}
+        className={cn("min-h-[424px] max-w-[700px] p-0", mutation.isSuccess && "max-h-[100%] max-w-[500px]")}
       >
-        {form.formState.isSubmitSuccessful && !!date ? (
+        {mutation.isSuccess && !!date ? (
           <div className="flex flex-col gap-6 p-6">
             <div className="flex flex-col gap-4">
               <div className="flex justify-center">
@@ -217,10 +219,20 @@ export default function DemoDialog({}: DemoDialogProps) {
                         />
                       </div>
                       <div className="flex items-center justify-end gap-2">
-                        <Button size="sm" variant="ghost" onClick={() => setDate(undefined)}>
+                        <Button
+                          size="sm"
+                          variant="ghost"
+                          onClick={() => setDate(undefined)}
+                          disabled={mutation.isPending}
+                        >
                           Back
                         </Button>
-                        <Button size="sm">Confirm</Button>
+                        <Button size="sm" disabled={mutation.isPending}>
+                          {mutation.isPending && (
+                            <RiLoader2Line className="text-muted-foreground mr-1.5 h-4 w-4 animate-spin" />
+                          )}
+                          Confirm
+                        </Button>
                       </div>
                     </form>
                   </Form>

@@ -1,7 +1,8 @@
 "use client";
 
 import { RiArrowRightLine, RiCalendarLine, RiGroupLine, RiTimeLine } from "@remixicon/react";
-import { addMonths, formatDate, startOfMonth, startOfTomorrow } from "date-fns";
+import { addMonths, formatDate, startOfMonth, startOfToday, startOfTomorrow } from "date-fns";
+import { toZonedTime } from "date-fns-tz";
 import { useMemo, useState } from "react";
 import { DateFormatter } from "react-day-picker";
 
@@ -14,6 +15,8 @@ const formatWeekdayName: DateFormatter = (date, options) => {
   return daysOfWeek[date.getDay()];
 };
 
+const estTimezone = "America/New_York";
+
 type DemoDialogProps = {};
 
 export default function DemoDialog({}: DemoDialogProps) {
@@ -21,8 +24,15 @@ export default function DemoDialog({}: DemoDialogProps) {
   const [date, setDate] = useState<Date | undefined>(undefined);
 
   const currentMonth = useMemo(() => startOfMonth(new Date()), []);
+  const today = useMemo(() => startOfToday(), []);
   const tomorrow = useMemo(() => startOfTomorrow(), []);
   const threeMonthsLater = useMemo(() => addMonths(currentMonth, 3), [currentMonth]);
+
+  const nowInEST = useMemo(() => toZonedTime(new Date(), estTimezone), []);
+  const isAfter4PM = useMemo(
+    () => nowInEST.getHours() > 16 || (nowInEST.getHours() === 16 && nowInEST.getMinutes() > 0),
+    [nowInEST],
+  );
 
   return (
     <Dialog
@@ -89,7 +99,11 @@ export default function DemoDialog({}: DemoDialogProps) {
                 toMonth={threeMonthsLater}
                 formatters={{ formatWeekdayName }}
                 showOutsideDays={false}
-                disabled={{ dayOfWeek: [0, 6], before: tomorrow, after: threeMonthsLater }}
+                disabled={[
+                  { dayOfWeek: [0, 6] },
+                  { before: isAfter4PM ? tomorrow : today },
+                  { after: threeMonthsLater },
+                ]}
               />
             )}
           </div>

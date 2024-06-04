@@ -21,13 +21,6 @@ import {
   navigationMenuTriggerStyle,
 } from "./ui/navigation-menu";
 
-const hoverBubblePosition: { [key: string]: string } = {
-  solutions: "w-[107px] translate-x-0",
-  resources: "w-[115px] translate-x-[110px]",
-  docs: "w-[65px] translate-x-[231px]",
-  contact: "w-[84px] translate-x-[300px]",
-};
-
 export default function Header() {
   const pathname = usePathname();
 
@@ -35,7 +28,7 @@ export default function Header() {
 
   const activeNavItem = useMemo(() => navItems.find((navItem) => pathname.includes(navItem.slug))?.slug, [pathname]);
 
-  const [hoveredNavItem, setHoveredNavItem] = useState<string | null>(null);
+  const [hoveredNavItem, setHoveredNavItem] = useState<string | null>("docs");
 
   const prevNavItemRef = useRef<string | null>(null);
 
@@ -50,6 +43,26 @@ export default function Header() {
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    const offsetX = document.querySelector(`[data-slug="solutions"]`)?.getBoundingClientRect().left ?? 0;
+
+    const updateBubblePosition = (element: Element | null) => {
+      if (element) {
+        const { width, left } = element.getBoundingClientRect();
+        document.documentElement.style.setProperty("--bubble-width", `${width}px`);
+        document.documentElement.style.setProperty("--bubble-translate-x", `${left - offsetX}px`);
+      } else {
+        document.documentElement.style.setProperty("--bubble-width", "0px");
+        document.documentElement.style.setProperty("--bubble-translate-x", "0px");
+      }
+    };
+
+    const elementSlug = hoveredNavItem ?? activeNavItem;
+    const element = elementSlug ? document.querySelector(`[data-slug="${elementSlug}"]`) : null;
+
+    updateBubblePosition(element);
+  }, [hoveredNavItem, activeNavItem]);
 
   return (
     <header className="fixed z-30 w-full border-b bg-background-accent">
@@ -70,8 +83,8 @@ export default function Header() {
         >
           <div
             className={cn(
-              "absolute left-0 top-0 h-9 rounded-full bg-secondary",
-              hoveredNavItem ? `${hoverBubblePosition[hoveredNavItem]} transition-all duration-300` : "opacity-0",
+              "absolute left-0 top-0 h-9 w-[var(--bubble-width)] translate-x-[var(--bubble-translate-x)] rounded-full bg-secondary",
+              hoveredNavItem ? "transition-all duration-300" : "opacity-0",
               prevNavItemRef.current === null && "duration-0",
             )}
           ></div>
@@ -81,7 +94,11 @@ export default function Header() {
 
               if (isMenuNavItem(navItem)) {
                 return (
-                  <NavigationMenuItem key={id} onMouseOver={() => setHoveredNavItem(label.toLowerCase())}>
+                  <NavigationMenuItem
+                    key={id}
+                    onMouseOver={() => setHoveredNavItem(label.toLowerCase())}
+                    data-slug={slug}
+                  >
                     <NavigationMenuTrigger
                       onClick={(e) => e.preventDefault()}
                       className={cn(activeNavItem === id && "rounded-full bg-secondary text-secondary-foreground")}
@@ -128,7 +145,11 @@ export default function Header() {
               }
 
               return (
-                <NavigationMenuItem key={id} onMouseOver={() => setHoveredNavItem(label.toLowerCase())}>
+                <NavigationMenuItem
+                  key={id}
+                  onMouseOver={() => setHoveredNavItem(label.toLowerCase())}
+                  data-slug={slug}
+                >
                   <Link
                     target={isLinkNavItem(navItem) ? "_blank" : "_self"}
                     href={isLinkNavItem(navItem) ? navItem.url : `/${slug}`}
@@ -150,7 +171,9 @@ export default function Header() {
           </NavigationMenuList>
         </NavigationMenu>
 
-        <DemoDialog />
+        <div className="hidden lg:block">
+          <DemoDialog />
+        </div>
 
         <Button
           variant="outline"

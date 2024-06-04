@@ -14,6 +14,9 @@
     --border: 240 5.9% 90%;
     --destructive: 0 84.2% 60.2%;
     --radius: 0.5rem;
+
+    --bubble-width: 0;
+    --bubble-translate-x: 0;
   }
 
   .dark {

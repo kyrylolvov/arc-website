@@ -1,14 +1,16 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { RiArrowRightLine, RiCalendarLine, RiGroupLine, RiTimeLine } from "@remixicon/react";
-import { addMonths, formatDate, startOfMonth, startOfToday, startOfTomorrow } from "date-fns";
-import { toZonedTime } from "date-fns-tz";
+import { RiArrowRightLine, RiCalendarLine, RiCheckLine, RiGroupLine, RiTimeLine } from "@remixicon/react";
+import { addMonths, endOfTomorrow, formatDate, startOfMonth } from "date-fns";
 import { useMemo, useState } from "react";
 import { DateFormatter } from "react-day-picker";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
+import { cn } from "~/utils/cn";
+
+import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { Calendar } from "./ui/calendar";
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
@@ -40,15 +42,8 @@ export default function DemoDialog({}: DemoDialogProps) {
   const [date, setDate] = useState<Date | undefined>(undefined);
 
   const currentMonth = useMemo(() => startOfMonth(new Date()), []);
-  const today = useMemo(() => startOfToday(), []);
-  const tomorrow = useMemo(() => startOfTomorrow(), []);
+  const tomorrow = useMemo(() => endOfTomorrow(), []);
   const threeMonthsLater = useMemo(() => addMonths(currentMonth, 3), [currentMonth]);
-
-  const nowInEST = useMemo(() => toZonedTime(new Date(), estTimezone), []);
-  const isAfter4PM = useMemo(
-    () => nowInEST.getHours() > 16 || (nowInEST.getHours() === 16 && nowInEST.getMinutes() > 0),
-    [nowInEST],
-  );
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -83,9 +78,63 @@ export default function DemoDialog({}: DemoDialogProps) {
           <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
         </Button>
       </DialogTrigger>
-      <DialogContent className="min-h-[424px] max-w-[700px] p-0">
-        {form.formState.isSubmitSuccessful ? (
-          <></>
+      <DialogContent
+        className={cn(
+          "min-h-[424px] max-w-[700px] p-0",
+          form.formState.isSubmitSuccessful && "max-h-[100%] max-w-[500px]",
+        )}
+      >
+        {form.formState.isSubmitSuccessful && !!date ? (
+          <div className="flex flex-col gap-6 p-6">
+            <div className="flex flex-col gap-4">
+              <div className="flex justify-center">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary">
+                  <RiCheckLine className="text-primary-foreground" />
+                </div>
+              </div>
+              <div className="gap-1 text-center">
+                <h2 className="text-2xl font-semibold">Your demo request has been received!</h2>
+                <p className="text-secondary-foreground">We will contact you shortly to schedule a demo session.</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-3 gap-4 border-t py-6">
+              <div className="text-secondary-foreground">What</div>
+              <div className="col-span-2">
+                <p>ArcHPC Demo Session</p>
+              </div>
+
+              <div className="text-secondary-foreground">When</div>
+              <div className="col-span-2">
+                <p>{formatDate(date, "EEEE, MMMM d, yyyy")}</p>
+              </div>
+
+              <div className=" ">
+                <span className="text-secondary-foreground">Who</span>
+              </div>
+              <div className="col-span-2 flex flex-col gap-4">
+                <div className="space-y-0.5">
+                  <span className="flex items-center gap-2">
+                    Anton Allen
+                    <Badge>Host</Badge>
+                  </span>
+                  <p>anton@arccompute.io</p>
+                </div>
+
+                <div className="space-y-0.5">
+                  <span className="flex items-center gap-2">
+                    Michael Buchel<Badge>Host</Badge>
+                  </span>
+                  <p>michael@arccompute.io</p>
+                </div>
+
+                <div className="space-y-0.5">
+                  <span>{form.getValues("name")}</span>
+                  <p>{form.getValues("email")}</p>
+                </div>
+              </div>
+            </div>
+          </div>
         ) : (
           <div className="flex">
             <div className="flex w-[45%] shrink-0 flex-col justify-between border-r p-4">
@@ -111,7 +160,7 @@ export default function DemoDialog({}: DemoDialogProps) {
                 </div>
                 <div className="flex items-center gap-1.5 text-sm">
                   <RiGroupLine className="h-[18px] w-[18px] text-secondary-foreground" />
-                  Michael Buchel, Anton Allen
+                  Anton Allen, Michael Buchel
                 </div>
               </div>
             </div>
@@ -185,7 +234,7 @@ export default function DemoDialog({}: DemoDialogProps) {
                   toMonth={threeMonthsLater}
                   formatters={{ formatWeekdayName }}
                   showOutsideDays={false}
-                  disabled={[{ dayOfWeek: [0, 6] }, { before: isAfter4PM ? tomorrow : today }]}
+                  disabled={[{ dayOfWeek: [0, 6] }, { before: tomorrow }]}
                 />
               )}
             </div>

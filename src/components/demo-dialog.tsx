@@ -1,7 +1,7 @@
 "use client";
 
 import { RiArrowRightLine, RiGroupLine, RiTimeLine } from "@remixicon/react";
-import { startOfMonth, startOfToday } from "date-fns";
+import { addMonths, startOfMonth, startOfToday } from "date-fns";
 import { useMemo, useState } from "react";
 import { DateFormatter } from "react-day-picker";
 
@@ -17,10 +17,11 @@ const formatWeekdayName: DateFormatter = (date, options) => {
 type DemoDialogProps = {};
 
 export default function DemoDialog({}: DemoDialogProps) {
-  const [date, setDate] = useState<Date | undefined>(new Date());
+  const [date, setDate] = useState<Date | undefined>(undefined);
 
   const currentMonth = useMemo(() => startOfMonth(new Date()), []);
   const today = useMemo(() => startOfToday(), []);
+  const threeMonthsLater = useMemo(() => addMonths(currentMonth, 3),[]); 
 
   return (
     <Dialog>
@@ -61,10 +62,11 @@ export default function DemoDialog({}: DemoDialogProps) {
               mode="single"
               selected={date}
               onSelect={setDate}
-              showOutsideDays={false}
               fromMonth={currentMonth}
+              toMonth={threeMonthsLater}
               disabled={{ before: today }}
               formatters={{ formatWeekdayName }}
+              showOutsideDays={false}
             />
           </div>
         </div>

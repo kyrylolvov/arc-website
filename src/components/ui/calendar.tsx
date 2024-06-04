@@ -31,10 +31,13 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }: C
         head_cell: "text-secondary-foreground uppercase rounded-md w-full font-normal text-[0.8rem]",
         row: "flex w-full mt-2 justify-between space-x-1",
         cell: "w-full aspect-square text-center text-sm p-0 relative",
-        day: "w-full aspect-square rounded-md p-0 font-normal aria-selected:opacity-100 bg-secondary border-2 border-transparent hover:border-primary",
+        day: cn(
+          buttonVariants({ variant: "ghost" }),
+          "w-full h-auto aspect-square rounded-md p-0 border-2 border-transparent bg-secondary hover:text-foreground hover:border-foreground",
+        ),
         day_range_end: "day-range-end",
         day_selected:
-          "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
+        "!bg-primary !text-primary-foreground !hover:bg-primary !hover:text-primary-foreground",
         day_today: "text-foreground",
         day_disabled: "text-secondary-foreground bg-transparent hover:border-transparent",
         day_range_middle: "aria-selected:bg-accent aria-selected:text-accent-foreground",

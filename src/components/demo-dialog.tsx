@@ -33,9 +33,11 @@ const formatWeekdayName: DateFormatter = (date, options) => {
   return daysOfWeek[date.getDay()];
 };
 
-type DemoDialogProps = {};
+type DemoDialogProps = {
+  isLight?: boolean;
+};
 
-export default function DemoDialog({}: DemoDialogProps) {
+export default function DemoDialog({ isLight }: DemoDialogProps) {
   const [open, setOpen] = useState(false);
   const [date, setDate] = useState<Date | undefined>(undefined);
 
@@ -78,7 +80,7 @@ export default function DemoDialog({}: DemoDialogProps) {
       }}
     >
       <DialogTrigger asChild>
-        <Button size="sm" className="group flex gap-1">
+        <Button size="sm" variant={isLight ? "outline" : "default"} className="group flex gap-1">
           Book a demo
           <RiArrowRightLine className="mt-[1px] h-4 w-4 transition-transform duration-150 ease-out group-hover:-rotate-45" />
         </Button>

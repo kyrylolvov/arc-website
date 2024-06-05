@@ -1,7 +1,9 @@
 import {
   RiCalendarLine,
+  RiCloudLine,
   RiPuzzle2Line,
   RiScales3Line,
+  RiServerLine,
   RiShuffleLine,
   RiSpeedUpLine,
   RiTaskLine,
@@ -33,23 +35,26 @@ export const metrics: MetricsCardProps[] = [
   {
     id: generateId(),
     value: "100%",
-
-    description: "Utilization of GPU resources to achieve peak performance on your data center.",
+    description: "Utilization of GPU Resources",
   },
   {
     id: generateId(),
     value: "5x",
-
-    description: "Faster GPU performance by optimizing data flow and thread execution.",
+    description: "Boost to GPU Performance",
   },
   {
     id: generateId(),
     value: "1/6",
-    description: "Your hardware requirements are reduced so you can focus on your workload.",
+    description: "Your Hardware Requirements",
+  },
+  {
+    id: generateId(),
+    value: "3x",
+    description: "More Performance Per Watt",
   },
 ];
 
-export const secondaryFeatures = [
+export const features = [
   {
     id: generateId(),
     icon: RiCalendarLine,
@@ -91,14 +96,14 @@ export const secondaryFeatures = [
 export const infrastructure = [
   {
     id: generateId(),
-    picture: <div className="h-full bg-secondary"></div>,
+    icon: RiServerLine,
     title: "GPU Servers",
     description: "Leverage the power of the latest NVIDIA GPUs in your data center.",
   },
   {
     id: generateId(),
-    picture: <div className="h-full bg-secondary"></div>,
-    title: "Cloud Infrastructure",
-    description: "Enable large-scale model training with top-of-the-line NVIDIA GPUs.",
+    icon: RiCloudLine,
+    title: "Cloud Instances",
+    description: "Enable large-scale model training with top-of-the-line NVIDIA GPUs",
   },
 ];

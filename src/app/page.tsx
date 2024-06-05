@@ -1,9 +1,9 @@
 import DemoDialog from "~/components/demo-dialog";
+import FeatureCard from "~/components/home/feature-card";
 import LatestNewsCard from "~/components/home/latest-news-card";
 import MetricsCard from "~/components/home/metrics-card";
-import SecondaryFeatureCard from "~/components/home/secondary-feature-card";
 import { Button } from "~/components/ui/button";
-import { latestNews, metrics, secondaryFeatures } from "~/utils/constants";
+import { features, infrastructure, latestNews, metrics } from "~/utils/constants";
 import generateId from "~/utils/uuid";
 
 export default function HomePage() {
@@ -63,7 +63,7 @@ export default function HomePage() {
         )}
       </div>
 
-      <div className="mt-32 w-full">
+      <div className="mt-36 w-full">
         <div className="mx-auto max-w-5xl">
           <h2 className="text-shadow-grey py-1 text-center text-3xl font-bold sm:text-4xl">
             The Leader In GPU Optimization
@@ -74,35 +74,16 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="mx-auto mt-8 hidden w-full max-w-[950px] grid-cols-3 gap-4 lg:grid">
+        <div className="mx-auto mt-8 grid w-full max-w-[350px] gap-4 md:max-w-[600px] md:grid-cols-2 lg:max-w-[1000px] lg:grid-cols-4">
           {metrics.map((metric) => (
             <div key={metric.id}>
               <MetricsCard {...metric} />
             </div>
           ))}
         </div>
-
-        <div className="mx-auto mt-8 w-full max-w-[325px] sm:max-w-[600px] lg:hidden">
-          <div className="grid gap-4 sm:grid-cols-2">
-            {metrics.slice(0, 2).map((metric) => (
-              <div key={metric.id}>
-                <MetricsCard {...metric} />
-              </div>
-            ))}
-          </div>
-          {latestNews.slice(2).length > 0 && (
-            <div className="mt-6 flex justify-center gap-4">
-              {metrics.slice(2).map((metric) => (
-                <div key={metric.id} className="w-full sm:w-[calc(50%-12px)]">
-                  <MetricsCard {...metric} />
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
       </div>
 
-      <div className="mt-32 w-full">
+      <div className="mt-36 w-full">
         <div className="mx-auto max-w-6xl">
           <h2 className="text-shadow-grey py-1 text-center text-3xl font-bold sm:text-4xl">
             Unlock the True Potential of Your GPU Infrastructure
@@ -120,13 +101,13 @@ export default function HomePage() {
         </div>
 
         <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {secondaryFeatures.map((feature) => (
-            <SecondaryFeatureCard {...feature} key={feature.id} />
+          {features.map((feature) => (
+            <FeatureCard {...feature} key={feature.id} />
           ))}
         </div>
       </div>
 
-      <div className="mt-32 w-full">
+      <div className="mt-36 w-full">
         <div className="mx-auto max-w-5xl">
           <h2 className="text-shadow-grey py-1 text-center text-3xl font-bold sm:text-4xl">
             End-to-End GPU Infrastructure Solutions
@@ -146,22 +127,26 @@ export default function HomePage() {
           </Button>
         </div>
 
-        {/* <div className="mx-auto mt-8 grid max-w-[500px] place-items-center gap-4 md:max-w-[1016px] md:grid-cols-2">
+        <div className="mt-8 flex flex-col justify-center gap-4 md:flex-row">
           {infrastructure.map((item) => (
-            <FeatureCard {...item} key={item.id} />
+            <div key={item.id} className="md:max-w-[363px]">
+              <FeatureCard {...item} />
+            </div>
           ))}
-        </div> */}
+        </div>
       </div>
 
-      <div className="mt-32 grid w-full rounded-lg border bg-background-accent px-4 py-12">
+      <div className="mt-36 grid w-full rounded-xl border bg-foreground/90 px-4 py-12">
         <div className="flex flex-col items-center gap-6">
           <div>
-            <h2 className="text-shadow-grey py-1 text-center text-3xl font-bold sm:text-4xl">Ready To Get Started?</h2>
-            <p className="mx-auto mt-2 text-center text-secondary-foreground lg:max-w-[70%]">
+            <h2 className="text-shadow-dark-grey py-1 text-center text-3xl font-bold text-primary-foreground sm:text-4xl">
+              Ready To Get Started?
+            </h2>
+            <p className="mx-auto mt-2 text-center text-border lg:max-w-[70%]">
               Contact us today to learn more about our solutions and how we can help you achieve peak performance.
             </p>
           </div>
-          <DemoDialog />
+          <DemoDialog isLight />
         </div>
       </div>
     </main>

@@ -7,6 +7,8 @@ import {
   RiTaskLine,
 } from "@remixicon/react";
 
+import { MetricsCardProps } from "~/components/home/metrics-card";
+
 import generateId from "./uuid";
 
 export const latestNews = [
@@ -27,24 +29,23 @@ export const latestNews = [
   },
 ];
 
-export const features = [
+export const metrics: MetricsCardProps[] = [
   {
     id: generateId(),
-    animation: <div className="h-full bg-secondary"></div>,
-    title: "Maximize GPU Utilization",
-    description: "Utilize all available GPU resources to achieve peak performance.",
+    value: "100%",
+
+    description: "Utilization of GPU resources to achieve peak performance on your data center.",
   },
   {
     id: generateId(),
-    animation: <div className="h-full bg-secondary"></div>,
-    title: "Faster GPU Performance",
-    description: "Improve GPU performance by optimizing data flow and thread execution.",
+    value: "5x",
+
+    description: "Faster GPU performance by optimizing data flow and thread execution.",
   },
   {
     id: generateId(),
-    animation: <div className="h-full bg-secondary"></div>,
-    title: "Reduce Hardware Requirements",
-    description: "Reduce hardware requirements by optimizing utilization and performance.",
+    value: "1/6",
+    description: "Your hardware requirements are reduced so you can focus on your workload.",
   },
 ];
 
@@ -90,13 +91,13 @@ export const secondaryFeatures = [
 export const infrastructure = [
   {
     id: generateId(),
-    animation: <div className="h-full bg-secondary"></div>,
+    picture: <div className="h-full bg-secondary"></div>,
     title: "GPU Servers",
     description: "Leverage the power of the latest NVIDIA GPUs in your data center.",
   },
   {
     id: generateId(),
-    animation: <div className="h-full bg-secondary"></div>,
+    picture: <div className="h-full bg-secondary"></div>,
     title: "Cloud Infrastructure",
     description: "Enable large-scale model training with top-of-the-line NVIDIA GPUs.",
   },

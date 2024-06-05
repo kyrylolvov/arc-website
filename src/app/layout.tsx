@@ -12,7 +12,7 @@ import { ThemeProvider } from "~/providers/theme-provider";
 import { cn } from "~/utils/cn";
 
 export const metadata: Metadata = {
-  title: { template: "Arc Compute - %s", default: "Arc HPC - Optimize Your GPU Infrastructure" },
+  title: { template: "Arc Compute - %s", default: "Arc Compute - Optimize Your GPU Infrastructure" },
   description: "End-to-end AI infrastructure specialists focused on GPU optimization.",
 };
 

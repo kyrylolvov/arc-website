@@ -1,9 +1,9 @@
 import DemoDialog from "~/components/demo-dialog";
-import FeatureCard from "~/components/home/feature-card";
 import LatestNewsCard from "~/components/home/latest-news-card";
+import MetricsCard from "~/components/home/metrics-card";
 import SecondaryFeatureCard from "~/components/home/secondary-feature-card";
 import { Button } from "~/components/ui/button";
-import { features, infrastructure, latestNews, secondaryFeatures } from "~/utils/constants";
+import { latestNews, metrics, secondaryFeatures } from "~/utils/constants";
 import generateId from "~/utils/uuid";
 
 export default function HomePage() {
@@ -11,8 +11,8 @@ export default function HomePage() {
     <main className="mx-auto flex max-w-7xl flex-col items-center px-4 py-24 sm:px-8">
       <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4">
         <p className="text-center font-light text-secondary-foreground">
-          <span className="font-medium text-primary">NVIDIA H200</span> GPU servers are now available for{" "}
-          <span className="font-medium text-primary">June</span> delivery.
+          <span className="font-medium text-foreground">NVIDIA H200</span> GPU servers are now available for{" "}
+          <span className="font-medium text-foreground">June</span> delivery.
         </p>
 
         <Button size="sm" variant="outline">
@@ -74,27 +74,27 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="mt-8 hidden w-full grid-cols-3 gap-4 lg:grid">
-          {features.map((feature) => (
-            <div key={feature.id}>
-              <FeatureCard {...feature} />
+        <div className="mx-auto mt-8 hidden w-full max-w-[950px] grid-cols-3 gap-4 lg:grid">
+          {metrics.map((metric) => (
+            <div key={metric.id}>
+              <MetricsCard {...metric} />
             </div>
           ))}
         </div>
 
-        <div className="mt-8 w-full lg:hidden">
+        <div className="mx-auto mt-8 w-full max-w-[325px] sm:max-w-[600px] lg:hidden">
           <div className="grid gap-4 sm:grid-cols-2">
-            {features.slice(0, 2).map((feature) => (
-              <div key={feature.id}>
-                <FeatureCard {...feature} />
+            {metrics.slice(0, 2).map((metric) => (
+              <div key={metric.id}>
+                <MetricsCard {...metric} />
               </div>
             ))}
           </div>
           {latestNews.slice(2).length > 0 && (
             <div className="mt-6 flex justify-center gap-4">
-              {features.slice(2).map((feature) => (
-                <div key={feature.id} className="w-full sm:w-[calc(50%-12px)]">
-                  <FeatureCard {...feature} />
+              {metrics.slice(2).map((metric) => (
+                <div key={metric.id} className="w-full sm:w-[calc(50%-12px)]">
+                  <MetricsCard {...metric} />
                 </div>
               ))}
             </div>
@@ -146,11 +146,11 @@ export default function HomePage() {
           </Button>
         </div>
 
-        <div className="mx-auto mt-8 grid max-w-[500px] place-items-center gap-4 md:max-w-[1016px] md:grid-cols-2">
+        {/* <div className="mx-auto mt-8 grid max-w-[500px] place-items-center gap-4 md:max-w-[1016px] md:grid-cols-2">
           {infrastructure.map((item) => (
             <FeatureCard {...item} key={item.id} />
           ))}
-        </div>
+        </div> */}
       </div>
 
       <div className="mt-32 grid w-full rounded-lg border bg-background-accent px-4 py-12">

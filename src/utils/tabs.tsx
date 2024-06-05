@@ -115,7 +115,7 @@ export const RESOURCES_COMPANY: MenuNavItemLinks[] = [
     id: generateId(),
     icon: RiUserSmileLine,
     title: "Customers",
-    description: "The companies we keep",
+    description: "The companies we help succeed",
     slug: "customers",
   },
 ];

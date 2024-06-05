@@ -21,8 +21,8 @@ export default function HomePage() {
       </div>
 
       <div className="mx-auto mt-16 max-w-4xl text-center">
-        <h1 className="bg-gradient-to-b from-foreground/70 to-foreground bg-clip-text py-1 text-4xl font-extrabold text-transparent dark:bg-gradient-to-t sm:text-5xl">
-          Start Your GPU Infrastructure Deployment Journey
+        <h1 className="text-shadow-grey py-1 text-4xl font-extrabold tracking-wide sm:text-5xl">
+          Start Your <span className="text-shadow-border-black">GPU Infrastructure</span> Deployment Journey.
         </h1>
         <p className="mt-6 text-secondary-foreground">
           Optimizing GPU infrastructure is complicated. Luckily, we{"'"}re here to help make the process easy.
@@ -65,7 +65,7 @@ export default function HomePage() {
 
       <div className="mt-32 w-full">
         <div className="mx-auto max-w-5xl">
-          <h2 className="bg-gradient-to-b from-foreground/70 to-foreground bg-clip-text py-1 text-center text-3xl font-bold text-transparent dark:bg-gradient-to-t sm:text-4xl">
+          <h2 className="text-shadow-grey py-1 text-center text-3xl font-bold sm:text-4xl">
             The Leader In GPU Optimization
           </h2>
           <p className="mx-auto mt-2 text-center text-secondary-foreground md:max-w-[70%]">
@@ -104,7 +104,7 @@ export default function HomePage() {
 
       <div className="mt-32 w-full">
         <div className="mx-auto max-w-6xl">
-          <h2 className="bg-gradient-to-b from-foreground/70 to-foreground bg-clip-text py-1 text-center text-3xl font-bold text-transparent dark:bg-gradient-to-t sm:text-4xl">
+          <h2 className="text-shadow-grey py-1 text-center text-3xl font-bold sm:text-4xl">
             Unlock the True Potential of Your GPU Infrastructure
           </h2>
           <p className="mx-auto mt-2 text-center text-secondary-foreground md:max-w-[70%]">
@@ -128,7 +128,7 @@ export default function HomePage() {
 
       <div className="mt-32 w-full">
         <div className="mx-auto max-w-5xl">
-          <h2 className="bg-gradient-to-b from-foreground/70 to-foreground bg-clip-text py-1 text-center text-3xl font-bold text-transparent dark:bg-gradient-to-t sm:text-4xl">
+          <h2 className="text-shadow-grey py-1 text-center text-3xl font-bold sm:text-4xl">
             End-to-End GPU Infrastructure Solutions
           </h2>
           <p className="mx-auto mt-2 text-center text-secondary-foreground md:max-w-[70%]">
@@ -156,9 +156,7 @@ export default function HomePage() {
       <div className="mt-32 grid w-full rounded-lg border bg-background-accent px-4 py-12">
         <div className="flex flex-col items-center gap-6">
           <div>
-            <h2 className="bg-gradient-to-b from-foreground/70 to-foreground bg-clip-text py-1 text-center text-3xl font-bold text-transparent dark:bg-gradient-to-t sm:text-4xl">
-              Ready To Get Started?
-            </h2>
+            <h2 className="text-shadow-grey py-1 text-center text-3xl font-bold sm:text-4xl">Ready To Get Started?</h2>
             <p className="mx-auto mt-2 text-center text-secondary-foreground lg:max-w-[70%]">
               Contact us today to learn more about our solutions and how we can help you achieve peak performance.
             </p>

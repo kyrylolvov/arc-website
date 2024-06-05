@@ -18,7 +18,7 @@
     --bubble-width: 0;
     --bubble-translate-x: 0;
   }
-
+  /* 
   .dark {
     --background: 240 10% 3.9%;
     --background-accent: 0 0% 0%;
@@ -29,7 +29,7 @@
     --secondary-foreground: 240 5% 64.9%;
     --destructive: 0 84.2% 60.2%;
     --border: 240 3.7% 15.9%;
-  }
+  } */
 }
 
 @layer base {
@@ -39,6 +39,22 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  .text-shadow-grey {
+    text-shadow: 0 3px 0 hsl(240, 3.8%, 46.1%, 0.25);
+  }
+
+  .text-shadow-border-black {
+    color: hsl(var(--background-accent));
+    text-shadow:
+      -1px 3px 0 hsl(var(--foreground)),
+      1px 3px 0 hsl(var(--foreground)),
+      1px 1px 0 hsl(var(--foreground)),
+      -1px -1px 0 hsl(var(--foreground)),
+      1px -1px 0 hsl(var(--foreground)),
+      -1px 1px 0 hsl(var(--foreground)),
+      1px 1px 0 hsl(var(--foreground));
   }
 
   .speed-lottie #circle-accent path {

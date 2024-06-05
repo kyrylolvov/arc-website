@@ -8,7 +8,6 @@ import { ReactNode, StrictMode } from "react";
 import Footer from "~/components/footer";
 import Header from "~/components/header";
 import { QueryProvider } from "~/providers/query-provider";
-import { ThemeProvider } from "~/providers/theme-provider";
 import { cn } from "~/utils/cn";
 
 export const metadata: Metadata = {
@@ -22,11 +21,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className="relative mx-auto flex flex-col">
         <StrictMode>
           <QueryProvider>
-            <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-              <Header />
-              {children}
-              <Footer />
-            </ThemeProvider>
+            {/*<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange> */}
+            <Header />
+            {children}
+            <Footer />
+            {/*</ThemeProvider>*/}
           </QueryProvider>
         </StrictMode>
       </body>

@@ -6,7 +6,6 @@ import generateId from "~/utils/uuid";
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 import { Button } from "./ui/button";
-import FooterThemeSwitch from "./ui/footer-theme-switch";
 
 export default function Footer() {
   return (
@@ -64,7 +63,7 @@ export default function Footer() {
               </Button>
             </div>
 
-            <FooterThemeSwitch />
+            {/* <FooterThemeSwitch /> */}
           </div>
         </div>
       </div>
@@ -92,9 +91,9 @@ export default function Footer() {
             </AccordionItem>
           ))}
 
-          <AccordionItem value="preferences">
+          <AccordionItem value="socials">
             <AccordionTrigger className="text-sm" hideChevron>
-              Preferences
+              Socials
             </AccordionTrigger>
             <AccordionContent className="flex items-center gap-6">
               <div className="flex items-center gap-1">
@@ -120,7 +119,7 @@ export default function Footer() {
                   <RiDiscordFill className="h-5 w-5" />
                 </Button>
               </div>
-              <FooterThemeSwitch />
+              {/* <FooterThemeSwitch /> */}
             </AccordionContent>
           </AccordionItem>
         </Accordion>

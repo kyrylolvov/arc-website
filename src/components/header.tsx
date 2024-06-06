@@ -28,7 +28,7 @@ export default function Header() {
 
   const activeNavItem = useMemo(() => navItems.find((navItem) => pathname.includes(navItem.slug))?.slug, [pathname]);
 
-  const [hoveredNavItem, setHoveredNavItem] = useState<string | null>("docs");
+  const [hoveredNavItem, setHoveredNavItem] = useState<string | null>(null);
 
   const prevNavItemRef = useRef<string | null>(null);
 

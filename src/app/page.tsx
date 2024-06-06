@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import DemoDialog from "~/components/demo-dialog";
 import FeatureCard from "~/components/home/feature-card";
 import LatestNewsCard from "~/components/home/latest-news-card";
@@ -30,7 +32,7 @@ export default function HomePage() {
 
         <div className="mt-6 flex justify-center gap-4">
           <Button size="sm" variant="outline" className="">
-            Contact Sales
+            <Link href="/contact">Contact Sales</Link>
           </Button>
           <DemoDialog />
         </div>
@@ -120,7 +122,7 @@ export default function HomePage() {
 
         <div className="mt-4 flex justify-center gap-2">
           <Button size="sm" variant="outline" className="">
-            Contact Sales
+            <Link href="/contact">Contact Sales</Link>
           </Button>
           <Button size="sm" className="group flex gap-1">
             More about Infrastructure

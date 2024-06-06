@@ -1,6 +1,12 @@
 import {
+  RiBox3Line,
+  RiBriefcase4Line,
   RiCalendarLine,
-  RiCloudLine,
+  RiDiscordFill,
+  RiGithubFill,
+  RiLinkedinBoxFill,
+  RiMailLine,
+  RiMapPinLine,
   RiPuzzle2Line,
   RiScales3Line,
   RiServerLine,
@@ -8,6 +14,7 @@ import {
   RiSpeedUpLine,
   RiTaskLine,
 } from "@remixicon/react";
+import Link from "next/link";
 
 import { MetricsCardProps } from "~/components/home/metrics-card";
 
@@ -102,8 +109,67 @@ export const infrastructure = [
   },
   {
     id: generateId(),
-    icon: RiCloudLine,
+    icon: RiBox3Line,
     title: "Cloud Instances",
     description: "Enable large-scale model training with top-of-the-line NVIDIA GPUs",
+  },
+];
+
+export const contacts = [
+  {
+    id: generateId(),
+    icon: RiMailLine,
+    title: "Contact us",
+    footer: (
+      <div className="mt-4 grid gap-1 text-background">
+        <Link href="mail:support@compute.com">support@compute.com</Link>
+        <Link href="mail:support@compute.com">sales@compute.com</Link>
+      </div>
+    ),
+  },
+
+  {
+    id: generateId(),
+    icon: RiMapPinLine,
+    title: "Visit Us",
+    footer: (
+      <div className="mt-4 grid gap-1 text-background">
+        <Link href="https://maps.app.goo.gl/6K1HBBN4tHS6Ra4o6" target="_blank">
+          31 Scarsdale Rd #4, Toronto, ON M3B 2R2
+        </Link>
+      </div>
+    ),
+  },
+
+  {
+    id: generateId(),
+    icon: RiBriefcase4Line,
+    title: "Join Us",
+    footer: (
+      <div className="mt-4 grid gap-1 text-background">
+        <Link href="/careers">Explore current job openings</Link>
+      </div>
+    ),
+  },
+];
+
+export const socials = [
+  {
+    id: generateId(),
+    icon: RiGithubFill,
+    title: "Github",
+    description: "@arccompute",
+  },
+  {
+    id: generateId(),
+    icon: RiLinkedinBoxFill,
+    title: "LinkedIn",
+    description: "@arccompute",
+  },
+  {
+    id: generateId(),
+    icon: RiDiscordFill,
+    title: "Discord",
+    description: "@arccompute",
   },
 ];

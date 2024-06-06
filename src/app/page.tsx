@@ -74,7 +74,7 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="mx-auto mt-8 grid w-full max-w-[350px] gap-4 md:max-w-[600px] md:grid-cols-2 lg:max-w-[1000px] lg:grid-cols-4">
+        <div className="mx-auto mt-8 grid w-full max-w-[350px] gap-4 sm:max-w-[600px] sm:grid-cols-2 lg:max-w-[1000px] lg:grid-cols-4">
           {metrics.map((metric) => (
             <div key={metric.id}>
               <MetricsCard {...metric} />

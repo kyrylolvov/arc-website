@@ -180,7 +180,9 @@ export default function DemoDialog({ isLight }: DemoDialogProps) {
                           name="name"
                           render={({ field }) => (
                             <FormItem className="space-y-1.5">
-                              <FormLabel>Name *</FormLabel>
+                              <FormLabel>
+                                Name<span className="text-destructive">*</span>
+                              </FormLabel>
                               <FormControl>
                                 <Input placeholder="Enter your name..." className="h-9" {...field} />
                               </FormControl>
@@ -193,7 +195,9 @@ export default function DemoDialog({ isLight }: DemoDialogProps) {
                           name="email"
                           render={({ field }) => (
                             <FormItem className="space-y-1.5">
-                              <FormLabel>Email Address *</FormLabel>
+                              <FormLabel>
+                                Email Address<span className="text-destructive">*</span>
+                              </FormLabel>
                               <FormControl>
                                 <Input placeholder="Enter your email address..." className="h-9" {...field} />
                               </FormControl>

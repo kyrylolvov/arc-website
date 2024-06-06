@@ -121,7 +121,7 @@ export const contacts = [
     icon: RiMailLine,
     title: "Contact us",
     footer: (
-      <div className="mt-4 grid gap-1 text-background">
+      <div className="mt-4 grid gap-1 text-background underline underline-offset-2">
         <Link href="mail:support@compute.com">support@compute.com</Link>
         <Link href="mail:support@compute.com">sales@compute.com</Link>
       </div>
@@ -133,7 +133,7 @@ export const contacts = [
     icon: RiMapPinLine,
     title: "Visit Us",
     footer: (
-      <div className="mt-4 grid gap-1 text-background">
+      <div className="mt-4 grid gap-1 text-background underline underline-offset-2">
         <Link href="https://maps.app.goo.gl/6K1HBBN4tHS6Ra4o6" target="_blank">
           31 Scarsdale Rd #4, Toronto, ON M3B 2R2
         </Link>
@@ -146,7 +146,7 @@ export const contacts = [
     icon: RiBriefcase4Line,
     title: "Join Us",
     footer: (
-      <div className="mt-4 grid gap-1 text-background">
+      <div className="mt-4 grid gap-1 text-background underline underline-offset-2">
         <Link href="/careers">Explore current job openings</Link>
       </div>
     ),
@@ -158,18 +158,18 @@ export const socials = [
     id: generateId(),
     icon: RiGithubFill,
     title: "Github",
-    description: "@arccompute",
+    description: "@arc-compute",
   },
   {
     id: generateId(),
     icon: RiLinkedinBoxFill,
     title: "LinkedIn",
-    description: "@arccompute",
+    description: "@arc-compute",
   },
   {
     id: generateId(),
     icon: RiDiscordFill,
     title: "Discord",
-    description: "@arccompute",
+    description: "@arc-compute",
   },
 ];

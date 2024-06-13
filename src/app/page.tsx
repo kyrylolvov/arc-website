@@ -24,7 +24,7 @@ export default function HomePage() {
 
       <div className="mx-auto mt-16 max-w-4xl text-center">
         <h1 className="text-shadow-grey py-1 text-4xl font-extrabold tracking-wide sm:text-5xl">
-          Start Your <span className="text-shadow-border-black">GPU Infrastructure</span> Deployment Journey.
+          Start Your GPU Infrastructure Deployment Journey.
         </h1>
         <p className="mt-6 text-secondary-foreground">
           Optimizing GPU infrastructure is complicated. Luckily, we{"'"}re here to help make the process easy.
